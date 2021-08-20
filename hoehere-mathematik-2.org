@@ -1,0 +1,532 @@
+#+title: Höhere Mathematik II
+#+language: de
+#+options: tex:t
+#+startup: latexpreview
+
+* Termine
+** TODO Übungsblatt-Abgabe
+DEADLINE: <2021-05-12 Wed 12:00 +1w>
+** TODO Tutorium
+SCHEDULED: <2021-05-03 Mon 14:00 +1w>
+** TODO Klausur
+SCHEDULED: <2021-09-14 Tue 8:00>
+
+* Grundbegriffe
+
+** Schranken
+$M \subseteq \mathbb{R}$ ist nach oben/unten beschränkt bedeutet, dass kein Element der Menge größer/kleiner als ein bestimmter Wert ist. So einen Wert nennt man *obere/untere Schranke*.
+
+Formal:
+$\exists \gamma \in \mathbb{R} \: \forall x \in M : x \leq \gamma$ bzw. $\exists \gamma \in \mathbb{R} \: \forall x \in M : x \geq \gamma$
+
+Für jede nach oben/unten beschränkte Menge gibt es eine kleinste obere/größte untere Schranke. Diese nennt man *Supremum* ($\sup M$) bzw. *Infimum* ($\inf M$).
+
+Falls das Supremum/Infimum selbst in der Menge liegt, nennt man es auch *Maximum* ($\max M$) bzw. *Minimum* ($\min M$).
+
+Wenn $M$ sowohl nach oben als auch nach unten beschränkt ist, ist sie *beschränkt*.
+** Komplexe Zahlen
+Komplexe Zahlen $\mathbb{C} \supset \mathbb{R}$ sind Zahlen, die aus zwei Teilen bestehen: Einem Realteil $Re$ und einem Imaginärteil $Im$.
+D.h., jede komplexe Zahl $z$ ist von der Form $z = a + ib$, wobei $Re(z) = a \in \mathbb{R}$ und $Im(z) = b \in \mathbb{R}$ ist. $i$ ist die /imaginäre Einheit/. Sie ist als $i = \sqrt{-1}$ definiert ($\Rightarrow i^2 = -1$).
+
+Wenn der Imaginärteil 0 ist, handelt es sich um eine reelle Zahl.
+
+Komplexe Zahlen können mit der reellen Ebene ($\mathbb{R}^2$) identifiziert werden.
+*** Komplex Konjugierte
+Jede komplexe Zahl $z = a + bi \in \mathbb{C}$ kann /komplex konjugiert/ $\bar{z}$ werden:
+
+$\bar{z} = a - bi$
+
+D.h., das Vorzeichen des Imaginärteils wird umgekehrt.
+*** Rechnen
+Rechnen mit komplexen Zahlen funktioniert fast genauso wie im reellen, wenn man $i$ als Variable sieht.
+$$z_1 + z_2 = (a_1 + ib_1) + (a_2 + ib_2) = (a_1 + a_2) + i(b_1 + b_2)$$
+$$z_1 \cdot z_2 = (a_1 + ib_1) \cdot (a_2 + ib_2) = a_1a_2 + a_1ib_2 + ib_1a_2 + i^2b_1b_2 = (a_1a_2 - b_1b_2) + i(a_1b_2 + a_2b_1)$$
+
+Für Division empfiehlt es sich, mit dem [[Komplex Konjugierte][Komplex Konjugierten]] des Nenners zu erweitern:
+
+$$ \frac{z_1}{z_2} = \frac{a_1 + ib_1}{a_2 + ib_2} = \frac{(a_1 + ib_1)(a_2 - ib_2)}{(a_2 + ib_2)(a_2 - ib_2)} = \frac{z_1\bar{z_2}}{{a_2}^2 + {b_2}^2}$$
+
+*** Betrag
+Der Betrag $|z|$ für $z = a + ib \in \mathbb{C}$ ist definiert als $|z| = \sqrt{a^2 + b^2}$.
+
+*** Weitere Eigenschaften
+- $z \cdot \bar{z} = {|z|}^2$
+- $|z_1 \cdot z_2| = |z_1| \cdot |z_2|$
+- $|z_1 + z_2| \leq |z_1| + |z_2|$
+** Monotonie
+Funktionen, die für jede größere Eingabe auch größere/kleinere Werte annehmen, heißen *monoton wachsend*/*fallend*.
+Sprich, Ungleichungen werden erhalten bzw. umgekehrt, wenn man eine monoton wachsende bzw. fallende Funktion anwendet.
+
+Formal, für eine Teilmenge der reellen Zahlen $D \subseteq \mathbb{R}$ und eine Funktion $f : D \to \mathbb{R}$ nennt man $f$ monoton wachsend, wenn
+
+$$\forall x_1, x_2 \in D : x_1 < x_2 \Rightarrow f(x_1) \leq f(x_2)$$
+
+Für monoton fallende Funktionen kehrt man die Ungleichung rechts um; bei *streng* monotonen Funktionen ist auch Gleichheit nicht mehr erlaubt, also je zwei Funktionswerte müssen unterschiedlich sein.
+*** Folgerungen
+Es sei $f$ wie oben und streng monoton. Dann hat $f$ ein Inverses $f^{-1} : f(D) \to D$, ist also eingeschränkt auf $D \to f(D)$ bijektiv.
+
+** Exponentialfunktion
+
+*** Im Reellen
+
+Für $x \in \mathbb{R}$ gilt:
+
+$$e^x = \sum_{n = 0}^{\infty} \frac{x^n}{n!}$$
+
+*** Im Komplexen
+Für $z = a + ib \in \mathbb{C}$ ist $e^z$ definiert als
+
+$$e^z = e^a(\cos{b} + i \sin{b})$$
+
+Also gilt:
+- $z = a \Rightarrow e^z = e^a$ (bekannte reelle Exponentialfunktion)
+- $z = ib \Rightarrow e^z = \cos{b} + i\sin{b}$
+
+Daraus folgt auch eine alternative Darstellung für [[Trigonometrische Funktionen][Sinus/Cosinus]]:
+
+$$\cos t = \frac{1}{2} (e^{it} + e^{-it})$$
+
+$$\sin t = \frac{1}{2i}(e^{it} - e^{-it})$$
+
+*** Eigenschaften
+Gegeben $z, w \in \mathbb{C}$, $n \in \mathbb{Z}$, $t, r \in \mathbb{R}$:
+- $e^{z + w} = e^ze^w$ (Homomorphismus Addition -> Multiplikation)
+- $e^{nz} = (e^z)^n$
+- $e^0 = 1$
+- $|e^{it}| = 1$
+- $e^{-it} = \overline{e^{it}}$
+- $e^{i\pi} + 1 = 0$
+- $e^{z + 2n\pi i} = e^z$ (im Imaginärteil $2\pi$ periodisch)
+- $t > 0 \Rightarrow e^t > 1$
+- $e^t > 0$
+- $t > r \Rightarrow e^t > e^r$ (streng monoton wachsend)
+
+
+*** Potenzgesetze Allgemein
+
+Diese Gesetze gelten nicht nur für die Exponentialfunktion, sondern für die allgemeine Potenz (definiert als $a^x := e^{x \log a}$ für $a > 0$ und $x \in \mathbb{R}$).
+Gegeben $x,y \in \mathbb{R}$ und $a > 0$:
+
+- $a^x > 0$
+- $x \mapsto a^x$ ist auf $\mathbb{R}$ stetig
+- $(a^x)^y = a^{xy}$
+- $a^{-x} = {(a^x)^{-1}} = \frac{1}{a^x}$
+
+** Logarithmus
+Der Logarithmus ist die /Umkehrfunktion/ (auf $(0, \infty)$) zur Exponentialfunktion, d.h. $e^{\log(x)} = \log(e^x) = x \; (x \in \mathbb{R})$.
+
+*** Im Komplexen
+Es gibt nicht /den/ Logarithmus einer komplexen Zahl.
+*** Eigenschaften
+
+- $\log 1 = 0$
+- $\log e = 1$
+- $\log$ ist stetig, streng monoton wachsend und surjektiv
+- $\log x \to \infty \; (x \to \infty)$ und $\log x \to -\infty \; (x \to 0)$
+*** Logarithmusgesetze
+Gegeben $x, y \in \mathbb{R}_+ \setminus \{0\}$:
+
+- $\log(xy) = \log x + \log y$
+- $\log(\frac{x}{y}) = \log x - \log y$
+- $\log(a^x) = x \log a$
+
+
+** Trigonometrische Funktionen
+
+** Abgeschlossen- und Kompaktheit
+Abgeschlossen- bzw. Kompaktheit sind Eigenschaften von Mengen. Dabei beschreibt Abgeschlossenheit den Umstand, dass man keine Folge findet, deren Grenzwert außerhalb der Menge liegt. Formal:
+
+$$ D \; \text{ist abgeschlossen} \; \Leftrightarrow \lim_{n \to \infty} x_n \in D \; \text{für jede konvergente Folge} \; x_n \subseteq D $$
+Dazu ist auch äquivalent:
+
+*** TODO finish and move to correct spot
+
+** Binomialkoeffizienten
+Gegeben: $n, k \in \mathbb{N}_0$ und $k \leq n$.
+
+$$\binom{n}{k} := \frac{n!}{k!(n - k)!}$$
+
+Es gelten die Regeln:
+
+$$ \binom{n}{n} = \binom{n}{0} = 1 $$ und $$ \binom{n}{k} + \binom{n}{k - 1} = \binom{n + 1}{k} $$ ($1 \leq k \leq n$)
+
+** Binomischer Satz
+Für $a, b \in \mathbb{R}$, $n \in \mathbb{N}_0$:
+
+$$(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n - k} b^k$$
+
+** Bernoullische Ungleichung
+Für $x \in \mathbb{R}$, $x \geq -1$ gilt folgende Abschätzung
+
+$$ (1 + x)^n \geq 1 + nx $$
+
+für alle $n \in \mathbb{N}$.
+
+* Vorlesung
+
+** Folgen
+Eine /Folge $(a_n)$/ (mehrdimensional: $(a^{(n)})$) über eine Menge $M$ / ist eine Funktion $\mathbb{N} \to M$.
+Für das i-te Element in der Folge schreibt man $a_i$, oder im mehrdimensionalen $a^{(i)}$.
+
+*** Kovergenz
+
+Folgen können konvergieren, sofern die Elemente aus $M$ einen definierten Abstand ($|a - b| \in \mathbb{R}$; dies sei hier synonym zu $||a - b||$ für $\mathbb{R}^n$) zueinander haben.
+Man sagt dann, eine Folge konvergiert, wenn gilt:
+
+  $$\exists a \in M : \forall \epsilon \in \mathbb{R} : \exists n_0 \in \mathbb{N} : \forall n \geq n_0 : |a_n - a| < \epsilon$$
+
+In Worten: Es gibt einen Wert $a$ so, dass für jedes noch so kleine $\epsilon$ die Werte der Folge ab einem bestimmten index[fn:1]
+abstandsmäßig nicht weiter als $\epsilon$ von $a$ entfernt sind. Dieser Wert wird auch als /Grenzwert/ der Folge bezeichnet und
+man schreibt:
+
+$\lim_{n \to \infty} a_n = a$ oder $a_n \to a \;(n \to \infty)$[fn:2]
+
+Der Grenzwert ist eindeutig.
+Das Gegenteil von /konvergent/ ist /divergent/.
+
+Im Mehrdimensionalen bedeutet Konvergenz Konvergenz in allen Koordinaten, also
+
+$$ a^{(k)} \to a \in {\mathbb{R}}^n \; (k \to \infty) \Leftrightarrow \forall j \in \{1, ..., n\} : a_j^{(k)} \to a_j \; (k \to \infty)$$
+
+**** Eigenschaften und Kriterien
+
+***** Beschränktheit
+[[Schranken][Beschränktheit]] ist notwendig für Kovergenz. Also
+$(a_n)\;\text{ist unbeschränkt}\;\Rightarrow (a_n)\;\text{divergiert}$
+
+***** Nullfolgenschranke
+Wenn $(\alpha_n)$ eine Folge mit $\alpha_n \to 0$ ist, dann gehen auch nichtnegative Folgen, die kleiner als $(\alpha_n)$ werden, gegen 0.
+$$\alpha_n \to 0 \; \text{und} \; |a_n| \leq \alpha_n \; \text{ffa} \; n \in \mathbb{N} \Rightarrow |a_n| \to 0$$
+
+Da außerdem gilt $|a_n - a| \to 0 \Leftrightarrow a_n \to a$, folgt daraus $|a_n - n| \leq \alpha_n \; \text{ffa} \; n \in \mathbb{N} \Rightarrow a_n \to a \; (n \to \infty)$
+
+***** Kombinationen
+
+Im Folgenden gelte $a_n \to a$ und $b_n \to b$, $\alpha, \beta \in \mathbb{R}$.
+Wenn man konvergente Folgen miteinander komponentenweise kombiniert, überträgt sich dies auf die Grenzwerte:
+
+- $|a_n| \to |a|$
+- $\alpha a_n + \beta b_n \to \alpha a + \beta b$
+- $a_nb_n \to ab$
+- $a \neq 0 \Rightarrow a_n \neq 0 \; \text{ffa} \; n \in \mathbb{N} \Rightarrow \frac{1}{a_n} \to \frac{1}{a}$
+- $\sqrt[p]{a_n} \to \sqrt[p]{a_n}$ (für beliebiges $p \in \mathbb{N}$)
+- $a_n \leq b_n \; \text{ffa} \; n \in \mathbb{N} \Rightarrow a \leq b$
+
+In Worten: Man kann Folgen indexweise *addieren*, *multiplizieren*, *dividieren* und die *Wurzel ziehen* (sofern diese Operationen definiert sind) und das gleiche passiert mit den Grenzwerten.
+Außerdem übertragen sich Ungleichungen, sofern diese definiert sind.
+
+***** Sandwichkriterium
+Es gelte $a_n \to x$, $b_n \to x$ und $(c_n)$ sei eine weitere Folge.
+Wenn nun $(a_n)$ und $(b_n)$ $(c_n)$ umschließen, konvergiert auch $(c_n)$ gegen x.
+Also:
+
+$$ a_n \leq c_n \leq b_n \; \text{ffa} \; n \in \mathbb{N} \Rightarrow c_n \to x$$
+***** Monotoniekriterium
+Wenn eine Folge $(a_n)$ monoton wachsend und durch einen Wert nach oben beschränkt ist, ist sie konvergent mit
+
+$$ a_n \to \sup_{n \in \mathbb{N}} a_n \; (n \to \infty)$$
+
+Das Gleiche geht auch in die andere Richtung ($(a_n)$ monoton fallend und nach unten beschränkt):
+
+$$a_n \to \inf_{n \in \mathbb{N}} a_n \; (n \to \infty)$$
+
+**** Wichtige Beispiele
+
+***** Konstante Folgen
+Konstante Folgen konvergieren gegen ihren konstanten Wert. Also wenn $a_n := c \; (n \in \mathbb{N})$, dann $a_n \to c$.
+
+***** 1/n
+1/n geht gegen 0.
+$\frac{1}{n} \to 0 \; (n \to \infty)$
+
+***** x^n
+Für eine Konstante $x \in \mathbb{R}$ ist über die Folge $(x^n)$ zu sagen:
+
+- Falls $x = -1$: divergent ($(1, -1, 1, -1, 1, -1, ...)$)
+- Falls $x = 1$: kovergent ($1^n \to 1$)
+- Falls $|x| < 1$: konvergent ($x^n \to 0$) (gilt auch für $x \in \mathbb{C}$)
+- Ansonsten: divergent, weil unbeschränkt
+
+***** n-te Wurzel aus n
+Die n-te Wurzel aus n konvergiert gegen 1.
+$\sqrt[n]{n} \to 1 \; (n \to \infty)$
+
+***** n-te Wurzel aus c
+Die n-te Wurzel aus einer Konstanten $c \in \mathbb{R}$ ($c > 0$) konvergiert gegen 1.
+$\sqrt[n]{c} \to 1 \; (n \to \infty)$
+
+***** Eulersche Zahl
+Die Folge $a_n := (1 + \frac{1}{n})^n$ konvergiert gegen $e$, die /Eulersche Zahl/.
+$a_n \to e \; (n \to \infty)$
+
+**** Auf Konvergenz Untersuchen
+
+1. Lässt sich die Folge auf eine Kombination aus bekannten, trivialen Beispielen (z.B. $\frac{1}{n} \to 0$ oder $n \to \infty$) ableiten? (Kombinationen, Beschränktheit)
+2. Lässt sich der Folgenausdruck vereinfachen/umformen?
+3. Wenn Vermutung, dass Folge konvergiert, versuche untere und obere Folgenschranken zu finden für Sandwichkriterium
+4. Wenn anders nicht möglich: Versuch eines manuellen Beweis. Grenzwert $a$ erkennen und dann für jedes $\epsilon \in \mathbb{R}$ beweisen, dass der Abstand kleiner als das $\epsilon$ wird. Falls Divergenz: $\epsilon$ Gegenbeispiel finden.
+
+
+*** Teilfolgen
+
+Die Folge $(a_n)$ ist für $n \in \{1, 2, 3, ...\}$ definiert. Wählt man sich nun eine streng monoton wachsende Folge von natürlichen Zahlen $n_1, n_2, n_3, ...$, so entsteht eine Teilfolge $(a_{n_k}) \subseteq (a_k) \; (k \in \mathbb{N})$.
+
+Beispiele für die Wahl von Indizes für Teilfolgen:
+- Alle geraden/ungeraden Indizes ($(a_{2n})$ bzw. $(a_{2n + 1})$)
+- Alle Zweierpotenzen ($(a_{2^n}$))
+
+**** Häufungswerte
+
+Ein Grenzwert einer Teilfolge von $(a_n)$ ist ein /Häufungswert/ von $(a_n)$.
+Die Menge aller Häufungswerte $H(a_n)$ einer Folge $(a_n)$ ist die Menge aller Grenzwerte ihrer Teilfolgen.
+
+Beispiele:
+- $a_n = \frac{1}{n} \Rightarrow H(a_n) = \{0\}$
+- $a_n = n \Rightarrow H(a_n) = \emptyset$
+- $a_n = (-1)^n \Rightarrow H(a_n) = \{-1, 1\}$
+
+**** Limes superior/inferior
+
+Der Limes superior bzw. inferior einer Folge ist der größte bzw. kleinste Häufungswert der Folge.
+
+Beispiele:
+- $\limsup\limits_{n \to \infty} (-1)^n = 1$
+- $\liminf\limits_{n \to \infty} (-1)^n = -1$
+- $\limsup\limits_{n \to \infty} \frac{1}{n} = \liminf\limits_{n \to \infty} \frac{1}{n} = \lim\limits_{n \to \infty} \frac{1}{n} = 0$
+
+*Weitere Aussagen*:
+
+- $a_n \geq 0 \; (n \in \mathbb{N})$ und $\limsup\limits_{n \to \infty} a_n = 0$ $\Rightarrow a_n \to 0 \; (n \to \infty)$
+
+**** Sätze
+
+Wenn eine Folge gegen einen Grenzwert konvergiert, konvergieren auch alle Teilfolgen gegen diesen Grenzwert.
+$a_n \to a \in \mathbb{R} \Rightarrow a_{n_k} \to a$
+
+Jede Folge enthält eine monotone Teilfolge.
+
+Wenn eine Folge beschränkt ist, enthält sie eine konvergente Teilfolge (Bolzano-Weierstraß).
+$(a_n)$ beschränkt $\Rightarrow$ $H(a_n) \neq \emptyset$
+
+** Reihen
+
+(Unendliche) Reihen sind Summen über jeweils eine Folge.
+
+Folge: $(a_n)$
+Reihe: $\sum_{n=1}^{\infty} a_n$
+
+Reihen können auch woanders anfangen (z.B. $n=0$ oder $n=5$) - die Dinge funktionieren dann analog.
+
+*** Konvergenz, Divergenz
+
+Eine Reihe konvergieren/divergieren gdw. die Folge der Teilsummen konvergiert/divergiert. Das $n$-te Element dieser Folge ist die Summe der ersten $n$ Elemente der zur Reihe gehörigen Folge.
+
+$s_n = \sum_{k=1}^{n} a_k = a_1 + a_2 + ... + a_n$
+
+Den Grenzwert dieser Folge nennt man *Reihenwert*.
+
+$\lim_{n \to \infty} s_n = \sum_{n=1}^{\infty} a_n$
+
+Innerhalb einer Reihe kann man Summanden umsortieren, ohne dass sich der Reihenwert ändert.
+
+**** Absolute Konvergenz
+Eine Reihe $\sum_{n=1}^{\infty} a_n$ konvergiert absolut, wenn $\sum_{n=1}^{\infty} |a_n|$ konvergiert.
+
+Dies ist eine *stärkere* Aussage als normale Konvergenz, denn sie ist für normale Konvergenz hinreichend.
+
+Außerdem gilt dann die Dreiecksungleichung für Reihen:
+
+$| \sum_{n=1}^{\infty} a_n | \leq \sum_{n=1}^{\infty} |a_n|$
+
+**** Eigenschaften und Kriterien
+
+***** Nullfolge
+$\sum_{n=1}^{\infty} a_n$ konvergiert $\Rightarrow$ $a_n \to 0 \; (n \to \infty)$
+
+D.h.: Wenn $(a_n)$ nicht gegen 0 konvergiert, ist sofort klar, dass die Reihe divergiert.
+***** Kombinationen
+Linearkombinationen von konvergierenden Reihen konvergieren auch und der Reihenwert entspricht der Linearkombination der Reihenwerte, d.h.
+
+$\alpha \sum_{n=1}^{\infty} a_n + \beta \sum_{n=1}^{\infty} b_n = \sum_{n=1}^{\infty} (\alpha a_n + \beta b_n) \; (\alpha, \beta \in \mathbb{R})$.
+***** Leibnizkriterium
+Wenn eine Reihe von dieser Form ist: $\sum_{n=1}^{\infty} (-1)^{n + 1} b_n$, wobei $b_n$
+
+a. monoton fallend ist
+b. gegen 0 konvergiert
+
+dann konvergiert die Reihe.
+
+:Beispiel:
+/Alternierende harmonische Reihe/
+
+$\sum\limits_{n=1}^{\infty} \frac{(-1)^{n + 1}}{n}$
+$b_n = \frac{1}{n}$
+
+$(b_n)$ ist bekannterweise monoton fallend und konvergiert gegen 0 $\Rightarrow$ Die Reihe konvergiert.
+:END:
+
+***** Majoranten-/Minorantenkriterium
+Wenn man eine Reihe ($\sum_{n=1}^{\infty} a_n$) durch eine bekannt konvergierende/divergierende Reihe ($\sum_{n=1}^{\infty} b_n$) abschätzen kann, kann man dadurch Schlüsse auf die Konvergenz ziehen.
+
+****** Konvergenz (Majorant)
+Nach oben abschätzen:
+- Die andere Reihe ($\sum_{n=1}^{\infty} b_n$) konvergiert
+- $|a_n| \leq b_n$ ffa $n \in \mathbb{N}$
+
+Dann konvergiert $\sum_{n=1}^{\infty} a_n$ absolut.
+****** Divergenz (Minorant)
+Nach unten abschätzen:
+- Die andere Reihe ($\sum_{n=1}^{\infty} b_n$) divergiert
+- $a_n \geq b_n \geq 0$ ffa $n \in \mathbb{N}$
+
+  Dann divergiert $\sum_{n=1}^{\infty} a_n$.
+***** Wurzelkriterium
+Das Wurzelkriterium bietet sich besonders an, wenn die Folge der Reihe exponentiell ist.
+
+Man definiert sich hierzu die Folge $c_n := \sqrt[n]{|a_n|}$, wobei $(a_n)$ die Folge aus der Reihe ist.
+
+a. $(c_n)$ ist unbeschränkt $\Rightarrow \sum_{n=1}^{\infty} a_n$ divergiert
+b. Ansonsten, bestimme $\alpha := \limsup\limits_{n \to \infty} c_n$
+   1. $\alpha < 1 \Rightarrow$ Reihe konvergiert absolut.
+   2. $\alpha > 1 \Rightarrow$ Reihe divergiert.
+   3. $\alpha = 1 \Rightarrow$ Keine Aussage möglich. Muss anders überprüft werden.
+
+***** Quotientenkriterium
+Ähnlich zum Wurzelkriterium bzw. eine Variante davon.
+
+Man definiert sich die Folge $c_n := \; \mid \frac{a_{n + 1}}{a_n} \mid$, wobei $(a_n)$ die Folge aus der Reihe ist.
+
+a. $c_n \geq 1 \; \text{ffa} \; n \in \mathbb{N} \Rightarrow \sum_{n=1}^{\infty} a_n$ divergiert
+b. Ansonsten, gegeben $(c_n)$ ist beschränkt; Bestimme $\alpha := \limsup\limits_{n \to \infty} c_n$ und $\beta := \liminf\limits_{n \to \infty} c_n$
+   1. $\alpha < 1 \Rightarrow$ Reihe konvergiert absolut.
+   2. $\beta > 1 \Rightarrow$ Reihe divergiert.
+
+***** Cauchyprodukt
+Man kann zwei Reihen miteinander über das Cauchyprodukt multiplizieren.
+Gegeben die Reihen $\sum_{n=1}^{\infty} a_n$ und $\sum_{n=1}^{\infty} b_n$, wird das Cauchyprodukt der beiden beschrieben durch
+
+$\sum_{n=0}^{\infty} c_n$, wobei $c_n = \sum_{k=0}^{n} a_{n - k} b_k = a_n b_0 + a_{n - 1} b_1 + ... + a_0 b_n$.
+
+Wenn die beiden Reihen konvergieren, konvergiert auch das Cauchyprodukt (absolut) und der Reihenwert ist das Produkt der beiden Eingangsreihenwerte.
+
+$\sum_{n=0}^{\infty} c_n = (\sum_{n=0}^{\infty} a_n) (\sum_{n=0}^{\infty} b_n)$
+
+**** Potenzreihen
+Potenzreihen sind Reihen von dieser Form:
+
+$\sum\limits_{n=0}^{\infty} a_n (x - x_0)^n$
+
+$(a_n)$ ist eine Folge.
+$x_0 \in \mathbb{R}$ ist konstant. (Analog im höherdimensionalen $\mathbb{R}^n$ bzw. $\mathbb{C}$)
+
+*In welchen Punkten $x \in \mathbb{R}$ konvergiert die Reihe?*
+
+***** Konvergenz bestimmen
+
+1. Setze $c_n := \sqrt[n]{|a_n|}$ und
+2. Setze $\rho$ auf:
+   a. $\infty$, falls $(c_n)$ unbeschränkt
+   b. $\limsup_{n \to \infty} c_n$, falls $(c_n)$ beschränkt
+3. Setze $r$ auf "$\frac{1}{\rho}$", d.h.
+   a. $0$, falls $\rho = \infty$
+   b. $\infty$, falls $\rho = 0$
+   c. $\frac{1}{\rho}$, falls $\rho \in (0,\infty)$
+
+
+Die Konvergenz einer Potenzreihe kann man sich als Strecke (oder als Kreis, Kugel, etc. im Höherdimensionalen) mit Mittelpunkt $x_0$ und Radius $r$ vorstellen.
+Die Reihe konvergiert absolut für alle Punkte innerhalb dieses Bereichs und divergiert für alle außerhalb des Bereichs. Genau auf dem Rand des Bereichs lässt sich keine Aussage treffen.
+
+#+DOWNLOADED: screenshot @ 2021-08-20 22:05:08
+[[file:Vorlesung/2021-08-20_22-05-08_screenshot.png]]
+/Visualisierung für reelle Potenzreihen/
+
+*Konkret:*
+- $r = 0 \Rightarrow$ Reihe konvergiert nur für $x = x_0$
+- $r = \infty \Rightarrow$ Reihe konvergiert für alle möglichen $x$
+- Ansonsten:
+  - Konvergent für alle $x$ mit $|x - x_0| < r$
+  - Divergent für alle $x$ mit $|x - x_0| > r$
+  - Keine allgemeine Aussage über $|x - x_0| = r$ möglich; manuell untersuchen
+
+*Alternativ über das Quotientenkriterium*
+Wenn $a_n \neq 0$ ffa $n \in \mathbb{N}_0$, dann ist $r = \lim_{n \to \infty} \mid \frac{a_n}{a_{n + 1}} \mid$, falls dieser Grenzwert im Reellen existiert.
+
+***** Beispiele
+
+- Exponentialreihe: $a_n = \frac{1}{n!}$, $x_0 = 0$
+- Geometrische Reihe: $a_n = 1$
+- Cosinus: $a_{2n} = 0$, $a_{2n + 1} = \frac{(-1)^n}{(2n)!}$, $x_0 = 0$
+- Sinus: ähnlich zu cosinus, nur um 1 verschoben
+
+**** Wichtige Beispiele
+
+***** Geometrische Reihe
+
+Die Reihe $\sum\limits_{n=0}^{\infty} x^n$ heißt geometrische Reihe ($x \in \mathbb{R}$ ist eine Konstante).
+
+a. $|x| \geq 1 \Rightarrow$ die Reihe divergiert
+b. $|x| < 1 \Rightarrow$ die Reihe konvergiert - der Reihenwert ist $\frac{1}{1 - x}$
+
+***** Harmonische Reihe
+
+$\sum\limits_{n=1}^{\infty} \frac{1}{n}$ ist die /harmonische Reihe/. Sie divergiert.
+
+***** Teleskopsummen
+
+Bei manchen Reihen kürzen sich fast alle Summanden raus und der Teilsummenausdruck lässt sich stark vereinfachen, sodass die Grenzwertbestimmung einfacher ist. Das nennt man Teleskopsummen.
+
+*Beispiel:*
+
+$\sum\limits_{n=1}^{\infty} \frac{1}{n(n + 1)}$
+
+Der Ausdruck in der Reihe lässt sich mit [[youtube:https://www.youtube.com/watch?v=Kd_757z-g-k][Partialbruchzerlegung]] vereinfachen.
+
+:Partialbruchzerlegung:
+Nullstellen des Zählers berechnen (bereits faktorisiert): $n(n + 1) = 0 \Rightarrow n = 0 \; \text{oder} \; n = -1$
+
+Ansatz für die Partialbruchzerlegung lösen:
+
+$\frac{1}{n(n + 1)} = \frac{A}{n} + \frac{B}{n + 1} \Leftrightarrow 1 = A (n + 1) + B n$
+
+Für $n = 0$ erhält man $A = 1$, für $n = -1$ erhält man $1 = -B \Leftrightarrow B = -1$.
+
+Also gilt
+$\frac{1}{n(n + 1)} = \frac{1}{n} - \frac{1}{n + 1}$
+:END:
+
+$a_n = \frac{1}{n(n + 1)} = \frac{1}{n} - \frac{1}{n + 1}$
+
+Daraus ergibt sich die Teilsummenfolge
+
+$s_n = a_1 + ... + a_n = (1 - \frac{1}{2}) + (\frac{1}{2} - \frac{1}{3}) + ... + (\frac{1}{n - 1} - \frac{1}{n}) + (\frac{1}{n} - \frac{1}{n + 1}) = 1 - \frac{1}{n + 1} \to 1$
+
+Alle außer dem ersten und letzten Summanden fallen weg und es wird ersichtlich, dass die Folge gegen 1 kovergiert, also ist der Reihenwert 1.
+***** 1/(n^a)
+Gegeben die Reihe $\sum_{n=1}^{\infty} \frac{1}{n^{\alpha}}$, wobei $\alpha \in \mathbb{Q}$, $\alpha > 0$, lässt sich sagen:
+
+- $\alpha \leq 1 \Rightarrow$ divergiert
+- $\alpha > 1 \Rightarrow$ konvergiert
+
+**** Auf Konvergenz Untersuchen
+
+- Konvergiert die Folge der Reihe überhaupt gegen 0?
+- Fällt die Reihe in ein bekanntes Muster?
+  - Potenzreihe
+  - geometrische Reihe
+  - harmonische Reihe
+  - Linearkombination aus bekannten Reihen
+- Kann ich sie durch ein bekanntes/triviales Beispiel nach oben/unten abschätzen? (Majoranten-/Minorantenkriterium)
+- Kann ich das Wurzel-/Quotientenkriterium anwenden?
+- Ist die Reihe ein Cauchyprodukt?
+- Kann ich den Ausdruck in der Reihe vereinfachen/umformen?
+  - Partialbruchzerlegung?
+  - Substitution?
+- Schreibe die ersten Summanden der Reihe explizit auf und versuche Muster zu finden
+  - Teleskopsumme?
+  - Umordnung der Summanden?
+  - -> Grenzwert der Teilsummen
+
+* Footnotes
+[fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
+
+[fn:1] Wenn man sagen will, dass etwas ab einem bestimmten Index für alle folgenden gilt, schreibt man auch /für fast alle/ ("ffa"). Also wenn $P(n)$ eine von n abhängige Aussage ist: $$(\exists n_0 \in \mathbb{N} \: \forall n \geq n_0 : P(n)) \Leftrightarrow (P(n) \; \text{ffa} \; n \in \mathbb{N})$$
