@@ -130,7 +130,6 @@ Gegeben $x, y \in \mathbb{R}_+ \setminus \{0\}$:
 - $\log(\frac{x}{y}) = \log x - \log y$
 - $\log(a^x) = x \log a$
 
-
 ** Trigonometrische Funktionen
 
 ** Abgeschlossen- und Kompaktheit
@@ -161,6 +160,12 @@ Für $x \in \mathbb{R}$, $x \geq -1$ gilt folgende Abschätzung
 $$ (1 + x)^n \geq 1 + nx $$
 
 für alle $n \in \mathbb{N}$.
+** Umgebungen
+Gegeben ein $\epsilon \in \mathbb{R}$, wobei $\epsilon > 0$, ist die "Epsilon-Umgebung von $x_0$" definiert als die Menge aller $x$, die einen Abstand $< \epsilon$ von $x_0$ haben.
+
+$U_{\epsilon}(x_0) = \{x \mid |x_0 - x| < \epsilon\}$
+
+Dies kann man sich sowohl für $x_0, x \in \mathbb{R}$ als auch für höhere Dimensionen vorstellen. Im Reellen ist die Umgebung eine Strecke auf dem Zahlenstrahl, im Komplexen ist es ein Kreis auf der Ebene, im $\mathbb{R}^3$ ist es eine Kugel im Raum etc.
 
 * Vorlesung
 
@@ -261,11 +266,13 @@ $a_n \to e \; (n \to \infty)$
 
 **** Auf Konvergenz Untersuchen
 
+Gegeben: Folge $(a_n)$
+Gesucht: Existiert $\lim_{n \to \infty} a_n$? (Was ist der Wert?)
+
 1. Lässt sich die Folge auf eine Kombination aus bekannten, trivialen Beispielen (z.B. $\frac{1}{n} \to 0$ oder $n \to \infty$) ableiten? (Kombinationen, Beschränktheit)
 2. Lässt sich der Folgenausdruck vereinfachen/umformen?
 3. Wenn Vermutung, dass Folge konvergiert, versuche untere und obere Folgenschranken zu finden für Sandwichkriterium
 4. Wenn anders nicht möglich: Versuch eines manuellen Beweis. Grenzwert $a$ erkennen und dann für jedes $\epsilon \in \mathbb{R}$ beweisen, dass der Abstand kleiner als das $\epsilon$ wird. Falls Divergenz: $\epsilon$ Gegenbeispiel finden.
-
 
 *** Teilfolgen
 
@@ -432,6 +439,8 @@ $x_0 \in \mathbb{R}$ ist konstant. (Analog im höherdimensionalen $\mathbb{R}^n$
    b. $\infty$, falls $\rho = 0$
    c. $\frac{1}{\rho}$, falls $\rho \in (0,\infty)$
 
+*Alternativ über das Quotientenkriterium*
+Wenn $a_n \neq 0$ ffa $n \in \mathbb{N}_0$, dann ist $r = \lim_{n \to \infty} \mid \frac{a_n}{a_{n + 1}} \mid$, falls dieser Grenzwert im Reellen existiert.
 
 Die Konvergenz einer Potenzreihe kann man sich als Strecke (oder als Kreis, Kugel, etc. im Höherdimensionalen) mit Mittelpunkt $x_0$ und Radius $r$ vorstellen.
 Die Reihe konvergiert absolut für alle Punkte innerhalb dieses Bereichs und divergiert für alle außerhalb des Bereichs. Genau auf dem Rand des Bereichs lässt sich keine Aussage treffen.
@@ -448,8 +457,7 @@ Die Reihe konvergiert absolut für alle Punkte innerhalb dieses Bereichs und div
   - Divergent für alle $x$ mit $|x - x_0| > r$
   - Keine allgemeine Aussage über $|x - x_0| = r$ möglich; manuell untersuchen
 
-*Alternativ über das Quotientenkriterium*
-Wenn $a_n \neq 0$ ffa $n \in \mathbb{N}_0$, dann ist $r = \lim_{n \to \infty} \mid \frac{a_n}{a_{n + 1}} \mid$, falls dieser Grenzwert im Reellen existiert.
+Anders formuliert: Die Reihe konvergiert absolut für alle $x \in U_r(x_0)$
 
 ***** Beispiele
 
@@ -509,13 +517,16 @@ Gegeben die Reihe $\sum_{n=1}^{\infty} \frac{1}{n^{\alpha}}$, wobei $\alpha \in 
 
 **** Auf Konvergenz Untersuchen
 
-- Konvergiert die Folge der Reihe überhaupt gegen 0?
+Gegeben: $\sum\limits_{n=1}^{\infty} a_n$
+Gesucht: Konvergiert die Reihe? (Was ist der Reihenwert?)
+
+- Konvergiert $(a_n)$ überhaupt gegen 0?
 - Fällt die Reihe in ein bekanntes Muster?
   - Potenzreihe
   - geometrische Reihe
   - harmonische Reihe
   - Linearkombination aus bekannten Reihen
-- Kann ich sie durch ein bekanntes/triviales Beispiel nach oben/unten abschätzen? (Majoranten-/Minorantenkriterium)
+- Kann ich $(a_n)$ durch ein bekanntes/triviales Beispiel nach oben/unten abschätzen? (Majoranten-/Minorantenkriterium)
 - Kann ich das Wurzel-/Quotientenkriterium anwenden?
 - Ist die Reihe ein Cauchyprodukt?
 - Kann ich den Ausdruck in der Reihe vereinfachen/umformen?
@@ -525,6 +536,103 @@ Gegeben die Reihe $\sum_{n=1}^{\infty} \frac{1}{n^{\alpha}}$, wobei $\alpha \in 
   - Teleskopsumme?
   - Umordnung der Summanden?
   - -> Grenzwert der Teilsummen
+
+** Grenzwerte von Funktionen
+Der Grenzwert einer Funktion $f : D \to \mathbb{R}^m$ ($D \subseteq \mathbb{R}^n$) in einem Punkt $x_0 \in D$ ist der "Funktionswert" (die Funktion muss an dieser Stelle nicht unbedingt definiert sein), an den man sich annähert, wenn man sich mit einer Folge von Eingangswerten $x$ an $x_0$ annähert ($x \to x_0$).
+
+Die obige Beschreibung umfasst insbesondere die Fälle $n = m = 1$ und $m = 1$, mit welchen es idR einfacher ist umzugehen.
+
+$\lim\limits_{x \to x_0} f(x) = a \in \mathbb{R}^m$
+
+Diese Gleichung gilt genau dann, wenn für jede Folge $(x_n) \in D \setminus \{x_0\}$ mit $x_n \to x_0$ auch $f(x_n) \to a$ gilt.
+
+In anderen Worten: Jede Folge von Eingangswerten nähert sich, eingesetzt in $f$ an $a$ an.
+Umgekehrt /existiert/ der Grenzwert von $f$ in $x_0$ also, wenn $(f(x_n))$ für jede dieser Folgen konvergiert.
+
+:Beispiel:
+$D = (0, 1]$
+#+DOWNLOADED: screenshot @ 2021-08-21 14:13:09
+[[file:Vorlesung/2021-08-21_14-13-09_screenshot.png]]
+#+DOWNLOADED: screenshot @ 2021-08-21 14:13:53
+[[file:Vorlesung/2021-08-21_14-13-53_screenshot.png]]
+
+Betrachte Grenzwert in $0$, $\frac{1}{2}$ und $1$.
+
+- $\lim_{x \to 0} f(x) = 0$
+- $\lim_{x \to 1} f(x) = 1$
+- $\lim_{x \to \frac{1}{2}} f(x)$ existiert nicht, da man unterschiedliche Folgen findet, die nach $\frac{1}{2}$ konvergieren, aber eingesetzt in $f$ bei unterschiedlichen Werten ankommen. Z.B. $\frac{1}{2} - \frac{1}{n}$ ("von links") -> $\frac{1}{4}$, $\frac{1}{2} + \frac{1}{n}$ ("von rechts") -> $1$.
+
+Es gibt hier einen linksseitigen Grenzwert $\lim\limits_{x \to \frac{1}{2}-} f(x) = \frac{1}{4}$ und einen rechtsseitigen Grenzwert $\lim\limits_{x \to \frac{1}{2}+} f(x) = 1$.
+
+:END:
+
+*** Epsilon-Delta-Definition
+Die Epsilon-Delta-Definition ist eine alternative Definition für den Grenzwert einer Funktion. Formal lautet sie:
+
+$\lim\limits_{x \to x_0} f(x) = a \Leftrightarrow \forall \epsilon > 0 \; \exists \delta > 0 \; \forall x \in D_{\delta}(x_0) : |f(x) - a| < \epsilon$
+
+$D_{\delta}(x_0)$ steht hier für die /Delta-Umgebung von $x_0$/ $U_{\delta}(x_0)$ geschnitten mit dem Definitionsbereich $D$ der Funktion ohne $x_0$ selbst, also für alle Eingangswerte in der Nähe von $x_0$, die im Definitionsbereich von $f$ liegen.
+
+Die Definition bedeutet im Prinzip:
+*Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, sodass der Abstand aller Funktionswerte von $a$ in diesem Radius kleiner als $\epsilon$ ist.*
+
+*** Eigenschaften und Kriterien
+**** Cauchykriterium
+Mit diesem Kriterium kann man beweisen, dass ein Grenzwert existiert/nicht existiert, ohne den Grenzwert/alle möglichen Grenzwerte zu kennen.
+
+Der Grenzwert einer Funktion $f : D \to \mathbb{R}^m$ in $x_0$ existiert gdw.
+
+$\forall \epsilon > 0 \; \exists \delta > 0 \; \forall x_1, x_2 \in D_{\delta}(x_0) : |f(x_1) - f(x_2)| < \epsilon$
+
+In Worten: *Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, innerhalb dessen die Abstände aller zugehörigen Funktionswerte voneinander kleiner als $\epsilon$ sind.*
+**** Kombinationen
+Wie auch Folgen oder Reihen übertragen sich Kombinationen von Funktionen auf deren Grenzwerte:
+
+Gegeben
+den Punkt $x_0$ (Häufungspunkt von $D$),
+die Funktionen $f, g : D \to \mathbb{R}^m$,
+die Grenzwerte $a, b \in \mathbb{R}^m$ mit $f(x) \to a, \; g(x) \to b \; (x \to x_0)$ und
+die Skalare $\alpha, \beta \in \mathbb{R}$:
+
+1. $\alpha f(x) + \beta g(x) \to \alpha a + \beta b$
+2. $f(x)g(x) \to ab$
+3. $|f(x)| \to |a|$
+4. $\frac{1}{f(x)} \to \frac{1}{a}$ (sofern sinnvoll, sprich $a > 0$ und auf einem Bereich um $x_0$, auf dem $f$ nicht 0 ist)
+
+**** Sandwichkriterium
+Wenn man eine Funktion $f$ durch zwei Funktionen $g$ und $h$, die den gleichen Grenzwert $a$ in $x_0$ haben, in einer Umgebung um $x_0$ nach oben und unten abschätzen kann, hat auch $f$ den Grenzwert $a$ in $x_0$.
+
+$\lim\limits_{x \to x_0} g(x) = \lim\limits_{x \to x_0} h(x) = a$ und  $\exists \delta > 0 \; \forall x \in D_{\delta}(x_0) : g(x) \geq f(x) \geq h(x)$
+
+$\Rightarrow f(x) \to a \; (x \to x_0)$
+
+**** Regel von l'Hospital
+
+*** Grenzwerte im Unendlichen
+Man muss sich nicht nur auf die Grenzwertbetrachtung für einen Punkt $x_0 \in D$ beschränken, sondern kann auch betrachten, wie sich eine Funktion ins Unendliche verhält.
+
+$\lim\limits_{x \to \infty} f(x)$ bzw. $\lim\limits_{x \to -\infty} f(x)$
+
+Auch dort kann sie sich an eine Zahl $a \in \mathbb{R}^m$ annähern.
+
+Beispiel: Exponentialfunktion
+
+$\lim\limits_{x \to -\infty} e^x = 0$ und $\lim\limits_{x \to \infty} e^x = \infty$ (dieser Grenzwert "existiert" nicht, aber man kann es trotzdem so notieren)
+*** Grenzwerte Berechnen
+
+Gegeben: $f : D \to \mathbb{R}^m$, $x_0 \in D$
+Gesucht: Grenzwert von $f$ in $x_0$
+
+- Ist die Funktion offensichtlich stetig?
+  - Ist sie an dem Punkt definiert? Dann $f(x) \to f(x_0) \; (x \to x_0)$
+- Ist die Funktion eine Kombination von anderen?
+- Regel von l'Hospital anwendbar?
+**** In Höheren Dimensionen
+
+In höheren Dimensionen muss beachtet werden, dass die Grenzwerte ausgehend von allen Richtungen gleich sein müssen.
+(Für $\mathbb{R} \to \mathbb{R}$ gibt es nur Grenzwerte "von links" und "von rechts", für mehr Eingabeparameter gibt es unendlich viele Richtungen)
+
+Trick für 2 Eingangsdimensionen/komplexe Zahlen: Polarkoordinaten benutzen
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
