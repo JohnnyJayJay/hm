@@ -342,11 +342,11 @@ Reihen können auch woanders anfangen (z.B. $n=0$ oder $n=5$) - die Dinge funkti
 
 Eine Reihe konvergieren/divergieren gdw. die Folge der Teilsummen konvergiert/divergiert. Das $n$-te Element dieser Folge ist die Summe der ersten $n$ Elemente der zur Reihe gehörigen Folge.
 
-$s_n = \sum_{k=1}^{n} a_k = a_1 + a_2 + ... + a_n$
+$$s_n = \sum_{k=1}^{n} a_k = a_1 + a_2 + ... + a_n$$
 
 Den Grenzwert dieser Folge nennt man *Reihenwert*.
 
-$\lim_{n \to \infty} s_n = \sum_{n=1}^{\infty} a_n$
+$$\lim_{n \to \infty} s_n = \sum_{n=1}^{\infty} a_n$$
 
 Innerhalb einer Reihe kann man Summanden umsortieren, ohne dass sich der Reihenwert ändert.
 
@@ -357,7 +357,7 @@ Dies ist eine *stärkere* Aussage als normale Konvergenz, denn sie ist für norm
 
 Außerdem gilt dann die Dreiecksungleichung für Reihen:
 
-$| \sum_{n=1}^{\infty} a_n | \leq \sum_{n=1}^{\infty} |a_n|$
+$$| \sum_{n=1}^{\infty} a_n | \leq \sum_{n=1}^{\infty} |a_n|$$
 
 **** Eigenschaften und Kriterien
 
@@ -368,7 +368,7 @@ D.h.: Wenn $(a_n)$ nicht gegen 0 konvergiert, ist sofort klar, dass die Reihe di
 ***** Kombinationen
 Linearkombinationen von konvergierenden Reihen konvergieren auch und der Reihenwert entspricht der Linearkombination der Reihenwerte, d.h.
 
-$\alpha \sum_{n=1}^{\infty} a_n + \beta \sum_{n=1}^{\infty} b_n = \sum_{n=1}^{\infty} (\alpha a_n + \beta b_n) \; (\alpha, \beta \in \mathbb{R})$.
+$$\alpha \sum_{n=1}^{\infty} a_n + \beta \sum_{n=1}^{\infty} b_n = \sum_{n=1}^{\infty} (\alpha a_n + \beta b_n) \; (\alpha, \beta \in \mathbb{R})$$.
 ***** Leibnizkriterium
 Wenn eine Reihe von dieser Form ist: $\sum_{n=1}^{\infty} (-1)^{n + 1} b_n$, wobei $b_n$
 
@@ -380,8 +380,8 @@ dann konvergiert die Reihe.
 :Beispiel:
 /Alternierende harmonische Reihe/
 
-$\sum\limits_{n=1}^{\infty} \frac{(-1)^{n + 1}}{n}$
-$b_n = \frac{1}{n}$
+$$\sum\limits_{n=1}^{\infty} \frac{(-1)^{n + 1}}{n}$$
+$$b_n = \frac{1}{n}$$
 
 $(b_n)$ ist bekannterweise monoton fallend und konvergiert gegen 0 $\Rightarrow$ Die Reihe konvergiert.
 :END:
@@ -430,12 +430,12 @@ $\sum_{n=0}^{\infty} c_n$, wobei $c_n = \sum_{k=0}^{n} a_{n - k} b_k = a_n b_0 +
 
 Wenn die beiden Reihen konvergieren, konvergiert auch das Cauchyprodukt (absolut) und der Reihenwert ist das Produkt der beiden Eingangsreihenwerte.
 
-$\sum_{n=0}^{\infty} c_n = (\sum_{n=0}^{\infty} a_n) (\sum_{n=0}^{\infty} b_n)$
+$$\sum_{n=0}^{\infty} c_n = (\sum_{n=0}^{\infty} a_n) (\sum_{n=0}^{\infty} b_n)$$
 
 **** Potenzreihen
 Potenzreihen sind Reihen von dieser Form:
 
-$\sum\limits_{n=0}^{\infty} a_n (x - x_0)^n$
+$$\sum\limits_{n=0}^{\infty} a_n (x - x_0)^n$$
 
 $(a_n)$ ist eine Folge.
 $x_0 \in \mathbb{R}$ ist konstant. (Analog im höherdimensionalen $\mathbb{R}^n$ bzw. $\mathbb{C}$)
@@ -499,7 +499,7 @@ Bei manchen Reihen kürzen sich fast alle Summanden raus und der Teilsummenausdr
 
 *Beispiel:*
 
-$\sum\limits_{n=1}^{\infty} \frac{1}{n(n + 1)}$
+$$\sum\limits_{n=1}^{\infty} \frac{1}{n(n + 1)}$$
 
 Der Ausdruck in der Reihe lässt sich mit [[youtube:https://www.youtube.com/watch?v=Kd_757z-g-k][Partialbruchzerlegung]] vereinfachen.
 
@@ -508,7 +508,7 @@ Nullstellen des Zählers berechnen (bereits faktorisiert): $n(n + 1) = 0 \Righta
 
 Ansatz für die Partialbruchzerlegung lösen:
 
-$\frac{1}{n(n + 1)} = \frac{A}{n} + \frac{B}{n + 1} \Leftrightarrow 1 = A (n + 1) + B n$
+$$\frac{1}{n(n + 1)} = \frac{A}{n} + \frac{B}{n + 1} \Leftrightarrow 1 = A (n + 1) + B n$$
 
 Für $n = 0$ erhält man $A = 1$, für $n = -1$ erhält man $1 = -B \Leftrightarrow B = -1$.
 
@@ -516,11 +516,11 @@ Also gilt
 $\frac{1}{n(n + 1)} = \frac{1}{n} - \frac{1}{n + 1}$
 :END:
 
-$a_n = \frac{1}{n(n + 1)} = \frac{1}{n} - \frac{1}{n + 1}$
+$$a_n = \frac{1}{n(n + 1)} = \frac{1}{n} - \frac{1}{n + 1}$$
 
 Daraus ergibt sich die Teilsummenfolge
 
-$s_n = a_1 + ... + a_n = (1 - \frac{1}{2}) + (\frac{1}{2} - \frac{1}{3}) + ... + (\frac{1}{n - 1} - \frac{1}{n}) + (\frac{1}{n} - \frac{1}{n + 1}) = 1 - \frac{1}{n + 1} \to 1$
+$$s_n = a_1 + ... + a_n = (1 - \frac{1}{2}) + (\frac{1}{2} - \frac{1}{3}) + ... + (\frac{1}{n - 1} - \frac{1}{n}) + (\frac{1}{n} - \frac{1}{n + 1}) = 1 - \frac{1}{n + 1} \to 1$$
 
 Alle außer dem ersten und letzten Summanden fallen weg und es wird ersichtlich, dass die Folge gegen 1 kovergiert, also ist der Reihenwert 1.
 ***** 1/(n^a)
@@ -556,7 +556,7 @@ Der Grenzwert einer Funktion $f : D \to \mathbb{R}^m$ ($D \subseteq \mathbb{R}^n
 
 Die obige Beschreibung umfasst insbesondere die Fälle $n = m = 1$ und $m = 1$, mit welchen es idR einfacher ist umzugehen.
 
-$\lim\limits_{x \to x_0} f(x) = a \in \mathbb{R}^m$
+$$\lim\limits_{x \to x_0} f(x) = a \in \mathbb{R}^m$$
 
 Diese Gleichung gilt genau dann, wenn für jede Folge $(x_n) \in D \setminus \{x_0\}$ mit $x_n \to x_0$ auch $f(x_n) \to a$ gilt.
 
@@ -655,9 +655,10 @@ In höheren Dimensionen muss beachtet werden, dass die Grenzwerte ausgehend von 
 
 *Zielbereich:*
 Vektorwertige Funktionen können einfach als ein Tupel von reellwertigen Funktionen gesehen werden.
-$f : D \to \mathbb{R}^m$
-$x = (x_1, ..., x_n) \in D$
-$f(x) = (f_1(x), ..., f_m(x))$
+
+$$f : D \to \mathbb{R}^m$$
+$$x = (x_1, ..., x_n) \in D$$
+$$f(x) = (f_1(x), ..., f_m(x))$$
 
 Trick für 2 Eingangsdimensionen: Für den Fall $x_0 = (0, 0)$ kann man Polarkoordinaten statt (x, y) benutzen. Das kann es leichter machen, weil dadurch z.B. der Winkel wegfällt und man sich nur noch mit einer Variable ($r$) annähern muss, oder wenn man den Term dadurch so vereinfachen kann, dass er im Falle einer stetigen Funktion am Grenzpunkt definiert ist.
 Dazu ein Beispiel im Drawer.
@@ -670,14 +671,14 @@ Dazu ein Beispiel im Drawer.
 Aufgabe: Beweise $\lim\limits_{(x, y) \to (0, 0)} f(x, y) = 0$
 
 Ersetze x und y durch die Polarkoordinaten:
-$x = r \cos{\phi}$
-$y = r \sin{\phi}$
+$$x = r \cos{\phi}$$
+$$y = r \sin{\phi}$$
 
 Ziel: Da $f$ außerhalb von $(0, 0)$ bereits offensichtlich stetig ist, können wir den Grenzwert berechnen, falls wir $(0, 0)$ direkt einsetzen. Aktuell ist dies allerdings noch undefiniert (Division durch 0), was wir jetzt mit den Polarkoordinaten versuchen zu eliminieren.
 
 $\phi$ ist an diesem Punkt noch komplett variabel.
 
-$\lim\limits_{(x, y) \to (0, 0)} f(x, y) = \lim\limits_{r \to 0} \frac{(r \sin{\phi})^5}{2 (r \cos{\phi})^4 + (r \sin{\phi})^4} = \lim\limits_{r \to 0} \frac{r^5 \sin^5(\phi)}{2 r^4 \cos^4(\phi) + r^4 \sin^4(\phi)} = \lim\limits_{r \to 0} \frac{r^5 \sin^5(\phi)}{r^4 (2 \cos^4(\phi) + \sin^4(\phi))} = \lim\limits_{r \to 0} \frac{r \sin^5(\phi)}{2 \cos^4(\phi) + \sin^4(\phi)}$
+$$\lim\limits_{(x, y) \to (0, 0)} f(x, y) = \lim\limits_{r \to 0} \frac{(r \sin{\phi})^5}{2 (r \cos{\phi})^4 + (r \sin{\phi})^4} = \lim\limits_{r \to 0} \frac{r^5 \sin^5(\phi)}{2 r^4 \cos^4(\phi) + r^4 \sin^4(\phi)} = \lim\limits_{r \to 0} \frac{r^5 \sin^5(\phi)}{r^4 (2 \cos^4(\phi) + \sin^4(\phi))} = \lim\limits_{r \to 0} \frac{r \sin^5(\phi)}{2 \cos^4(\phi) + \sin^4(\phi)}$$
 
 Nun kann man einfach $r$ einsetzen und erkennt, dass der Grenzwert in der Tat 0 ist.
 :END:
