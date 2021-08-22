@@ -53,6 +53,20 @@ Der Betrag $|z|$ für $z = a + ib \in \mathbb{C}$ ist definiert als $|z| = \sqrt
 - $z \cdot \bar{z} = {|z|}^2$
 - $|z_1 \cdot z_2| = |z_1| \cdot |z_2|$
 - $|z_1 + z_2| \leq |z_1| + |z_2|$
+
+*** Polarkoordinaten
+Statt mit dem Real- und Imaginärteil lassen sich komplexe Zahlen auch mit Länge und Winkel beschreiben.
+
+Gegeben $z = x + iy \in \mathbb{C}$:
+
+$r := |z| = \sqrt{x^2 + y^2}$
+$\phi := \arccos{\frac{x}{r}} = \arcsin{\frac{y}{r}}$
+
+$r \in \mathbb{R^+}$ ist die Länge, $\phi \in (-\pi, \pi]$ ist der Winkel. Zusammen sind sie die Polarkoordinaten von $z$.
+
+$\Rightarrow r\cos{\phi} = x$
+$\Rightarrow r \sin{\phi} = y$
+
 ** Monotonie
 Funktionen, die für jede größere Eingabe auch größere/kleinere Werte annehmen, heißen *monoton wachsend*/*fallend*.
 Sprich, Ungleichungen werden erhalten bzw. umgekehrt, wenn man eine monoton wachsende bzw. fallende Funktion anwendet.
@@ -597,7 +611,7 @@ die Skalare $\alpha, \beta \in \mathbb{R}$:
 1. $\alpha f(x) + \beta g(x) \to \alpha a + \beta b$
 2. $f(x)g(x) \to ab$
 3. $|f(x)| \to |a|$
-4. $\frac{1}{f(x)} \to \frac{1}{a}$ (sofern sinnvoll, sprich $a > 0$ und auf einem Bereich um $x_0$, auf dem $f$ nicht 0 ist)
+4. $\frac{1}{f(x)} \to \frac{1}{a}$ (sofern sinnvoll, sprich $f$ reellwertig, $a > 0$ und auf einem Bereich um $x_0$, auf dem $f$ nicht 0 ist)
 
 **** Sandwichkriterium
 Wenn man eine Funktion $f$ durch zwei Funktionen $g$ und $h$, die den gleichen Grenzwert $a$ in $x_0$ haben, in einer Umgebung um $x_0$ nach oben und unten abschätzen kann, hat auch $f$ den Grenzwert $a$ in $x_0$.
@@ -606,6 +620,12 @@ $\lim\limits_{x \to x_0} g(x) = \lim\limits_{x \to x_0} h(x) = a$ und  $\exists 
 
 $\Rightarrow f(x) \to a \; (x \to x_0)$
 
+(Direkt nur auf reellwertige Funktionen anwendbar)
+**** Stetige Funktionen
+Der Grenzwert einer stetigen Funktion $f$ (s. nächster Abschnitt) in $x_0$ muss gleich $f(x_0)$ sein, sofern definiert. Man kann in solchen Fällen einfach direkt $x_0$ einsetzen, um den Grenzwert zu berechnen.
+
+Z.B. $f : (0, \infty) \to \mathbb{R}$ mit $f(x) = e^x + x^4 + 2x + 5$:
+$\lim_{x \to 0} f(x) = f(0) = 1 + 0 + 0 + 5 = 6$
 **** Regel von l'Hospital
 
 *** Grenzwerte im Unendlichen
@@ -629,10 +649,44 @@ Gesucht: Grenzwert von $f$ in $x_0$
 - Regel von l'Hospital anwendbar?
 **** In Höheren Dimensionen
 
+*Definitionsbereich:*
 In höheren Dimensionen muss beachtet werden, dass die Grenzwerte ausgehend von allen Richtungen gleich sein müssen.
 (Für $\mathbb{R} \to \mathbb{R}$ gibt es nur Grenzwerte "von links" und "von rechts", für mehr Eingabeparameter gibt es unendlich viele Richtungen)
 
-Trick für 2 Eingangsdimensionen/komplexe Zahlen: Polarkoordinaten benutzen
+*Zielbereich:*
+Vektorwertige Funktionen können einfach als ein Tupel von reellwertigen Funktionen gesehen werden.
+$f : D \to \mathbb{R}^m$
+$x = (x_1, ..., x_n) \in D$
+$f(x) = (f_1(x), ..., f_m(x))$
+
+Trick für 2 Eingangsdimensionen: Für den Fall $x_0 = (0, 0)$ kann man Polarkoordinaten statt (x, y) benutzen. Das kann es leichter machen, weil dadurch z.B. der Winkel wegfällt und man sich nur noch mit einer Variable ($r$) annähern muss, oder wenn man den Term dadurch so vereinfachen kann, dass er im Falle einer stetigen Funktion am Grenzpunkt definiert ist.
+Dazu ein Beispiel im Drawer.
+
+:Polarkoordinaten-Beispiel:
+
+#+DOWNLOADED: screenshot @ 2021-08-22 15:29:29
+[[file:Vorlesung/2021-08-22_15-29-29_screenshot.png]]
+
+Aufgabe: Beweise $\lim\limits_{(x, y) \to (0, 0)} f(x, y) = 0$
+
+Ersetze x und y durch die Polarkoordinaten:
+$x = r \cos{\phi}$
+$y = r \sin{\phi}$
+
+Ziel: Da $f$ außerhalb von $(0, 0)$ bereits offensichtlich stetig ist, können wir den Grenzwert berechnen, falls wir $(0, 0)$ direkt einsetzen. Aktuell ist dies allerdings noch undefiniert (Division durch 0), was wir jetzt mit den Polarkoordinaten versuchen zu eliminieren.
+
+$\phi$ ist an diesem Punkt noch komplett variabel.
+
+$\lim\limits_{(x, y) \to (0, 0)} f(x, y) = \lim\limits_{r \to 0} \frac{(r \sin{\phi})^5}{2 (r \cos{\phi})^4 + (r \sin{\phi})^4} = \lim\limits_{r \to 0} \frac{r^5 \sin^5(\phi)}{2 r^4 \cos^4(\phi) + r^4 \sin^4(\phi)} = \lim\limits_{r \to 0} \frac{r^5 \sin^5(\phi)}{r^4 (2 \cos^4(\phi) + \sin^4(\phi))} = \lim\limits_{r \to 0} \frac{r \sin^5(\phi)}{2 \cos^4(\phi) + \sin^4(\phi)}$
+
+Nun kann man einfach $r$ einsetzen und erkennt, dass der Grenzwert in der Tat 0 ist.
+:END:
+
+Ansonsten:
+- Die Definition (über Folgen) eignet sich gut zum Widerlegen der Existenz eines Grenzwerts
+- Falls Grenzwert bekannt/vermutet: Epsilon-Delta
+- Falls nur Existenzbeweis/-widerleg: Cauchykriterium
+
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
