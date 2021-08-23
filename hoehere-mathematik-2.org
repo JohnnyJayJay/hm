@@ -24,6 +24,14 @@ Für jede nach oben/unten beschränkte Menge gibt es eine kleinste obere/größt
 Falls das Supremum/Infimum selbst in der Menge liegt, nennt man es auch *Maximum* ($\max M$) bzw. *Minimum* ($\min M$).
 
 Wenn $M$ sowohl nach oben als auch nach unten beschränkt ist, ist sie *beschränkt*.
+** Abgeschlossen- und Kompaktheit
+Abgeschlossen- bzw. Kompaktheit sind Eigenschaften von Mengen. Dabei beschreibt Abgeschlossenheit den Umstand, dass man keine Folge findet, deren Grenzwert außerhalb der Menge liegt. Formal:
+
+$$ D \; \text{ist abgeschlossen} \; \Leftrightarrow \lim_{n \to \infty} x_n \in D \; \text{für jede konvergente Folge} \; x_n \subseteq D $$
+Dazu ist auch äquivalent:
+
+*** TODO finish and move to correct spot
+
 ** Komplexe Zahlen
 Komplexe Zahlen $\mathbb{C} \supset \mathbb{R}$ sind Zahlen, die aus zwei Teilen bestehen: Einem Realteil $Re$ und einem Imaginärteil $Im$.
 D.h., jede komplexe Zahl $z$ ist von der Form $z = a + ib$, wobei $Re(z) = a \in \mathbb{R}$ und $Im(z) = b \in \mathbb{R}$ ist. $i$ ist die /imaginäre Einheit/. Sie ist als $i = \sqrt{-1}$ definiert ($\Rightarrow i^2 = -1$).
@@ -59,13 +67,13 @@ Statt mit dem Real- und Imaginärteil lassen sich komplexe Zahlen auch mit Läng
 
 Gegeben $z = x + iy \in \mathbb{C}$:
 
-$r := |z| = \sqrt{x^2 + y^2}$
-$\phi := \arccos{\frac{x}{r}} = \arcsin{\frac{y}{r}}$
+$$r := |z| = \sqrt{x^2 + y^2}$$
+$$\phi := \arccos{\frac{x}{r}} = \arcsin{\frac{y}{r}}$$
 
 $r \in \mathbb{R^+}$ ist die Länge, $\phi \in (-\pi, \pi]$ ist der Winkel. Zusammen sind sie die Polarkoordinaten von $z$.
 
-$\Rightarrow r\cos{\phi} = x$
-$\Rightarrow r \sin{\phi} = y$
+$$\Rightarrow r\cos{\phi} = x$$
+$$\Rightarrow r \sin{\phi} = y$$
 
 ** Monotonie
 Funktionen, die für jede größere Eingabe auch größere/kleinere Werte annehmen, heißen *monoton wachsend*/*fallend*.
@@ -146,14 +154,6 @@ Gegeben $x, y \in \mathbb{R}_+ \setminus \{0\}$:
 
 ** Trigonometrische Funktionen
 
-** Abgeschlossen- und Kompaktheit
-Abgeschlossen- bzw. Kompaktheit sind Eigenschaften von Mengen. Dabei beschreibt Abgeschlossenheit den Umstand, dass man keine Folge findet, deren Grenzwert außerhalb der Menge liegt. Formal:
-
-$$ D \; \text{ist abgeschlossen} \; \Leftrightarrow \lim_{n \to \infty} x_n \in D \; \text{für jede konvergente Folge} \; x_n \subseteq D $$
-Dazu ist auch äquivalent:
-
-*** TODO finish and move to correct spot
-
 ** Binomialkoeffizienten
 Gegeben: $n, k \in \mathbb{N}_0$ und $k \leq n$.
 
@@ -180,6 +180,10 @@ Gegeben ein $\epsilon \in \mathbb{R}$, wobei $\epsilon > 0$, ist die "Epsilon-Um
 $U_{\epsilon}(x_0) = \{x \mid |x_0 - x| < \epsilon\}$
 
 Dies kann man sich sowohl für $x_0, x \in \mathbb{R}$ als auch für höhere Dimensionen vorstellen. Im Reellen ist die Umgebung eine Strecke auf dem Zahlenstrahl, im Komplexen ist es ein Kreis auf der Ebene, im $\mathbb{R}^3$ ist es eine Kugel im Raum etc.
+
+Bei Funktionen $f : D \to \mathbb{R}^m$ schreibt man auch $D_{\epsilon}(x_0)$ für die $\epsilon$ -Umgebung um $x_0$, auf der die Funktion definiert ist.
+
+$$D_{\epsilon}(x_0) = U_{\epsilon}(x_0) \cap (D \setminus \{x_0\})$$
 
 * Vorlesung
 
@@ -558,9 +562,9 @@ Die obige Beschreibung umfasst insbesondere die Fälle $n = m = 1$ und $m = 1$, 
 
 $$\lim\limits_{x \to x_0} f(x) = a \in \mathbb{R}^m$$
 
-Diese Gleichung gilt genau dann, wenn für jede Folge $(x_n) \in D \setminus \{x_0\}$ mit $x_n \to x_0$ auch $f(x_n) \to a$ gilt.
+Diese Gleichung gilt genau dann, *wenn für jede Folge $(x_n) \in D \setminus \{x_0\}$ mit $x_n \to x_0$ auch $f(x_n) \to a$ gilt.*
 
-In anderen Worten: Jede Folge von Eingangswerten nähert sich, eingesetzt in $f$ an $a$ an.
+In anderen Worten: Jede Folge von Eingangswerten, die gegen $x_0$ konvergiert, nähert sich, eingesetzt in $f$ auch an $a$ an.
 Umgekehrt /existiert/ der Grenzwert von $f$ in $x_0$ also, wenn $(f(x_n))$ für jede dieser Folgen konvergiert.
 
 :Beispiel:
@@ -585,10 +589,8 @@ Die Epsilon-Delta-Definition ist eine alternative Definition für den Grenzwert 
 
 $\lim\limits_{x \to x_0} f(x) = a \Leftrightarrow \forall \epsilon > 0 \; \exists \delta > 0 \; \forall x \in D_{\delta}(x_0) : |f(x) - a| < \epsilon$
 
-$D_{\delta}(x_0)$ steht hier für die /Delta-Umgebung von $x_0$/ $U_{\delta}(x_0)$ geschnitten mit dem Definitionsbereich $D$ der Funktion ohne $x_0$ selbst, also für alle Eingangswerte in der Nähe von $x_0$, die im Definitionsbereich von $f$ liegen.
-
 Die Definition bedeutet im Prinzip:
-*Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, sodass der Abstand aller Funktionswerte von $a$ in diesem Radius kleiner als $\epsilon$ ist.*
+*Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, sodass der Abstand von $a$ aller Funktionswerte in diesem Radius kleiner als $\epsilon$ ist.*
 
 *** Eigenschaften und Kriterien
 **** Cauchykriterium
@@ -600,7 +602,7 @@ $\forall \epsilon > 0 \; \exists \delta > 0 \; \forall x_1, x_2 \in D_{\delta}(x
 
 In Worten: *Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, innerhalb dessen die Abstände aller zugehörigen Funktionswerte voneinander kleiner als $\epsilon$ sind.*
 **** Kombinationen
-Wie auch Folgen oder Reihen übertragen sich Kombinationen von Funktionen auf deren Grenzwerte:
+Wie auch bei Folgen oder Reihen übertragen sich Kombinationen von Funktionen auf deren Grenzwerte:
 
 Gegeben
 den Punkt $x_0$ (Häufungspunkt von $D$),
@@ -609,7 +611,7 @@ die Grenzwerte $a, b \in \mathbb{R}^m$ mit $f(x) \to a, \; g(x) \to b \; (x \to 
 die Skalare $\alpha, \beta \in \mathbb{R}$:
 
 1. $\alpha f(x) + \beta g(x) \to \alpha a + \beta b$
-2. $f(x)g(x) \to ab$
+2. $f(x)g(x) \to ab$ (im Mehrdimensionalen: Skalarprodukt)
 3. $|f(x)| \to |a|$
 4. $\frac{1}{f(x)} \to \frac{1}{a}$ (sofern sinnvoll, sprich $f$ reellwertig, $a > 0$ und auf einem Bereich um $x_0$, auf dem $f$ nicht 0 ist)
 
@@ -622,7 +624,7 @@ $\Rightarrow f(x) \to a \; (x \to x_0)$
 
 (Direkt nur auf reellwertige Funktionen anwendbar)
 **** Stetige Funktionen
-Der Grenzwert einer stetigen Funktion $f$ (s. nächster Abschnitt) in $x_0$ muss gleich $f(x_0)$ sein, sofern definiert. Man kann in solchen Fällen einfach direkt $x_0$ einsetzen, um den Grenzwert zu berechnen.
+Der Grenzwert einer [[id:Stetigkeit][stetigen Funktion]] $f$ in $x_0$ muss gleich $f(x_0)$ sein, sofern definiert. Man kann in solchen Fällen einfach direkt $x_0$ einsetzen, um den Grenzwert zu berechnen.
 
 Z.B. $f : (0, \infty) \to \mathbb{R}$ mit $f(x) = e^x + x^4 + 2x + 5$:
 $\lim_{x \to 0} f(x) = f(0) = 1 + 0 + 0 + 5 = 6$
@@ -660,7 +662,7 @@ $$f : D \to \mathbb{R}^m$$
 $$x = (x_1, ..., x_n) \in D$$
 $$f(x) = (f_1(x), ..., f_m(x))$$
 
-Trick für 2 Eingangsdimensionen: Für den Fall $x_0 = (0, 0)$ kann man Polarkoordinaten statt (x, y) benutzen. Das kann es leichter machen, weil dadurch z.B. der Winkel wegfällt und man sich nur noch mit einer Variable ($r$) annähern muss, oder wenn man den Term dadurch so vereinfachen kann, dass er im Falle einer stetigen Funktion am Grenzpunkt definiert ist.
+Trick für 2 Eingangsdimensionen: Für den Fall $x_0 = (0, 0)$ kann man [[id:Polarkoordinaten][Polarkoordinaten]] statt (x, y) benutzen. Das kann es leichter machen, weil dadurch z.B. der Winkel wegfällt und man sich nur noch mit einer Variable ($r$) annähern muss, oder wenn man den Term dadurch so vereinfachen kann, dass er im Falle einer stetigen Funktion am Grenzpunkt definiert ist.
 Dazu ein Beispiel im Drawer.
 
 :Polarkoordinaten-Beispiel:
@@ -688,6 +690,161 @@ Ansonsten:
 - Falls Grenzwert bekannt/vermutet: Epsilon-Delta
 - Falls nur Existenzbeweis/-widerleg: Cauchykriterium
 
+:Folgen-Beispiel:
+
+#+DOWNLOADED: screenshot @ 2021-08-23 13:03:07
+[[file:Vorlesung/2021-08-23_13-03-07_screenshot.png]]
+In diesem Beispiel sieht man, wie aus unterschiedlichen Richtungen unterschiedliche Grenzwerte entstehen und damit die Existenz eines allgemeinen Grenzwerts in $(0, 0)$ widerlegt ist.
+:END:
+
+** Stetigkeit
+Eine Funktion ist in $x_0 \in D$ ($D \subseteq \mathbb{R}^n$ ist wie zuvor der Definitionsbereich der Funktion) stetig, wenn für jede Folge $(x_n)$ mit $x_n \to x_0$ auch $f(x_n) \to f(x_0)$ gilt.
+
+Anders formuliert: Der Wert, an den sich die Funktionswerte um $x_0$ annähern, ist auch der tatsächliche Funktionswert an dieser Stelle.
+
+$f$ ist auf $D$ stetig heißt $f$ ist in jedem Punkt des Definitionsbereichs stetig.
+
+$C(D, \mathbb{R}^m)$ ist die Menge aller Funktionen $D \to \mathbb{R}^m$, die stetig sind. Außerdem $C(D) := C(D, \mathbb{R})$ (für reellwertige Funktionen).
+
+:Beispiel:
+Bildlich kann man sich Stetigkeit so vorstellen, dass die Funktion keine "Sprünge" macht.
+
+Zu sehen an diesem Beispiel:
+#+DOWNLOADED: screenshot @ 2021-08-23 14:11:07
+[[file:Vorlesung/2021-08-23_14-11-07_screenshot.png]]
+
+#+DOWNLOADED: screenshot @ 2021-08-23 14:10:41
+[[file:Vorlesung/2021-08-23_14-10-41_screenshot.png]]
+
+$f$ ist in 1 und 2 nicht stetig. Das kann man am einfachsten mit der [[id:Grenzwert-Definition][Grenzwert-Definition]] beweisen, wenn man weiß, dass $x^2$ stetig ist:
+
+$$\lim\limits_{x \to 1} f(x) = \lim\limits_{x \to 1} x^2 = 1^2 = 1 \neq 0 = f(1)$$
+
+Oder über die Definition mit Folgen:
+$$x_n := 1 - \frac{1}{n} \Rightarrow x_n \to 1 \; (n \to \infty)$$
+
+$(x_n)$ konvergiert gegen $1$, aber
+
+$$f(x_n) = x_n^2 = x_n \cdot x_n \to 1 \cdot 1 = 1 \neq 0 = f(1)$$
+:END:
+
+*** Epsilon-Delta-Definition
+$f$ ist stetig in $x_0$, wenn sich die Funktionswerte um $x_0$ an $f(x_0)$ annähern.
+
+$$\forall \epsilon > 0 \; \exists \delta > 0 \; \forall x \in D_{\delta}(x_0) : |f(x) - f(x_0)| < \epsilon$$
+
+Die Definition bedeutet im Prinzip:
+*Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, sodass der Abstand zwischen allen Funktionswerten in diesem Radius und $f(x_0)$ kleiner als $\epsilon$ ist.*
+
+#+DOWNLOADED: screenshot @ 2021-08-23 21:28:08
+[[file:Vorlesung/2021-08-23_21-28-08_screenshot.png]]
+
+*** Grenzwert-Definition
+Sofern $\lim_{x \to x_0} f(x)$ definiert ist, muss dieser Grenzwert existieren und gleich $f(x_0)$ sein, damit $f$ stetig in $x_0$ ist.
+
+$$\lim\limits_{x \to x_0} f(x) = f(x_0)$$
+*** Eigenschaften und Kriterien
+
+**** Kombinationen
+Verschiedene Kombinationen von stetigen Funktionen sind wieder stetig.
+
+Gegeben: $f, g : D \to \mathbb{R}^m$, $h : D \to \mathbb{R}$ stetig, $\alpha, \beta \in \mathbb{R}$
+
+Dann sind stetig:
+- $\alpha f  + \beta g$
+- $f \cdot g$ (im Höherdimensionalen Skalarprodukt)
+- $h \cdot f$
+- $\frac{1}{h}$ (sofern definiert)
+- $|f|$
+**** Verkettungen
+Die Verkettung zweier stetiger Funktionen ist ebenfalls stetig.
+
+Gegeben:
+$$f : D \to \mathbb{R}^m$$
+$$g : E \to \mathbb{R}^p$$
+$$f(D) \subseteq E$$
+
+Dann ist $g \circ f$ stetig.
+**** Potenzreihen-Funktionen
+Funktionen, die durch Potenzreihen definiert, sind auf dem absoluten Konvergenzbereich um $x_0$ der Potenzreihe stetig.
+
+$$D := (x_0 - r, x_0 + r) \; \text{(Alle reellen Zahlen falls r unendlich)}$$
+$$f(x) := \sum\limits_{n=0}^{\infty} a_n (x - x_0)^n \; (x \in D)$$
+
+$f$ ist stetig auf $D$ ($f \in C(D)$).
+
+*** Wichtige Beispiele
+
+Häufig gesehene stetige Funktionen:
+
+- Alle Polynome
+- Alle Exponentialfunktionen
+- Gebrochene stetige Funktionen
+- Die trigonometrischen Funktionen ($\sin$, $\cos$ etc.)
+*** Stetigkeit Beweisen
+- Potenzreihenfunktion?
+- Bereiche identifizieren, die "offensichtlich" stetig sind, d.h. die Kombinationen bekannter Beispiele sind
+- Falls Bereiche übrig:
+  - Beweis oder Widerleg für einzelne Punkte mithilfe der Grenzwerteigenschaft ($\lim_{x \to x_0} f(x) = f(x_0)$)
+*** Zwischenwertsatz
+Der Zwischenwertsatz besagt, dass man bei jeder stetigen Funktion 2 beliebige Punkte auf der x-Achse wählen kann und dass dann jeder Wert zwischen den beiden zugehörigen Funktionswerten auch als Funktionswert zwischen den beiden Punkten zu finden ist.
+
+Formaler: Gegeben eine Funktion $(f : D \to \mathbb{R}) \in C(D)$ sowie zwei Punkte $a, b \in D$ mit $a < b$.
+Dann existiert für jedes $y \in [\min\{f(a), f(b)\}, \max\{f(a), f(b)\}]$ (= jedes $y$ zwischen $f(a)$ und $f(b)$) ein $x \in [a, b]$ mit $f(x) = y$.
+
+#+DOWNLOADED: screenshot @ 2021-08-23 20:54:18
+[[file:Vorlesung/2021-08-23_20-54-18_screenshot.png]]
+/$y_0$ ist zwischen $f(a)$ und $f(b)$, also findet man ein $x_0$ mit $f(x_0) = y_0$/
+*** Nullstellensatz
+Der Nullstellensatz ist eine Folgerung aus dem Zwischenwertsatz.
+
+Gegeben eine Funktion $f : D \to \mathbb{R}$ und $a, b \in D$ wie zuvor: Wenn von $f(a)$ und $f(b)$ ein Wert negativ und der andere positiv ist, gibt es eine Nullstelle zwischen $a$ und $b$.
+
+Formal:
+$$f(a)f(b) \leq 0 \Rightarrow \exists x_0 \in [a, b] : f(x_0) = 0$$
+*** Gleichmäßige Stetigkeit
+Gleichmäßige Stetigkeit ist eine stärkere Form der Stetigkeit. Anders als normale Stetigkeit ist sie nicht für einzelne Punkte definiert, sondern nur für den gesamten Definitionsbereich einer Funktion.
+
+Eine Funktion $f : D \to \mathbb{R}^m$ ist gleichmäßig stetig, genau dann, wenn für je zwei Folgen $(x_n), (y_n)$ in $D$,
+
+$$x_n - y_n \to 0 \Rightarrow f(x_n) - f(y_n) \to 0$$
+
+**** Epsilon-Delta-Definition
+
+In der Epsilon-Delta-Definition für gleichmäßige Stetigkeit darf, anders als bei normaler Stetigkeit, das $\delta$ nicht von dem Punkt abhängen, den man untersucht.
+
+$$\forall \epsilon > 0 \; \exists \delta > 0 \; \forall x, y \in D : |x - y| < \delta \Rightarrow |f(x) - f(y)| < \epsilon$$
+
+Visuell kann man sich das vorstellen wie das "Rechteck", dass man bei normaler Stetigkeit /an einem bestimmten Punkt/ um die Funktion legen können muss. Bei gleichmäßiger Stetigkeit muss dieses Rechteck allerdings an jeder beliebigen Stelle der Funktion angelegt werden können, ohne seine größe zu verändern.
+
+#+DOWNLOADED: screenshot @ 2021-08-23 22:20:57
+[[file:Vorlesung/2021-08-23_22-20-57_screenshot.png]]
+/Gleichmäßig stetig; Rechteck grenzt den Graph an jedem Punkt ein/
+
+
+#+DOWNLOADED: screenshot @ 2021-08-23 22:21:52
+[[file:Vorlesung/2021-08-23_22-21-52_screenshot.png]]
+/Nicht gleichmäßig stetig; Funktion ($x^2$) wächst immer schneller, kann nicht durch ein Rechteck eingegrenzt werden/
+**** Satz von Heine
+Der Satz von Heine beschreibt ein hinreichendes Kriterium für die gleichmäßige Stetigkeit.
+
+Wenn $f : D \to \mathbb{R}$ stetig und $D$ kompakt ist, ist $f$ gleichmäßig stetig.
+**** Gleichmäßige Stetigkeit Beweisen
+- Ist die Definitionsmenge kompakt?
+  -> Reguläre Stetigkeit beweisen (Satz von Heine)
+- Widerlegen: Folgen $(x_n), (y_n)$ finden, die die Definition widerlegen
+- Lipschitz-Stetigkeit versuchen als hinreichendes Kriterium zu verwenden
+
+*** Lipschitz-Stetigkeit
+Lipschitz-Stetigkeit ist eine stärkere Form der gleichmäßigen Stetigkeit. Die Definition ist:
+
+$$\exists L \geq 0 \; \forall x, y \in D : |f(x) - f(y)| \leq L |x - y|$$
+
+$L$ ist hierbei also eine Konstante, die nicht von dem Punkt oder dem Abstand abhängen kann, den man betrachtet.
+
+*Lipschitz-Stetigkeit beweisen*
+- Wenn man $L$ nicht kennt, kann man versuchen, $|f(x) - f(y)|$ nach und nach nach oben abzuschätzen und zu vereinfachen, bis erkennbar wird, welche Konstante benötigt wird.
+- Widerlegen: Gegenbeispiel $(x, y)$ für (jede) Konstante finden.
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
