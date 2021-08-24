@@ -185,13 +185,11 @@ Bei Funktionen $f : D \to \mathbb{R}^m$ schreibt man auch $D_{\epsilon}(x_0)$ f�
 
 $$D_{\epsilon}(x_0) = U_{\epsilon}(x_0) \cap (D \setminus \{x_0\})$$
 
-* Vorlesung
-
-** Folgen
+* Folgen
 Eine /Folge $(a_n)$/ (mehrdimensional: $(a^{(n)})$) über eine Menge $M$ / ist eine Funktion $\mathbb{N} \to M$.
 Für das i-te Element in der Folge schreibt man $a_i$, oder im mehrdimensionalen $a^{(i)}$.
 
-*** Kovergenz
+** Kovergenz
 
 Folgen können konvergieren, sofern die Elemente aus $M$ einen definierten Abstand ($|a - b| \in \mathbb{R}$; dies sei hier synonym zu $||a - b||$ für $\mathbb{R}^n$) zueinander haben.
 Man sagt dann, eine Folge konvergiert, wenn gilt:
@@ -211,19 +209,19 @@ Im Mehrdimensionalen bedeutet Konvergenz Konvergenz in allen Koordinaten, also
 
 $$ a^{(k)} \to a \in {\mathbb{R}}^n \; (k \to \infty) \Leftrightarrow \forall j \in \{1, ..., n\} : a_j^{(k)} \to a_j \; (k \to \infty)$$
 
-**** Eigenschaften und Kriterien
+*** Eigenschaften und Kriterien
 
-***** Beschränktheit
+**** Beschränktheit
 [[Schranken][Beschränktheit]] ist notwendig für Kovergenz. Also
 $(a_n)\;\text{ist unbeschränkt}\;\Rightarrow (a_n)\;\text{divergiert}$
 
-***** Nullfolgenschranke
+**** Nullfolgenschranke
 Wenn $(\alpha_n)$ eine Folge mit $\alpha_n \to 0$ ist, dann gehen auch nichtnegative Folgen, die kleiner als $(\alpha_n)$ werden, gegen 0.
 $$\alpha_n \to 0 \; \text{und} \; |a_n| \leq \alpha_n \; \text{ffa} \; n \in \mathbb{N} \Rightarrow |a_n| \to 0$$
 
 Da außerdem gilt $|a_n - a| \to 0 \Leftrightarrow a_n \to a$, folgt daraus $|a_n - n| \leq \alpha_n \; \text{ffa} \; n \in \mathbb{N} \Rightarrow a_n \to a \; (n \to \infty)$
 
-***** Kombinationen
+**** Kombinationen
 
 Im Folgenden gelte $a_n \to a$ und $b_n \to b$, $\alpha, \beta \in \mathbb{R}$.
 Wenn man konvergente Folgen miteinander komponentenweise kombiniert, überträgt sich dies auf die Grenzwerte:
@@ -238,13 +236,13 @@ Wenn man konvergente Folgen miteinander komponentenweise kombiniert, überträgt
 In Worten: Man kann Folgen indexweise *addieren*, *multiplizieren*, *dividieren* und die *Wurzel ziehen* (sofern diese Operationen definiert sind) und das gleiche passiert mit den Grenzwerten.
 Außerdem übertragen sich Ungleichungen, sofern diese definiert sind.
 
-***** Sandwichkriterium
+**** Sandwichkriterium
 Es gelte $a_n \to x$, $b_n \to x$ und $(c_n)$ sei eine weitere Folge.
 Wenn nun $(a_n)$ und $(b_n)$ $(c_n)$ umschließen, konvergiert auch $(c_n)$ gegen x.
 Also:
 
 $$ a_n \leq c_n \leq b_n \; \text{ffa} \; n \in \mathbb{N} \Rightarrow c_n \to x$$
-***** Monotoniekriterium
+**** Monotoniekriterium
 Wenn eine Folge $(a_n)$ monoton wachsend und durch einen Wert nach oben beschränkt ist, ist sie konvergent mit
 
 $$ a_n \to \sup_{n \in \mathbb{N}} a_n \; (n \to \infty)$$
@@ -253,16 +251,16 @@ Das Gleiche geht auch in die andere Richtung ($(a_n)$ monoton fallend und nach u
 
 $$a_n \to \inf_{n \in \mathbb{N}} a_n \; (n \to \infty)$$
 
-**** Wichtige Beispiele
+*** Wichtige Beispiele
 
-***** Konstante Folgen
+**** Konstante Folgen
 Konstante Folgen konvergieren gegen ihren konstanten Wert. Also wenn $a_n := c \; (n \in \mathbb{N})$, dann $a_n \to c$.
 
-***** 1/n
+**** 1/n
 1/n geht gegen 0.
 $\frac{1}{n} \to 0 \; (n \to \infty)$
 
-***** x^n
+**** x^n
 Für eine Konstante $x \in \mathbb{R}$ ist über die Folge $(x^n)$ zu sagen:
 
 - Falls $x = -1$: divergent ($(1, -1, 1, -1, 1, -1, ...)$)
@@ -270,19 +268,19 @@ Für eine Konstante $x \in \mathbb{R}$ ist über die Folge $(x^n)$ zu sagen:
 - Falls $|x| < 1$: konvergent ($x^n \to 0$) (gilt auch für $x \in \mathbb{C}$)
 - Ansonsten: divergent, weil unbeschränkt
 
-***** n-te Wurzel aus n
+**** n-te Wurzel aus n
 Die n-te Wurzel aus n konvergiert gegen 1.
 $\sqrt[n]{n} \to 1 \; (n \to \infty)$
 
-***** n-te Wurzel aus c
+**** n-te Wurzel aus c
 Die n-te Wurzel aus einer Konstanten $c \in \mathbb{R}$ ($c > 0$) konvergiert gegen 1.
 $\sqrt[n]{c} \to 1 \; (n \to \infty)$
 
-***** Eulersche Zahl
+**** Eulersche Zahl
 Die Folge $a_n := (1 + \frac{1}{n})^n$ konvergiert gegen $e$, die /Eulersche Zahl/.
 $a_n \to e \; (n \to \infty)$
 
-**** Auf Konvergenz Untersuchen
+*** Auf Konvergenz Untersuchen
 
 Gegeben: Folge $(a_n)$
 Gesucht: Existiert $\lim_{n \to \infty} a_n$? (Was ist der Wert?)
@@ -292,7 +290,7 @@ Gesucht: Existiert $\lim_{n \to \infty} a_n$? (Was ist der Wert?)
 3. Wenn Vermutung, dass Folge konvergiert, versuche untere und obere Folgenschranken zu finden für Sandwichkriterium
 4. Wenn anders nicht möglich: Versuch eines manuellen Beweis. Grenzwert $a$ erkennen und dann für jedes $\epsilon \in \mathbb{R}$ beweisen, dass der Abstand kleiner als das $\epsilon$ wird. Falls Divergenz: $\epsilon$ Gegenbeispiel finden.
 
-*** Teilfolgen
+** Teilfolgen
 
 Die Folge $(a_n)$ ist für $n \in \{1, 2, 3, ...\}$ definiert. Wählt man sich nun eine streng monoton wachsende Folge von natürlichen Zahlen $n_1, n_2, n_3, ...$, so entsteht eine Teilfolge $(a_{n_k}) \subseteq (a_k) \; (k \in \mathbb{N})$.
 
@@ -300,7 +298,7 @@ Beispiele für die Wahl von Indizes für Teilfolgen:
 - Alle geraden/ungeraden Indizes ($(a_{2n})$ bzw. $(a_{2n + 1})$)
 - Alle Zweierpotenzen ($(a_{2^n}$))
 
-**** Häufungswerte
+*** Häufungswerte
 
 Ein Grenzwert einer Teilfolge von $(a_n)$ ist ein /Häufungswert/ von $(a_n)$.
 Die Menge aller Häufungswerte $H(a_n)$ einer Folge $(a_n)$ ist die Menge aller Grenzwerte ihrer Teilfolgen.
@@ -310,7 +308,7 @@ Beispiele:
 - $a_n = n \Rightarrow H(a_n) = \emptyset$
 - $a_n = (-1)^n \Rightarrow H(a_n) = \{-1, 1\}$
 
-**** Limes superior/inferior
+*** Limes superior/inferior
 
 Der Limes superior bzw. inferior einer Folge ist der größte bzw. kleinste Häufungswert der Folge.
 
@@ -323,7 +321,7 @@ Beispiele:
 
 - $a_n \geq 0 \; (n \in \mathbb{N})$ und $\limsup\limits_{n \to \infty} a_n = 0$ $\Rightarrow a_n \to 0 \; (n \to \infty)$
 
-**** Sätze
+*** Sätze
 
 Wenn eine Folge gegen einen Grenzwert konvergiert, konvergieren auch alle Teilfolgen gegen diesen Grenzwert.
 $a_n \to a \in \mathbb{R} \Rightarrow a_{n_k} \to a$
@@ -333,7 +331,7 @@ Jede Folge enthält eine monotone Teilfolge.
 Wenn eine Folge beschränkt ist, enthält sie eine konvergente Teilfolge (Bolzano-Weierstraß).
 $(a_n)$ beschränkt $\Rightarrow$ $H(a_n) \neq \emptyset$
 
-** Reihen
+* Reihen
 
 (Unendliche) Reihen sind Summen über jeweils eine Folge.
 
@@ -342,7 +340,7 @@ Reihe: $\sum_{n=1}^{\infty} a_n$
 
 Reihen können auch woanders anfangen (z.B. $n=0$ oder $n=5$) - die Dinge funktionieren dann analog.
 
-*** Konvergenz, Divergenz
+** Konvergenz, Divergenz
 
 Eine Reihe konvergieren/divergieren gdw. die Folge der Teilsummen konvergiert/divergiert. Das $n$-te Element dieser Folge ist die Summe der ersten $n$ Elemente der zur Reihe gehörigen Folge.
 
@@ -354,7 +352,7 @@ $$\lim_{n \to \infty} s_n = \sum_{n=1}^{\infty} a_n$$
 
 Innerhalb einer Reihe kann man Summanden umsortieren, ohne dass sich der Reihenwert ändert.
 
-**** Absolute Konvergenz
+*** Absolute Konvergenz
 Eine Reihe $\sum_{n=1}^{\infty} a_n$ konvergiert absolut, wenn $\sum_{n=1}^{\infty} |a_n|$ konvergiert.
 
 Dies ist eine *stärkere* Aussage als normale Konvergenz, denn sie ist für normale Konvergenz hinreichend.
@@ -363,17 +361,17 @@ Außerdem gilt dann die Dreiecksungleichung für Reihen:
 
 $$| \sum_{n=1}^{\infty} a_n | \leq \sum_{n=1}^{\infty} |a_n|$$
 
-**** Eigenschaften und Kriterien
+*** Eigenschaften und Kriterien
 
-***** Nullfolge
+**** Nullfolge
 $\sum_{n=1}^{\infty} a_n$ konvergiert $\Rightarrow$ $a_n \to 0 \; (n \to \infty)$
 
 D.h.: Wenn $(a_n)$ nicht gegen 0 konvergiert, ist sofort klar, dass die Reihe divergiert.
-***** Kombinationen
+**** Kombinationen
 Linearkombinationen von konvergierenden Reihen konvergieren auch und der Reihenwert entspricht der Linearkombination der Reihenwerte, d.h.
 
 $$\alpha \sum_{n=1}^{\infty} a_n + \beta \sum_{n=1}^{\infty} b_n = \sum_{n=1}^{\infty} (\alpha a_n + \beta b_n) \; (\alpha, \beta \in \mathbb{R})$$.
-***** Leibnizkriterium
+**** Leibnizkriterium
 Wenn eine Reihe von dieser Form ist: $\sum_{n=1}^{\infty} (-1)^{n + 1} b_n$, wobei $b_n$
 
 a. monoton fallend ist
@@ -390,22 +388,22 @@ $$b_n = \frac{1}{n}$$
 $(b_n)$ ist bekannterweise monoton fallend und konvergiert gegen 0 $\Rightarrow$ Die Reihe konvergiert.
 :END:
 
-***** Majoranten-/Minorantenkriterium
+**** Majoranten-/Minorantenkriterium
 Wenn man eine Reihe ($\sum_{n=1}^{\infty} a_n$) durch eine bekannt konvergierende/divergierende Reihe ($\sum_{n=1}^{\infty} b_n$) abschätzen kann, kann man dadurch Schlüsse auf die Konvergenz ziehen.
 
-****** Konvergenz (Majorant)
+***** Konvergenz (Majorant)
 Nach oben abschätzen:
 - Die andere Reihe ($\sum_{n=1}^{\infty} b_n$) konvergiert
 - $|a_n| \leq b_n$ ffa $n \in \mathbb{N}$
 
 Dann konvergiert $\sum_{n=1}^{\infty} a_n$ absolut.
-****** Divergenz (Minorant)
+***** Divergenz (Minorant)
 Nach unten abschätzen:
 - Die andere Reihe ($\sum_{n=1}^{\infty} b_n$) divergiert
 - $a_n \geq b_n \geq 0$ ffa $n \in \mathbb{N}$
 
   Dann divergiert $\sum_{n=1}^{\infty} a_n$.
-***** Wurzelkriterium
+**** Wurzelkriterium
 Das Wurzelkriterium bietet sich besonders an, wenn die Folge der Reihe exponentiell ist.
 
 Man definiert sich hierzu die Folge $c_n := \sqrt[n]{|a_n|}$, wobei $(a_n)$ die Folge aus der Reihe ist.
@@ -416,7 +414,7 @@ b. Ansonsten, bestimme $\alpha := \limsup\limits_{n \to \infty} c_n$
    2. $\alpha > 1 \Rightarrow$ Reihe divergiert.
    3. $\alpha = 1 \Rightarrow$ Keine Aussage möglich. Muss anders überprüft werden.
 
-***** Quotientenkriterium
+**** Quotientenkriterium
 Ähnlich zum Wurzelkriterium bzw. eine Variante davon.
 
 Man definiert sich die Folge $c_n := \; \mid \frac{a_{n + 1}}{a_n} \mid$, wobei $(a_n)$ die Folge aus der Reihe ist.
@@ -426,7 +424,7 @@ b. Ansonsten, gegeben $(c_n)$ ist beschränkt; Bestimme $\alpha := \limsup\limit
    1. $\alpha < 1 \Rightarrow$ Reihe konvergiert absolut.
    2. $\beta > 1 \Rightarrow$ Reihe divergiert.
 
-***** Cauchyprodukt
+**** Cauchyprodukt
 Man kann zwei Reihen miteinander über das Cauchyprodukt multiplizieren.
 Gegeben die Reihen $\sum_{n=1}^{\infty} a_n$ und $\sum_{n=1}^{\infty} b_n$, wird das Cauchyprodukt der beiden beschrieben durch
 
@@ -436,7 +434,7 @@ Wenn die beiden Reihen konvergieren, konvergiert auch das Cauchyprodukt (absolut
 
 $$\sum_{n=0}^{\infty} c_n = (\sum_{n=0}^{\infty} a_n) (\sum_{n=0}^{\infty} b_n)$$
 
-**** Potenzreihen
+*** Potenzreihen
 Potenzreihen sind Reihen von dieser Form:
 
 $$\sum\limits_{n=0}^{\infty} a_n (x - x_0)^n$$
@@ -446,7 +444,7 @@ $x_0 \in \mathbb{R}$ ist konstant. (Analog im höherdimensionalen $\mathbb{R}^n$
 
 *In welchen Punkten $x \in \mathbb{R}$ konvergiert die Reihe?*
 
-***** Konvergenz bestimmen
+**** Konvergenz bestimmen
 
 1. Setze $c_n := \sqrt[n]{|a_n|}$ und
 2. Setze $\rho$ auf:
@@ -477,27 +475,27 @@ Die Reihe konvergiert absolut für alle Punkte innerhalb dieses Bereichs und div
 
 Anders formuliert: Die Reihe konvergiert absolut für alle $x \in U_r(x_0)$
 
-***** Beispiele
+**** Beispiele
 
 - Exponentialreihe: $a_n = \frac{1}{n!}$, $x_0 = 0$
 - Geometrische Reihe: $a_n = 1$
 - Cosinus: $a_{2n} = 0$, $a_{2n + 1} = \frac{(-1)^n}{(2n)!}$, $x_0 = 0$
 - Sinus: ähnlich zu cosinus, nur um 1 verschoben
 
-**** Wichtige Beispiele
+*** Wichtige Beispiele
 
-***** Geometrische Reihe
+**** Geometrische Reihe
 
 Die Reihe $\sum\limits_{n=0}^{\infty} x^n$ heißt geometrische Reihe ($x \in \mathbb{R}$ ist eine Konstante).
 
 a. $|x| \geq 1 \Rightarrow$ die Reihe divergiert
 b. $|x| < 1 \Rightarrow$ die Reihe konvergiert - der Reihenwert ist $\frac{1}{1 - x}$
 
-***** Harmonische Reihe
+**** Harmonische Reihe
 
 $\sum\limits_{n=1}^{\infty} \frac{1}{n}$ ist die /harmonische Reihe/. Sie divergiert.
 
-***** Teleskopsummen
+**** Teleskopsummen
 
 Bei manchen Reihen kürzen sich fast alle Summanden raus und der Teilsummenausdruck lässt sich stark vereinfachen, sodass die Grenzwertbestimmung einfacher ist. Das nennt man Teleskopsummen.
 
@@ -527,13 +525,13 @@ Daraus ergibt sich die Teilsummenfolge
 $$s_n = a_1 + ... + a_n = (1 - \frac{1}{2}) + (\frac{1}{2} - \frac{1}{3}) + ... + (\frac{1}{n - 1} - \frac{1}{n}) + (\frac{1}{n} - \frac{1}{n + 1}) = 1 - \frac{1}{n + 1} \to 1$$
 
 Alle außer dem ersten und letzten Summanden fallen weg und es wird ersichtlich, dass die Folge gegen 1 kovergiert, also ist der Reihenwert 1.
-***** 1/(n^a)
+**** 1/(n^a)
 Gegeben die Reihe $\sum_{n=1}^{\infty} \frac{1}{n^{\alpha}}$, wobei $\alpha \in \mathbb{Q}$, $\alpha > 0$, lässt sich sagen:
 
 - $\alpha \leq 1 \Rightarrow$ divergiert
 - $\alpha > 1 \Rightarrow$ konvergiert
 
-**** Auf Konvergenz Untersuchen
+*** Auf Konvergenz Untersuchen
 
 Gegeben: $\sum\limits_{n=1}^{\infty} a_n$
 Gesucht: Konvergiert die Reihe? (Was ist der Reihenwert?)
@@ -555,7 +553,7 @@ Gesucht: Konvergiert die Reihe? (Was ist der Reihenwert?)
   - Umordnung der Summanden?
   - -> Grenzwert der Teilsummen
 
-** Grenzwerte von Funktionen
+* Grenzwerte von Funktionen
 Der Grenzwert einer Funktion $f : D \to \mathbb{R}^m$ ($D \subseteq \mathbb{R}^n$) in einem Punkt $x_0 \in D$ ist der "Funktionswert" (die Funktion muss an dieser Stelle nicht unbedingt definiert sein), an den man sich annähert, wenn man sich mit einer Folge von Eingangswerten $x$ an $x_0$ annähert ($x \to x_0$).
 
 Die obige Beschreibung umfasst insbesondere die Fälle $n = m = 1$ und $m = 1$, mit welchen es idR einfacher ist umzugehen.
@@ -584,7 +582,7 @@ Es gibt hier einen linksseitigen Grenzwert $\lim\limits_{x \to \frac{1}{2}-} f(x
 
 :END:
 
-*** Epsilon-Delta-Definition
+** Epsilon-Delta-Definition
 Die Epsilon-Delta-Definition ist eine alternative Definition für den Grenzwert einer Funktion. Formal lautet sie:
 
 $\lim\limits_{x \to x_0} f(x) = a \Leftrightarrow \forall \epsilon > 0 \; \exists \delta > 0 \; \forall x \in D_{\delta}(x_0) : |f(x) - a| < \epsilon$
@@ -592,8 +590,8 @@ $\lim\limits_{x \to x_0} f(x) = a \Leftrightarrow \forall \epsilon > 0 \; \exist
 Die Definition bedeutet im Prinzip:
 *Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, sodass der Abstand von $a$ aller Funktionswerte in diesem Radius kleiner als $\epsilon$ ist.*
 
-*** Eigenschaften und Kriterien
-**** Cauchykriterium
+** Eigenschaften und Kriterien
+*** Cauchykriterium
 Mit diesem Kriterium kann man beweisen, dass ein Grenzwert existiert/nicht existiert, ohne den Grenzwert/alle möglichen Grenzwerte zu kennen.
 
 Der Grenzwert einer Funktion $f : D \to \mathbb{R}^m$ in $x_0$ existiert gdw.
@@ -601,7 +599,7 @@ Der Grenzwert einer Funktion $f : D \to \mathbb{R}^m$ in $x_0$ existiert gdw.
 $\forall \epsilon > 0 \; \exists \delta > 0 \; \forall x_1, x_2 \in D_{\delta}(x_0) : |f(x_1) - f(x_2)| < \epsilon$
 
 In Worten: *Für jedes noch so kleine $\epsilon$ finde ich einen Radius $\delta$ um $x_0$, innerhalb dessen die Abstände aller zugehörigen Funktionswerte voneinander kleiner als $\epsilon$ sind.*
-**** Kombinationen
+*** Kombinationen
 Wie auch bei Folgen oder Reihen übertragen sich Kombinationen von Funktionen auf deren Grenzwerte:
 
 Gegeben
@@ -615,7 +613,7 @@ die Skalare $\alpha, \beta \in \mathbb{R}$:
 3. $|f(x)| \to |a|$
 4. $\frac{1}{f(x)} \to \frac{1}{a}$ (sofern sinnvoll, sprich $f$ reellwertig, $a > 0$ und auf einem Bereich um $x_0$, auf dem $f$ nicht 0 ist)
 
-**** Sandwichkriterium
+*** Sandwichkriterium
 Wenn man eine Funktion $f$ durch zwei Funktionen $g$ und $h$, die den gleichen Grenzwert $a$ in $x_0$ haben, in einer Umgebung um $x_0$ nach oben und unten abschätzen kann, hat auch $f$ den Grenzwert $a$ in $x_0$.
 
 $\lim\limits_{x \to x_0} g(x) = \lim\limits_{x \to x_0} h(x) = a$ und  $\exists \delta > 0 \; \forall x \in D_{\delta}(x_0) : g(x) \geq f(x) \geq h(x)$
@@ -623,14 +621,14 @@ $\lim\limits_{x \to x_0} g(x) = \lim\limits_{x \to x_0} h(x) = a$ und  $\exists 
 $\Rightarrow f(x) \to a \; (x \to x_0)$
 
 (Direkt nur auf reellwertige Funktionen anwendbar)
-**** Stetige Funktionen
+*** Stetige Funktionen
 Der Grenzwert einer [[*Stetigkeit][stetigen Funktion]] $f$ in $x_0$ muss gleich $f(x_0)$ sein, sofern definiert. Man kann in solchen Fällen einfach direkt $x_0$ einsetzen, um den Grenzwert zu berechnen.
 
 Z.B. $f : (0, \infty) \to \mathbb{R}$ mit $f(x) = e^x + x^4 + 2x + 5$:
 $\lim_{x \to 0} f(x) = f(0) = 1 + 0 + 0 + 5 = 6$
-**** Regel von l'Hospital
+*** Regel von l'Hospital
 
-*** Grenzwerte im Unendlichen
+** Grenzwerte im Unendlichen
 Man muss sich nicht nur auf die Grenzwertbetrachtung für einen Punkt $x_0 \in D$ beschränken, sondern kann auch betrachten, wie sich eine Funktion ins Unendliche verhält.
 
 $\lim\limits_{x \to \infty} f(x)$ bzw. $\lim\limits_{x \to -\infty} f(x)$
@@ -640,7 +638,7 @@ Auch dort kann sie sich an eine Zahl $a \in \mathbb{R}^m$ annähern.
 Beispiel: Exponentialfunktion
 
 $\lim\limits_{x \to -\infty} e^x = 0$ und $\lim\limits_{x \to \infty} e^x = \infty$ (dieser Grenzwert "existiert" nicht, aber man kann es trotzdem so notieren)
-*** Grenzwerte Berechnen
+** Grenzwerte Berechnen
 
 Gegeben: $f : D \to \mathbb{R}^m$, $x_0 \in D$
 Gesucht: Grenzwert von $f$ in $x_0$
@@ -649,7 +647,7 @@ Gesucht: Grenzwert von $f$ in $x_0$
   - Ist sie an dem Punkt definiert? Dann $f(x) \to f(x_0) \; (x \to x_0)$
 - Ist die Funktion eine Kombination von anderen?
 - Regel von l'Hospital anwendbar?
-**** In Höheren Dimensionen
+*** In Höheren Dimensionen
 
 *Definitionsbereich:*
 In höheren Dimensionen muss beachtet werden, dass die Grenzwerte ausgehend von allen Richtungen gleich sein müssen.
@@ -697,7 +695,7 @@ Ansonsten:
 In diesem Beispiel sieht man, wie aus unterschiedlichen Richtungen unterschiedliche Grenzwerte entstehen und damit die Existenz eines allgemeinen Grenzwerts in $(0, 0)$ widerlegt ist.
 :END:
 
-** Stetigkeit
+* Stetigkeit
 Eine Funktion ist in $x_0 \in D$ ($D \subseteq \mathbb{R}^n$ ist wie zuvor der Definitionsbereich der Funktion) stetig, wenn für jede Folge $(x_n)$ mit $x_n \to x_0$ auch $f(x_n) \to f(x_0)$ gilt.
 
 Anders formuliert: Der Wert, an den sich die Funktionswerte um $x_0$ annähern, ist auch der tatsächliche Funktionswert an dieser Stelle.
@@ -728,7 +726,7 @@ $(x_n)$ konvergiert gegen $1$, aber
 $$f(x_n) = x_n^2 = x_n \cdot x_n \to 1 \cdot 1 = 1 \neq 0 = f(1)$$
 :END:
 
-*** Epsilon-Delta-Definition
+** Epsilon-Delta-Definition
 $f$ ist stetig in $x_0$, wenn sich die Funktionswerte um $x_0$ an $f(x_0)$ annähern.
 
 $$\forall \epsilon > 0 \; \exists \delta > 0 \; \forall x \in D_{\delta}(x_0) : |f(x) - f(x_0)| < \epsilon$$
@@ -739,13 +737,13 @@ Die Definition bedeutet im Prinzip:
 #+DOWNLOADED: screenshot @ 2021-08-23 21:28:08
 [[file:Vorlesung/2021-08-23_21-28-08_screenshot.png]]
 
-*** Grenzwert-Definition
+** Grenzwert-Definition
 Sofern $\lim_{x \to x_0} f(x)$ definiert ist, muss dieser Grenzwert existieren und gleich $f(x_0)$ sein, damit $f$ stetig in $x_0$ ist.
 
 $$\lim\limits_{x \to x_0} f(x) = f(x_0)$$
-*** Eigenschaften und Kriterien
+** Eigenschaften und Kriterien
 
-**** Kombinationen
+*** Kombinationen
 Verschiedene Kombinationen von stetigen Funktionen sind wieder stetig.
 
 Gegeben: $f, g : D \to \mathbb{R}^m$, $h : D \to \mathbb{R}$ stetig, $\alpha, \beta \in \mathbb{R}$
@@ -756,7 +754,7 @@ Dann sind stetig:
 - $h \cdot f$
 - $\frac{1}{h}$ (sofern definiert)
 - $|f|$
-**** Verkettungen
+*** Verkettungen
 Die Verkettung zweier stetiger Funktionen ist ebenfalls stetig.
 
 Gegeben:
@@ -765,7 +763,7 @@ $$g : E \to \mathbb{R}^p$$
 $$f(D) \subseteq E$$
 
 Dann ist $g \circ f$ stetig.
-**** Potenzreihen-Funktionen
+*** Potenzreihen-Funktionen
 Funktionen, die durch Potenzreihen definiert, sind auf dem absoluten Konvergenzbereich um $x_0$ der Potenzreihe stetig.
 
 $$D := (x_0 - r, x_0 + r) \; \text{(Alle reellen Zahlen falls r unendlich)}$$
@@ -773,7 +771,7 @@ $$f(x) := \sum\limits_{n=0}^{\infty} a_n (x - x_0)^n \; (x \in D)$$
 
 $f$ ist stetig auf $D$ ($f \in C(D)$).
 
-*** Wichtige Beispiele
+** Wichtige Beispiele
 
 Häufig gesehene stetige Funktionen:
 
@@ -781,12 +779,12 @@ Häufig gesehene stetige Funktionen:
 - Alle Exponentialfunktionen
 - Gebrochene stetige Funktionen
 - Die trigonometrischen Funktionen ($\sin$, $\cos$ etc.)
-*** Stetigkeit Beweisen
+** Stetigkeit Beweisen
 - Potenzreihenfunktion?
 - Bereiche identifizieren, die "offensichtlich" stetig sind, d.h. die Kombinationen bekannter Beispiele sind
 - Falls Bereiche übrig:
   - Beweis oder Widerleg für einzelne Punkte mithilfe der Grenzwerteigenschaft ($\lim_{x \to x_0} f(x) = f(x_0)$)
-*** Zwischenwertsatz
+** Zwischenwertsatz
 Der Zwischenwertsatz besagt, dass man bei jeder stetigen Funktion 2 beliebige Punkte auf der x-Achse wählen kann und dass dann jeder Wert zwischen den beiden zugehörigen Funktionswerten auch als Funktionswert zwischen den beiden Punkten zu finden ist.
 
 Formaler: Gegeben eine Funktion $(f : D \to \mathbb{R}) \in C(D)$ sowie zwei Punkte $a, b \in D$ mit $a < b$.
@@ -795,21 +793,21 @@ Dann existiert für jedes $y \in [\min\{f(a), f(b)\}, \max\{f(a), f(b)\}]$ (= je
 #+DOWNLOADED: screenshot @ 2021-08-23 20:54:18
 [[file:Vorlesung/2021-08-23_20-54-18_screenshot.png]]
 /$y_0$ ist zwischen $f(a)$ und $f(b)$, also findet man ein $x_0$ mit $f(x_0) = y_0$/
-*** Nullstellensatz
+** Nullstellensatz
 Der Nullstellensatz ist eine Folgerung aus dem [[*Zwischenwertsatz][Zwischenwertsatz]].
 
 Gegeben eine Funktion $f : D \to \mathbb{R}$ und $a, b \in D$ wie zuvor: Wenn von $f(a)$ und $f(b)$ ein Wert negativ und der andere positiv ist, gibt es eine Nullstelle zwischen $a$ und $b$.
 
 Formal:
 $$f(a)f(b) \leq 0 \Rightarrow \exists x_0 \in [a, b] : f(x_0) = 0$$
-*** Gleichmäßige Stetigkeit
+** Gleichmäßige Stetigkeit
 Gleichmäßige Stetigkeit ist eine stärkere Form der [[*Stetigkeit][Stetigkeit]]. Anders als normale Stetigkeit ist sie nicht für einzelne Punkte definiert, sondern nur für den gesamten Definitionsbereich einer Funktion.
 
 Eine Funktion $f : D \to \mathbb{R}^m$ ist gleichmäßig stetig, genau dann, wenn für je zwei Folgen $(x_n), (y_n)$ in $D$,
 
 $$x_n - y_n \to 0 \Rightarrow f(x_n) - f(y_n) \to 0$$
 
-**** Epsilon-Delta-Definition
+*** Epsilon-Delta-Definition
 
 In der Epsilon-Delta-Definition für gleichmäßige Stetigkeit darf, anders als bei normaler Stetigkeit, das $\delta$ nicht von dem Punkt abhängen, den man untersucht.
 
@@ -825,17 +823,17 @@ Visuell kann man sich das vorstellen wie das "Rechteck", dass man bei normaler S
 #+DOWNLOADED: screenshot @ 2021-08-23 22:21:52
 [[file:Vorlesung/2021-08-23_22-21-52_screenshot.png]]
 /Nicht gleichmäßig stetig; Funktion ($x^2$) wächst immer schneller, kann nicht durch ein Rechteck eingegrenzt werden/
-**** Satz von Heine
+*** Satz von Heine
 Der Satz von Heine beschreibt ein hinreichendes Kriterium für die gleichmäßige Stetigkeit.
 
 Wenn $f : D \to \mathbb{R}$ stetig und $D$ kompakt ist, ist $f$ gleichmäßig stetig.
-**** Gleichmäßige Stetigkeit Beweisen
+*** Gleichmäßige Stetigkeit Beweisen
 - Ist die Definitionsmenge kompakt?
   -> Reguläre Stetigkeit beweisen (Satz von Heine)
 - Widerlegen: Folgen $(x_n), (y_n)$ finden, die die Definition widerlegen
 - Lipschitz-Stetigkeit versuchen als hinreichendes Kriterium zu verwenden
 
-*** Lipschitz-Stetigkeit
+** Lipschitz-Stetigkeit
 Lipschitz-Stetigkeit ist eine stärkere Form der gleichmäßigen Stetigkeit. Die Definition ist:
 
 $$\exists L \geq 0 \; \forall x, y \in D : |f(x) - f(y)| \leq L |x - y|$$
