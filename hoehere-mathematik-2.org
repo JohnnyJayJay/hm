@@ -624,7 +624,7 @@ $\Rightarrow f(x) \to a \; (x \to x_0)$
 
 (Direkt nur auf reellwertige Funktionen anwendbar)
 **** Stetige Funktionen
-Der Grenzwert einer [[id:Stetigkeit][stetigen Funktion]] $f$ in $x_0$ muss gleich $f(x_0)$ sein, sofern definiert. Man kann in solchen Fällen einfach direkt $x_0$ einsetzen, um den Grenzwert zu berechnen.
+Der Grenzwert einer [[*Stetigkeit][stetigen Funktion]] $f$ in $x_0$ muss gleich $f(x_0)$ sein, sofern definiert. Man kann in solchen Fällen einfach direkt $x_0$ einsetzen, um den Grenzwert zu berechnen.
 
 Z.B. $f : (0, \infty) \to \mathbb{R}$ mit $f(x) = e^x + x^4 + 2x + 5$:
 $\lim_{x \to 0} f(x) = f(0) = 1 + 0 + 0 + 5 = 6$
@@ -662,7 +662,7 @@ $$f : D \to \mathbb{R}^m$$
 $$x = (x_1, ..., x_n) \in D$$
 $$f(x) = (f_1(x), ..., f_m(x))$$
 
-Trick für 2 Eingangsdimensionen: Für den Fall $x_0 = (0, 0)$ kann man [[id:Polarkoordinaten][Polarkoordinaten]] statt (x, y) benutzen. Das kann es leichter machen, weil dadurch z.B. der Winkel wegfällt und man sich nur noch mit einer Variable ($r$) annähern muss, oder wenn man den Term dadurch so vereinfachen kann, dass er im Falle einer stetigen Funktion am Grenzpunkt definiert ist.
+Trick für 2 Eingangsdimensionen: Für den Fall $x_0 = (0, 0)$ kann man [[*Polarkoordinaten][]] statt (x, y) benutzen. Das kann es leichter machen, weil dadurch z.B. der Winkel wegfällt und man sich nur noch mit einer Variable ($r$) annähern muss, oder wenn man den Term dadurch so vereinfachen kann, dass er im Falle einer stetigen Funktion am Grenzpunkt definiert ist.
 Dazu ein Beispiel im Drawer.
 
 :Polarkoordinaten-Beispiel:
@@ -716,7 +716,7 @@ Zu sehen an diesem Beispiel:
 #+DOWNLOADED: screenshot @ 2021-08-23 14:10:41
 [[file:Vorlesung/2021-08-23_14-10-41_screenshot.png]]
 
-$f$ ist in 1 und 2 nicht stetig. Das kann man am einfachsten mit der [[id:Grenzwert-Definition][Grenzwert-Definition]] beweisen, wenn man weiß, dass $x^2$ stetig ist:
+$f$ ist in 1 und 2 nicht stetig. Das kann man am einfachsten mit der [[*Grenzwert-Definition][]]  beweisen, wenn man weiß, dass $x^2$ stetig ist:
 
 $$\lim\limits_{x \to 1} f(x) = \lim\limits_{x \to 1} x^2 = 1^2 = 1 \neq 0 = f(1)$$
 
@@ -796,14 +796,14 @@ Dann existiert für jedes $y \in [\min\{f(a), f(b)\}, \max\{f(a), f(b)\}]$ (= je
 [[file:Vorlesung/2021-08-23_20-54-18_screenshot.png]]
 /$y_0$ ist zwischen $f(a)$ und $f(b)$, also findet man ein $x_0$ mit $f(x_0) = y_0$/
 *** Nullstellensatz
-Der Nullstellensatz ist eine Folgerung aus dem Zwischenwertsatz.
+Der Nullstellensatz ist eine Folgerung aus dem [[*Zwischenwertsatz][Zwischenwertsatz]].
 
 Gegeben eine Funktion $f : D \to \mathbb{R}$ und $a, b \in D$ wie zuvor: Wenn von $f(a)$ und $f(b)$ ein Wert negativ und der andere positiv ist, gibt es eine Nullstelle zwischen $a$ und $b$.
 
 Formal:
 $$f(a)f(b) \leq 0 \Rightarrow \exists x_0 \in [a, b] : f(x_0) = 0$$
 *** Gleichmäßige Stetigkeit
-Gleichmäßige Stetigkeit ist eine stärkere Form der Stetigkeit. Anders als normale Stetigkeit ist sie nicht für einzelne Punkte definiert, sondern nur für den gesamten Definitionsbereich einer Funktion.
+Gleichmäßige Stetigkeit ist eine stärkere Form der [[*Stetigkeit][Stetigkeit]]. Anders als normale Stetigkeit ist sie nicht für einzelne Punkte definiert, sondern nur für den gesamten Definitionsbereich einer Funktion.
 
 Eine Funktion $f : D \to \mathbb{R}^m$ ist gleichmäßig stetig, genau dann, wenn für je zwei Folgen $(x_n), (y_n)$ in $D$,
 
