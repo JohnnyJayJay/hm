@@ -627,7 +627,31 @@ Der Grenzwert einer [[*Stetigkeit][stetigen Funktion]] $f$ in $x_0$ muss gleich 
 Z.B. $f : (0, \infty) \to \mathbb{R}$ mit $f(x) = e^x + x^4 + 2x + 5$:
 $\lim_{x \to 0} f(x) = f(0) = 1 + 0 + 0 + 5 = 6$
 *** Regel von l'Hospital
+Ein Grenzwert eines Quotienten von zwei Funktionen kann unter bestimmten Bedingungen über die Ableitungen der Funktionen berechnet werden.
 
+Dafür muss der Grenzwert von dieser Form sein:
+
+$$\lim\limits_{x \to c} \frac{f(x)}{g(x)}$$
+
+Wobei
+- $c \in \mathbb{R} \cup \{-\infty, \infty\}$
+- $f, g$ müssen über einem Intervall [[*Differentialrechnung][differenzierbar]] sein, von dem $c$ eine Grenze ist (d.h.: Entweder in c differenzierbar oder auf $(c, x)$ bzw. $(x, c)$ differenzierbar)
+- $g'(x) \neq 0$ auf diesem Intervall
+- $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0$ oder $\lim_{x \to c} g(x) = \pm \infty$
+
+Dann ist der obige Grenzwert einfach
+
+$$\lim\limits_{x \to c} \frac{f'(x)}{g'(x)}$$
+
+Die Regel kann man auch wiederholt anwenden.
+
+:Beispiele:
+*Beispiele:*
+
+$$\lim\limits_{x \to \infty} \frac{\log x}{x} = \lim\limits_{x \to \infty} \frac{\frac{1}{x}}{1} = \lim\limits_{x \to \infty} \frac{1}{x} = 0$$
+
+$$\lim\limits_{x \to 0} x \log x = \lim\limits_{x \to 0} \frac{\log x}{\frac{1}{x}} = \lim\limits_{x \to 0} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = \lim\limits_{x \to 0} -\frac{x^2}{x} =  \lim\limits_{x \to 0} -x = 0$$
+:END:
 ** Grenzwerte im Unendlichen
 Man muss sich nicht nur auf die Grenzwertbetrachtung für einen Punkt $x_0 \in D$ beschränken, sondern kann auch betrachten, wie sich eine Funktion ins Unendliche verhält.
 
