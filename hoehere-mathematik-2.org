@@ -720,6 +720,7 @@ In diesem Beispiel sieht man, wie aus unterschiedlichen Richtungen unterschiedli
 :END:
 
 * Stetigkeit
+
 Eine Funktion ist in $x_0 \in D$ ($D \subseteq \mathbb{R}^n$ ist wie zuvor der Definitionsbereich der Funktion) stetig, wenn für jede Folge $(x_n)$ mit $x_n \to x_0$ auch $f(x_n) \to f(x_0)$ gilt.
 
 Anders formuliert: Der Wert, an den sich die Funktionswerte um $x_0$ annähern, ist auch der tatsächliche Funktionswert an dieser Stelle.
@@ -867,6 +868,78 @@ $L$ ist hierbei also eine Konstante, die nicht von dem Punkt oder dem Abstand ab
 *Lipschitz-Stetigkeit beweisen*
 - Wenn man $L$ nicht kennt, kann man versuchen, $|f(x) - f(y)|$ nach und nach nach oben abzuschätzen und zu vereinfachen, bis erkennbar wird, welche Konstante benötigt wird.
 - Widerlegen: Gegenbeispiel $(x, y)$ für (jede) Konstante finden.
+
+* Funktionenfolgen
+Funktionenfolgen sind, wie der Name bereits vermuten lässt, Folgen von Funktionen $(f_n)$, wobei jedes $f_n : D \to \mathbb{R}$ ($\emptyset \neq D \subseteq \mathbb{R}$).
+
+** Punktweise Konvergenz
+Eine Funktionenfolge ist auf $D$ /punktweise/ konvergent gdw. die Folge $(f_n(x))$ für jedes $x \in D$ konvergent ist.
+D.h., wenn man ein $x \in D$ in jede Funktion einsetzt, muss die entstehende Folge aus reellen Zahlen konvergieren.
+
+Man kann dann eine *Grenzfunktion* definieren:
+
+$$f(x) := \lim\limits_{n \to \infty} f_n(x)$$
+
+Formal ist die Definition für punktweise Konvergenz von Funktionenfolgen also
+
+$$\forall x \in D \; \forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \; \forall n \geq n_0 : |f_n(x) - f(x)| < \epsilon$$
+
+:Beispiel:
+Beispiel: Betrachte die Funktionenfolge $(f_n)$, wobei $f_n(x) := x^n$, auf $D = [0,1]$.
+
+Für punktweise Konvergenz muss nun jedes $x \in D$ betrachtet werden.
+
+Fall 1: $x \in [0,1)$.
+Aus den wichtigen Beispielen von [[*Folgen][Folgen]] wissen wir, dass $x^n \to 0$.
+
+Fall 2: $x = 1$.
+Offensichtlich: $x^n = 1^n \to 1$.
+
+Also konvergiert $(f_n)$ gegen die Grenzfunktion
+
+#+DOWNLOADED: screenshot @ 2021-08-26 11:11:52
+[[file:Funktionenfolgen/2021-08-26_11-11-52_screenshot.png]]
+:END:
+** Gleichmäßige Konvergenz
+$(f_n)$ konvergiert auf $D$ /gleichmäßig/ gegen $f$ gdw.
+
+$$\forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \; \forall n \geq n_0 \; \forall x \in D : |f_n(x) - f(x)| < \epsilon$$
+
+Diese Definition ist sehr ähnlich zur [[*Punktweise Konvergenz][punktweisen Konvergenz]], nur dass das $n_0$, ab dem die Bedingung gilt, nicht von $x$ abhängen darf.
+D.h. für punktweise Konvergenz dürfen abhängig vom $x$ "mehr" Funktionen $f_n$ von der Grenzfunktion abweichen und den Abstand $\epsilon$ überschreiten, während bei glm. Konvergenz /alle/ $f_n$ ab einem $n_0$ für jedes $x$ innerhalb eines bestimmten Abstands von $f$ verlaufen müssen.
+
+#+DOWNLOADED: screenshot @ 2021-08-26 11:28:05
+[[file:Funktionenfolgen/2021-08-26_11-28-05_screenshot.png]]
+
+Hier visualisiert: der dunkle Graph in der Mitte ist der Graph der Grenzfunktion $f$ der Funktionenfolge, die dunklen darüber und darunter sind $f \pm \epsilon$. Der gelbe Graph ist der Graph /eines/ $f_n$ aus der Folge. Der gesamte Graph von $f_n$ muss in diesem Schlauch verlaufen (selbiges für Funktionen nach $f_n$ in der Folge).
+
+:Beispiel:
+*Beispiel aus [[*Punktweise Konvergenz][punktweiser Konvergenz]]:*
+
+$$f_n(x) = x^n \; (x \in [0, 1]), f(1) = 1, f(x) = 0 \; (x \in [0, 1))$$
+
+Wähle ein $\epsilon \in (0, \frac{1}{2})$. Sei $n \in \mathbb{N}$. Betrachte $x = \frac{1}{\sqrt[n]{2}}$. Dann gilt:
+
+$$f_n(x) = (\frac{1}{\sqrt[n]{2}})^n = \frac{1}{2}, f(x) = 1$$
+
+Allerdings ist $|f_n(x) - f(x)| = |\frac{1}{2} - 1| = \frac{1}{2} > \epsilon$ und damit ist widerlegt, dass $(f_n)$ glm. konvergiert.
+:END:
+
+*** Nullfolgen-Kriterium
+Ein hinreichendes Kriterium für glm. Konvergenz. Voraussetzungen:
+
+1. $(f_n)$ konvergiert auf $D$ punktweise gegen $f$
+2. $(\alpha_n)$ ist eine Folge mit $\alpha_n \to 0$
+3. ffa $n \in \mathbb{N}$ gilt: $\forall x \in D : |f_n(x) - f(x)| \leq \alpha_n$
+
+Dann folgt glm. Konvergenz.
+
+*** Stetigkeit
+Aus gleichmäßiger Konvergenz von $(f_n)$ gegen $f$ und [[*Stetigkeit][Stetigkeit]] von jedem $f_n$ folgt Stetigkeit von $f$ (in jeweils einem Punkt $x_0 \in D$)
+
+Folglich: Wenn $f_n \to f$ (punktweise) und alle $f_n$ stetig sind, aber $f$ *nicht stetig* ist, ist $(f_n)$ *nicht glm. konvergent*.
+
+* Funktionenreihen
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
