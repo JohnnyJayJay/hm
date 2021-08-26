@@ -988,7 +988,7 @@ Die Summenfunktion, wogegen die Reihe punktweise konvergiert, ist dann
 
 $$f(x) := \sum\limits_{n=0}^{\infty} a_n (x - x_0)^n$$
 
-Jede Potenzreihe konvergiert auch gleichmäßig auf allen abgeschlossenen Teilintervallen des Konvergenzbereichs $[a, b] \subseteq D$.
+Jede Potenzreihe konvergiert auch gleichmäßig auf dem absoluten Konvergenzbereich $D$ (s.o.).
 *** Geometrische Reihe
 Die [[*Geometrische Reihe][Geometrische Reihe]] $\sum_{n=1}^{\infty} x^n$ (hier nur betrachtet auf $D = (-1, 1)$, also für $|x| < 1$) konvergiert punktweise gegen die Summenfunktion
 
