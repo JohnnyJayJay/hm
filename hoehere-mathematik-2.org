@@ -474,7 +474,10 @@ Die Reihe konvergiert absolut für alle Punkte innerhalb dieses Bereichs und div
   - Keine allgemeine Aussage über $|x - x_0| = r$ möglich; manuell untersuchen
 
 Anders formuliert: Die Reihe konvergiert absolut für alle $x \in U_r(x_0)$
+**** Identitätssatz
+Gegeben eine Potenzreihe $\sum_{n=0}^{\infty} a_n (x - x_0)^n =: f(x)$ die auf dem Bereich $D = (x_0 - r, x_0 + r)$ konvergiert sowie eine Folge $(c_n)$ in $D \setminus \{x_0\}$ mit $c_n \to x_0$ und $f(c_n) \to 0$.
 
+Dann ist $a_n = 0$ für alle $n \in \mathbb{N}$, also konvergiert die Reihe in den ganzen reellen Zahlen und der Reihenwert ist immer 0.
 **** Beispiele
 
 - Exponentialreihe: $a_n = \frac{1}{n!}$, $x_0 = 0$
@@ -932,14 +935,76 @@ Ein hinreichendes Kriterium für glm. Konvergenz. Voraussetzungen:
 2. $(\alpha_n)$ ist eine Folge mit $\alpha_n \to 0$
 3. ffa $n \in \mathbb{N}$ gilt: $\forall x \in D : |f_n(x) - f(x)| \leq \alpha_n$
 
-Dann folgt glm. Konvergenz.
-
+Dann konvergiert $(f_n)$ gleichmäßig gegen $f$.
 *** Stetigkeit
 Aus gleichmäßiger Konvergenz von $(f_n)$ gegen $f$ und [[*Stetigkeit][Stetigkeit]] von jedem $f_n$ folgt Stetigkeit von $f$ (in jeweils einem Punkt $x_0 \in D$)
 
 Folglich: Wenn $f_n \to f$ (punktweise) und alle $f_n$ stetig sind, aber $f$ *nicht stetig* ist, ist $(f_n)$ *nicht glm. konvergent*.
 
 * Funktionenreihen
+Funktionenreihen sind für Funktionenfolgen, was normale [[*Reihen][Reihen]] für normale Folgen sind.
+
+Gegeben ist eine [[*Funktionenfolgen][Funktionenfolge]] $(f_n)$ (jeweils $D \to \mathbb{R}$). Damit definiert man sich nun eine Folge von Partialsummenfunktionen:
+
+$$s_n := \sum\limits_{k=1}^n f_k = f_1 + f_2 + ... + f_n$$
+
+Sowie die Funktionenreihe:
+
+$$\sum\limits_{n=1}^{\infty} f_n$$
+
+Wie schon bei normalen Reihen gilt wieder: Der erste Summand muss nicht $n=1$ sein, sondern es kann woanders anfangen.
+
+** Punktweise Konvergenz
+Eine Funktionenreihe ist auf $D$ /punktweise/ konvergent gdw. die Folge $(s_n(x))$ für jedes $x \in D$ konvergent ist.
+Dies ist analog zur Definition von punktweiser Konvergenz von [[*Funktionenfolgen][Funktionenfolgen]].
+
+Zur Bestimmung hierfür lassen sich die aus [[*Reihen][Reihen]] bekannten Kriterien anwenden.
+
+Dann kann man eine *Summenfunktion* definieren:
+
+$$f(x) := \sum\limits_{n=1}^{\infty} f_n(x)$$
+
+** Gleichmäßige Konvergenz
+Gleichmäßige Konvergenz von Funktionenreihen ist analog zur Definition glm. Konvergenz von [[*Funktionenfolgen][Funktionenfolgen]] mit $(s_n(x))$ als Folge.
+
+$$\forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \; \forall n \geq n_0 \; \forall x \in D : |s_n(x) - f(x)| < \epsilon$$
+
+*** Kriterium von Weierstraß
+Ein hinreichendes Kriterium für glm. Konvergenz von Funktionenreihen. Voraussetzungen:
+
+1. Eine Folge $(c_n)$ (mit $c_n \to 0$)
+2. $\sum_{n=1}^{\infty} c_n$ konvergiert
+3. $|f_n(x)| \leq c_n$ für alle $x \in D$ und ffa $n \in \mathbb{N}$
+
+Dann konvergiert $\sum_{n=1}^{\infty} f_n$ auf $D$ gleichmäßig.
+
+** Beispiele
+*** Potenzreihen
+[[*Potenzreihen][Potenzreihen]] sind Funktionenreihen, wobei die auf dem Konvergenzbereich ($D = (x_0 - r, x_0 + r)$) definierte Summenfunktion die Reihenwerte annimmt.
+
+Die Potenzreihe $\sum_{n=0}^{\infty} a_n (x - x_0)^n$ kann als Funktionenreihe $\sum_{n=0}^{\infty} f_n$ gesehen werden, wobei $f_n(x) := a_n (x - x_0)^n$.
+
+Die Summenfunktion, wogegen die Reihe punktweise konvergiert, ist dann
+
+$$f(x) := \sum\limits_{n=0}^{\infty} a_n (x - x_0)^n$$
+
+Jede Potenzreihe konvergiert auch gleichmäßig auf allen abgeschlossenen Teilintervallen des Konvergenzbereichs $[a, b] \subseteq D$.
+*** Geometrische Reihe
+Die [[*Geometrische Reihe][Geometrische Reihe]] $\sum_{n=1}^{\infty} x^n$ (hier nur betrachtet auf $D = (-1, 1)$, also für $|x| < 1$) konvergiert punktweise gegen die Summenfunktion
+
+$$f(x) = \frac{1}{1 - x}$$
+
+Das ist der bekannte Reihenwert für $|x| < 1$.
+
+Die Reihe konvergiert jedoch nicht /gleichmäßig/ gegen $f$. Beweis:
+
+Angenommen, sie konvergiert glm. Per Definition gilt also
+
+$$|s_n(x) - f(x)| < 1$$
+
+ffa $n \in \mathbb{N}$ ($\epsilon = 1$). Aber dieser Ausdruck geht gegen $\infty$ für $n \to \infty$ und $x \to 1-$, also kann das nicht stimmen:
+
+$$|s_n(x) - f(x)| = \frac{{|x|}^{n+1}}{1 - x} \to \infty \; (n \to \infty, x \to 1-)$$
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
