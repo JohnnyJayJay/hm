@@ -153,7 +153,31 @@ Gegeben $x, y \in \mathbb{R}_+ \setminus \{0\}$:
 - $\log(a^x) = x \log a$
 
 ** Trigonometrische Funktionen
+/Sinus/ und /Cosinus/ sind die trigonometrischen Funktionen. Sie werden jeweils über eine [[*Potenzreihen][Potenzreihe]] definiert.
 
+Sie haben folgende Eigenschaften:
+- $\sin (-x) = -\sin (x)$ und $\cos(-x) = \cos(x)$
+- $\sin(x + y) = \sin(x)\cos(y) + \cos(x)\sin(y)$
+- $\cos(x + y) = \cos(x)\cos(y) - \sin(x)\sin(y)$
+- $\cos^2(x) + \sin^2(x) = 1$
+
+Vielfache von $\pi$:
+- $\sin(k\pi) = 0$
+- $\cos(k\pi) = (-1)^k$
+
+Weitere Zusammenhänge und Periodizität:
+- $\sin(x + \frac{\pi}{2}) = \cos(x)$
+- $\cos(x + \frac{\pi}{2}) = - \sin(x)$
+- $\sin(x + \pi) = - \sin(x)$
+- $\cos(x + \pi) = - \cos(x)$
+- $\sin(x + 2\pi) = \sin(x)$
+- $\cos(x + 2\pi) = \cos(x)$
+
+
+Nullstellen vom Sinus: $k\pi$, Nullstellen vom Cosinus: $(2k + 1)\frac{\pi}{2}$ ($k \in \mathbb{Z}$)
+
+*Tangens:*
+$$\tan(x) = \frac{\sin(x)}{\cos(x)}$$
 ** Binomialkoeffizienten
 Gegeben: $n, k \in \mathbb{N}_0$ und $k \leq n$.
 
@@ -942,6 +966,7 @@ Aus gleichmäßiger Konvergenz von $(f_n)$ gegen $f$ und [[*Stetigkeit][Stetigke
 Folglich: Wenn $f_n \to f$ (punktweise) und alle $f_n$ stetig sind, aber $f$ *nicht stetig* ist, ist $(f_n)$ *nicht glm. konvergent*.
 
 * Funktionenreihen
+
 Funktionenreihen sind für Funktionenfolgen, was normale [[*Reihen][Reihen]] für normale Folgen sind.
 
 Gegeben ist eine [[*Funktionenfolgen][Funktionenfolge]] $(f_n)$ (jeweils $D \to \mathbb{R}$). Damit definiert man sich nun eine Folge von Partialsummenfunktionen:
@@ -1005,6 +1030,275 @@ $$|s_n(x) - f(x)| < 1$$
 ffa $n \in \mathbb{N}$ ($\epsilon = 1$). Aber dieser Ausdruck geht gegen $\infty$ für $n \to \infty$ und $x \to 1-$, also kann das nicht stimmen:
 
 $$|s_n(x) - f(x)| = \frac{{|x|}^{n+1}}{1 - x} \to \infty \; (n \to \infty, x \to 1-)$$
+* Differentialrechnung
+** Reelle Funktionen
+$f : I \to \mathbb{R}$ ($I \subseteq \mathbb{R}$ ein Intervall) ist differenzierbar in $x_0$ bedeutet, dass die /Ableitung/ $f'$ von $f$ in $x_0$ existiert, welche wie folgt definiert ist:
+
+$$f'(x_0) := \lim\limits_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}$$
+
+Den Ausdruck rechts nennt man den /Differenzquotient/.
+
+:Beispiel:
+Beispiel: $f(x) = |x|$
+
+$$\lim\limits_{x \to 0-} \frac{f(x) - f(0)}{x - 0} = \lim\limits_{x \to 0} \frac{|x|}{x} = -1$$
+
+Aber
+
+$$\lim\limits_{x \to 0+} \frac{|x|}{x} = 1$$,
+
+also existiert der Grenzwert nicht für $x_0 = 0$ und $f$ ist in $0$ nicht differenzierbar.
+:END:
+
+*Aus Differenzierbarkeit folgt außerdem Stetigkeit.*
+
+*** h-Methode
+Den Differenzenquotienten kann man auch durch Substitution von $x - x_0$ berechnen:
+
+$$f'(x_0) = \lim\limits_{h \to 0} \frac{f(x + h) - f(x_0)}{h}$$
+
+Das ist bekannt als die h-Methode.
+*** Ableitungsregeln
+In diesem Abschnitt seien $f, g$ 2 differenzierbare Funktionen.
+**** Linearkombinationen
+Für $\alpha, \beta \in \mathbb{R}$ ist $(\alpha f + \beta g)'(x) = \alpha f'(x) + \beta g'(x)$.
+**** Produktregel
+$$(fg)'(x) = f'(x)g(x) + f(x)g'(x)$$
+**** Quotientenregel
+$$(\frac{f}{g})'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$$
+**** Umkehrfunktionen
+Wenn $f$ auch noch streng monoton und überall stetig ist ($\in C(I)$), dann kann man die Ableitung in $y = f(x)$ der Umkehrfunktion wie folgt berechnen:
+
+$$(f^{-1})'(y) = \frac{1}{f'(x)} = \frac{1}{f'(f^{-1}(y))}$$
+**** Kettenregel
+Sofern $f$ und $g$ verkettet werden können ($f : I \to \mathbb{R}, g : J \to \mathbb{R}$ mit $f(I) \subseteq J$ und Differenzierbarkeit in $x$ (f) und $f(x)$ (g)):
+
+$$(g \circ f)'(x) = g'(f(x))f'(x)$$
+**** Wichtige Beispiele
+- $\log'(x) = \frac{1}{x}$ ([[*Logarithmus][Logarithmus]])
+- $\sin'(x) = \cos x$ ([[*Trigonometrische Funktionen][Cosinus]])
+- $\cos'(x) = - \sin x$ ([[*Trigonometrische Funktionen][Sinus]])
+- $\tan'(x) = \frac{1}{\cos^2(x)}$ und $\arctan'(x) = \frac{1}{1 + x^2}$ ([[*Trigonometrische Funktionen][Tangens]])
+- $f(x) = x^n \Rightarrow f'(x) = n x^{n-1}$ (Polynome)
+- $f(x) = e^x \Rightarrow f'(x) = e^x$ ([[*Exponentialfunktion][Exponentialfunktion]])
+- $f(x) = c \in \mathbb{R} \Rightarrow f'(x) = 0$ (konstante Funktionen)
+*** Mehrfach Ableiten
+Man kann $n \in \mathbb{N}$ mal ableiten, in dem man immer weiter die Ableitungen der Ableitungen bildet. Wenn das geht, ist $f$ $n$ mal differenzierbar und $f^{(n)}$ ist die $n$-te Ableitung von $f$. Bis zur 3. Ableitung schreibt man auch $f''$ bzw. $f'''$.
+*** Stetige Differenzierbarkeit
+Wenn die $n$-te Ableitung einer Funktion existiert und stetig ist, dann ist die Funktion $n$ mal *stetig differenzierbar*.
+Die Menge aller $n$ mal stetig differenzierbaren Funktionen über $I$ ist $C^n(I)$. $C^{\infty}(I)$ ist die Menge aller Funktionen, die man beliebig oft stetig ableiten kann.
+
+Beispiele: [[*Exponentialfunktion][Exponentialfunktion]], [[*Trigonometrische Funktionen][Sinus]], [[*Trigonometrische Funktionen][Cosinus]].
+*** Mittelwertsatz
+Gegeben eine auf $[a, b]$ stetige und auf $(a, b)$ differenzierbare Funktion $f$:
+
+$$\exists \xi \in (a, b) : \frac{f(b) - f(a)}{b - a} = f'(\xi)$$
+
+
+#+DOWNLOADED: screenshot @ 2021-09-05 11:54:21
+[[file:Differentialrechnung/2021-09-05_11-54-21_screenshot.png]]
+
+$\frac{f(b) - f(a)}{b - a}$ ist die mittlere Steigung von $f$ zwischen $a$ und $b$ - Der Satz sagt also, dass bei jeder differenzierbaren Funktion zwischen je 2 Punkten die Ableitung an einer Stelle den Wert der mittleren Steigung zwischen den Punkten annimmt.
+*** Satz von Taylor
+- $n \in \mathbb{N}_0$
+- $f$ auf $I$ $(n + 1)$ mal diffbar
+- $x, x_0 \in I$ mit $x \neq x_0$
+
+
+Dann existiert ein $\xi \in (\min\{x, x_0\}, \max\{x, x_0\})$ mit
+
+$$f(x) = \sum\limits_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k + \frac{f^{(n + 1)}(\xi)}{(n + 1)!} (x - x_0)^{n + 1}$$
+
+also
+
+$$f(x) = f(x_0) + f'(x_0) (x - x_0) + \frac{f''(x_0)}{2!} (x - x_0)^2 + ... + \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n + \frac{f^{(n + 1)}(\xi)}{(n + 1)!} (x - x_0)^{n + 1}$$
+**** Taylorpolynom
+Die Summanden von $0$ bis $n$ aus dem Satz oben heißen $n$ tes /Taylorpolynom/ von $f$ in $x$.
+
+$$T_nf(x, x_0) = \sum\limits_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k$$
+
+Der letzte Summand heißt /Restglied/.
+
+$$\frac{f^{(n + 1)}(\xi)}{(n + 1)!} (x - x_0)^{n + 1}$$
+
+Man kann sich also über die Ableitungen einer Funktion von einem beliebigen Punkt aus an einen anderen über das Taylorpolynom "annähern" und mit dem Restglied den tatsächlichen Funktionswert erhalten.
+*** Extrema
+Über Ableitungen lassen sich die Extrempunkte einer Funktion bestimmen.
+Hierzu sind 2 Kriterien wichtig:
+
+1. $f$ hat in $x$ ein lokales Extremum $\Rightarrow f'(x) = 0$ (notwendig)
+2. $f'(x) = f''(x) = \dots = f^{(n - 1)}(x) = 0$ und $f^{(n)}(x) \neq 0 \Rightarrow \text{(i)}$ (hinreichend)
+
+(i)
+- $n$ gerade und $f^{(n)}(x) > 0$: lokales Minimum
+- $n$ gerade und $f^{(n)}(x) < 0$: lokales Maximum
+- $n$ ungerade: kein lokales Extremum in $x$
+
+In Worten heißt das: Wenn ungerade viele Ableitungen von $f$ hintereinander in $x$ 0 sind und dann die nächste Ableitung nicht 0 ist, gibt es ein lokales Extremum in $x$.
+*** Weitere Eigenschaften
+Aus der Ableitung kann man Schlüsse über die Monotonie einer Funktion ziehen.
+
+- $f'(x) \leq 0 \Rightarrow f$ monoton fallend
+- $f'(x) \geq 0 \Rightarrow f$ monoton wachsend
+- Analog mit </> und strenger Monotonie
+
+
+Wenn 2 Ableitungen gleich sind, unterscheiden sich die Funktionen nur durch eine Konstante.
+
+$$f' = g' \Rightarrow f(x) = g(x) + c \; (c \in \mathbb{R})$$
+** Mehrdimensional, Reellwertig
+Differenzierbarkeit lässt sich auch für Funktionen mit mehreren Eingabeparametern definieren.
+Wie bei Stetigkeit: Betrachten von Funktionen $f : D \to \mathbb{R}$, wobei $D \subseteq \mathbb{R}^n$ und offen.
+
+*** Partielle Differenzierbarkeit
+Man kann mehrdimensionale Funktionen wie einfache Funktionen nach differenzieren, in dem /nach einem bestimmten Parameter/ differenziert und die anderen so festhält, als seien sie Konstanten.
+
+Z.B. die Funktion $f : \mathbb{R}^2 \to \mathbb{R}$:
+
+$$f(x, y) = 2xy^2$$
+
+Kann man /nach x oder nach y/ differenzieren:
+
+$$f_x(x, y) = 2y^2$$
+$$f_y(x, y) = 4xy$$
+
+Formal ist die *partielle Ableitung von $f$ in $x_0 \in D$ nach $x_i$* definiert als:
+
+$$f_{x_i}(x_0) = \frac{\partial f}{\partial x_i}(x_0) = \lim\limits_{t \to 0} \frac{f(x_0 + te_i) - f(x_0)}{t}$$,
+
+wobei $e_i$ der $i$-te Einheitsvektor (an Stelle $i$ eine 1, sonst 0) ist. Das ist die [[*h-Methode][h-Methode]], nur für höhere Dimensionen.
+
+Die folgenden Bezeichnung sind naheliegend:
+- $f$ *partiell differenzierbar* = $f$ partiell differenzierbar nach allen Parametern $x_i$
+  - Dann existiert der *Gradient*: $\text{grad} \; f(x_0) = (f_{x_1}(x_0), \dots , f_{x_n}(x_0))$
+- $f$ *stetig partiell differenzierbar* = $f$ partiell differenzierbar und alle partiellen Ableitungen stetig
+  - *$m$ mal stetig partiell differenzierbar* = s.u. ($C^m(D, \mathbb{R})$)
+- $f_{x_i}$ *auf D vorhanden* = $f$ ist in jedem $x \in D$ nach $x_i$ partiell differenzierbar
+
+**** Mehrfach Partiell Ableiten
+Genauso kann man partielle Ableitungen, sofern definiert, wieder partiell ableiten:
+
+$$\frac{\partial^3 f}{\partial y \partial x^2} = f_{xxy}, \; \frac{\partial^7 f}{\partial y^4 \partial x^3} = f_{yyyyxxx}, \; \text{etc.}$$
+
+Bei stetig partiell differenzierbaren Funktionen ist die *Reihenfolge der Ableitungen* hierbei *egal* (Satz von Schwarz).
+*** Differenzierbarkeit
+Auch für höhere Dimensionen gibt es den Begriff der /Differenzierbarkeit/. Die Definition lässt sich aus der [[*h-Methode][h-Methode]] herleiten:
+
+$$\exists a \in \mathbb{R} : \lim\limits_{h \to 0} \frac{g(x_0 + h) - g(x_0)}{h} = a \Leftrightarrow \exists a \in \mathbb{R} : \lim\limits_{h \to 0} \frac{g(x_0 + h) - g(x_0) - ah}{|h|} = 0$$
+
+Diese Definition lässt sich nun direkt auf höhere Dimensionen übertragen:
+
+$$\exists a \in \mathbb{R}^n : \lim\limits_{h \to 0} \frac{f(x_0 + h) - f(x_0) - a \cdot h}{|h|} = \lim\limits_{x \to \x_0} \frac{f(x) - f(x_0) - a \cdot (x - x_0)}{|x - x_0|} = 0$$
+
+(Das $h$ ist hier $\in \mathbb{R}^n$, $\cdot$ ist das Skalarprodukt der Vektoren und || der Betrag/die Länge)
+
+**** Beziehung zu Partieller Differenzierbarkeit
+*Differenzierbare Funktionen sind stetig und partiell differenzierbar.*
+
+Die Ableitung einer differenzierbaren Funktion $f$ in $x_0$ (s. $a$ in der Definition) ist $f'(x_0) = \text{grad } f(x_0)$.
+
+Dies kann man entsprechend in die Definition einsetzen und man erhält ein Äquivalenzkriterium.
+
+$$\lim\limits_{h \to 0} \frac{f(x_0 + h) - f(x_0) - \text{grad } f(x_0) \cdot h}{|h|} = 0$$
+
+D.h.: partiell diffbar und obiger Grenzwert ist 0 => diffbar
+
+Ein anderes, hinreichendes Kriterium:
+*Wenn $f$ stetig partiell differenzierbar ist, folgt direkt, dass $f$ differenzierbar ist.*
+
+**** Kettenregel
+Gegeben $f : D \to \mathbb{R}$, $g : I \to \mathbb{R}^n$ wobei $g(I) \subseteq D$.
+
+Betrachte einen Punkt $t_0 \in I$. Wenn $g$ in $t_0$ und $f$ in $g(t_0)$ differenzierbar ist, dann ist $f \circ g$ in $t_0$ differenzierbar:
+
+$$(f \circ g)'(t_0) = f'(g(t_0)) \cdot g'(t_0)$$
+
+(Wie die normale Kettenregel, nur mit Skalarprodukt).
+**** Mittelwertsatz
+Gegeben: auf $D$ diffbare Funktion $f : D \to \mathbb{R}$ und 2 Punkte $a, b \in D$ deren Verbindungsstrecke $S[a, b] \subseteq D$.
+
+Dann existiert ein $\xi \in S[a, b]$ mit
+
+$$f(b) - f(a) = f'(\xi) \cdot (b - a)$$
+*** Richtungsableitung
+Gegeben ein /Richtungsvektor/ $a \in \mathbb{R}^m$ mit $|a| = 1$, kann man die Differenzierbarkeit einer Funktion *in $x_0 \in D$* *in Richtung $a$* untersuchen.
+
+$$\frac{\partial f}{\partial a}(x_0) = \lim\limits_{t \to 0} \frac{f(x_0 + ta) - f(x_0)}{t} \in \mathbb{R}$$
+
+Das ist wie die Definition von [[*Partielle Differenzierbarkeit ][partieller Differenzierbarkeit]], nur mit beliebigen Richtungen statt nur der Einheitsvektoren.
+
+*Wenn $f$ in $x_0$ differenzierbar ist*, ist
+
+$$\frac{\partial f}{\partial a}(x_0) = a \cdot \text{grad } f(x_0)$$
+*** Hesse-Matrix
+Gegeben $f \in C^2(D, \mathbb{R})$ und $x_0 \in D$ kann man sich die /Hesse-Matrix/ erstellen. Die Hesse-Matrix ist so etwas wie "2. partielle Ableitung" der Funktion $f$.
+
+\begin{equation}
+H_f(x_0) = \begin{pmatrix}
+f_{x_1x_1}(x_0) & f_{x_1x_2}(x_0) & \dots & f_{x_1x_n}(x_0)\\
+\vdots & & & \vdots\\
+f_{x_nx_1}(x_0) & f_{x_nx_2}(x_0) & \dots & f_{x_nx_n}(x_0)
+\end{pmatrix} = \begin{pmatrix}\text{grad } f_{x_1}(x_0)\\ \vdots \\ \text{grad } f_{x_n}(x_0)\end{pmatrix}
+\end{equation}
+
+Sie ist *symmetrisch* wegen des Satzes von Schwarz (Reihenfolge der partiellen Ableitungen ist egal).
+**** Definitheit
+- Matrix *positiv definit* $\Leftrightarrow$ alle Eigenwerte > 0
+- Matrix *negativ definit* $\Leftrightarrow$ alle Eigenwerte < 0
+- Matrix *indefinit* $\Leftrightarrow$ Es gibt Eigenwerte < 0 und > 0
+
+Für $2 \times 2$ Matrizen außerdem:
+- positiv definit $\Leftrightarrow$ $M_{1,1}$ > 0, $\det M > 0$
+- negativ definit $\Leftrightarrow$ $M_{1,1}$ < 0, $\det M > 0$
+- indefinit $\Leftrightarrow \det M < 0$
+**** Extrema
+Lokales Maximum/Minimum in $x_0$ heißt wie im reellen auch, dass die Funktionswerte von $f : D \to \mahthbb{R}$ um $x_0$ in einem Radius $\delta$ alle $\leq \text{ bzw. } \geq f(x_0)$ sind.
+
+Hier formal für lokale Maxima:
+
+$$\exists \delta > 0 \; \forall x \in U_{\delta}(x_0) \cap D : f(x) \leq f(x_0)$$
+
+/Globale Extrema/ wiederum beziehen sich auf den ganzen Definitionsbereich (hier wieder am Beispiel Maximum):
+
+$$\forall x \in D : f(x) \leq f(x_0)$$
+***** Extrema Bestimmen
+1. $\text{grad } f(x_0) = 0$ (notwendiges Kriterium)
+2. Dann $H_f(x_0)$ betrachten:
+   - positiv definit: lokales Minimum
+   - negativ definit: lokales Maximum
+   - indefinit: kein lokales Extremum
+
+** Mehrdimensional, Vektorwertig
+Wie auch schon früher betrachtet man vektorwertige Funktionen (also z.B. $f : \mathbb{R}^2 \to \mathbb{R}^3$) im Grunde als ein Tupel von reellwertigen Funktionen ($f = (f_1, f_2, f_3)$).
+
+*** Partielle Differenzierbarkeit
+$f : D \to \mathbb{R}^m$ ($D \in \mathbb{R}^n$) partiell differenzierbar $\Leftrightarrow$ alle $f_i$ partiell differenzierbar. Das Äquivalent zum Gradienten ist hier die /Jacobi-/ oder /Funktionalmatrix/:
+
+$$\frac{\partial f}{\partial x}(x_0) = \frac{\partial (f_1, \dots , f_m)}{\partial (x_1, \dots , x_n)}(x_0) = J_f(x_0) = \begin{pmatrix}\frac{\partial f_1}{\partial x_1}(x_0) & \dots & \frac{\partial f_1}{\partial x_n}(x_0) \\ \vdots & & \vdots \\ \frac{\partial f_m}{\partial x_1}(x_0) & \dots & \frac{\partial f_m}{\partial x_n}(x_0) \end{pmatrix} = \begin{pmatrix}\text{grad } f_1(x_0) \\ \vdots \\ \text{grad } f_m(x_0)\end{pmatrix} \in \mathbb{R}^{m \times n}$$
+
+Analog *stetig partielle Differenzierbarkeit*: $f \in C^p(D, \mathbb{R}^m) \Leftrightarrow \forall i : f_i \in C^p(D, \mathbb{R})$
+
+*** Differenzierbarkeit
+$f : D \to \mathbb{R}^m$ differenzierbar $\Leftrightarrow \forall i : f_i$ differenzierbar. Zur Erinnerung: Damit ist es auch ein hinreichendes Kriterium, dass alle $f_i$ stetig partiell differenzierbar sind.
+
+Daraus folgt wieder
+- $f$ partiell differenzierbar
+- $f$ stetig
+- Ableitung von $f$ in $x_0$ = $J_f(x_0)$ (analog zum Gradienten)
+
+Die formale Definition ist auch ähnlich, nur mit einer $m \times n$ Matrix $A$ als Ableitung:
+
+$$\lim\limits_{h \to 0} \frac{f(x_0 + h) - f(x_0) - Ah}{|h|} = 0$$
+
+**** Kettenregel
+Auch für vektorwertige Funktionen kann man die Kettenregel definieren.
+
+Gegeben: $f : D \to \mathbb{R}^m$ differenzierbar in $x_0 \in D$, $\tilde{D} \subseteq \mathbb{R}^m$ offen, $f(D) \subseteq \tilde{D}$ und $g : \tilde{D} \to \mathbb{R}^p$ differenzierbar in $f(x_0)$.
+
+$$(g \circ f)'(x_0) = g'(f(x_0)) \cdot f'(x_0) = J_g(f(x_0)) \cdot J_f(x_0)$$
+
+$J_g$ ist eine $p \times m$ Matrix, $J_f$ eine $m \times n$ Matrix, also ist die Ableitung der Verkettung eine $p \times n$ Matrix.
+
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
