@@ -960,6 +960,19 @@ Ein hinreichendes Kriterium für glm. Konvergenz. Voraussetzungen:
 3. ffa $n \in \mathbb{N}$ gilt: $\forall x \in D : |f_n(x) - f(x)| \leq \alpha_n$
 
 Dann konvergiert $(f_n)$ gleichmäßig gegen $f$.
+*** Differentialkriterium
+Wenn die folgenden Dinge für eine Funktionenfolge $(f_n)$ gegeben sind:
+1. $\forall n \in \mathbb{N} : f_n \in C^1([a, b])$
+2. $(f_n(a))$ (reelle Folge) ist konvergent
+3. $(f_n')$ konvergiert auf $[a, b]$ /gleichmäßig/ gegen $g : [a, b] \to \mathbb{R}$
+
+Dann konvergiert $(f_n)$ auf $[a,b]$ gleichmäßig gegen $f(x) = \lim_{n \to \infty} f_n(x)$ und
+1. $f \in C^1([a,b])$
+2. $f'(x) = g(x)$
+
+Also in Worten: Wenn *alle Funktionen in der Folge [[*Stetige Differenzierbarkeit][stetig differenzierbar] auf* einem Intervall $[a,b]$ sind, die *Folge für $a$ eingesetzt konvergiert* und die *Folge der Ableitungen gleichmäßig konvergiert*, konvergiert die ursprüngliche Folge gleichmäßig.
+
+Siehe [[*Differentialrechnung][Differentialrechnung]].
 *** Stetigkeit
 Aus gleichmäßiger Konvergenz von $(f_n)$ gegen $f$ und [[*Stetigkeit][Stetigkeit]] von jedem $f_n$ folgt Stetigkeit von $f$ (in jeweils einem Punkt $x_0 \in D$)
 
@@ -1299,6 +1312,180 @@ $$(g \circ f)'(x_0) = g'(f(x_0)) \cdot f'(x_0) = J_g(f(x_0)) \cdot J_f(x_0)$$
 
 $J_g$ ist eine $p \times m$ Matrix, $J_f$ eine $m \times n$ Matrix, also ist die Ableitung der Verkettung eine $p \times n$ Matrix.
 
+* Integralrechnung
+
+Immer kleinere Zerlegungen eines Intervalls $[a,b]$
+
+Eine Funktion $f$ ist /integrierbar über $[a,b]$/ gdw. $s_f = S_f$, d.h. die
+
+#+DOWNLOADED: screenshot @ 2021-09-06 12:46:47
+[[file:Integralrechnung/2021-09-06_12-46-47_screenshot.png]]
+/Integrale bestimmen die "Fläche unter einer Funktion"./
+
+
+
+** Kriterien
+- Monotone Funktionen $f : [a,b] \to \mathbb{R}$ sind integrierbar $\in R([a, b])$.
+- Stetige Funktionen und Funktionen, die nur in *endlich vielen* Punkten unstetig sind, sind integrierbar ($C([a,b]) \subseteq R([a,b])$)
+- Integrierbarkeit lässt sich "Zerteilen": $f \in R([a,c]) \Leftrightarrow f \in R([a,b]) \text{ und } f \in R([b,c])$ (wenn $b \in (a, c)$)
+
+** Unbestimmte Integrale
+Eine Stammfunktion $F : [a, b] \to \mathbb{R}$ von $f : [a, b] \to \mathbb{R}$ ist eine differenzierbare Funktion, für die gilt:
+
+$$\forall x \in [a, b] : F'(x) = f(x)$$
+
+Man schreibt das auch als /unbestimmtes Integral/:
+
+$$\int fdx = \int f(x)dx$$
+
+Die Stammfunktion ist niemals eindeutig, da man beliebige konstante Summanden hinzufügen kann, z.B. ist sowohl $\sin x$ als auch $\sin(x) + 17$ eine Stammfunktion von $\cos x$.
+
+** Integrationsregeln
+
+*** Erster Hauptsatz
+$f \in R([a,b])$ und $F$ Stammfunktion von $f$:
+
+$$\int_a^b f(x) dx = [F(x)]_a^b = F(b) - F(a)$$
+*** Zweiter Hauptsatz
+Gegeben $f \in R([a,b])$:
+
+$$F(x) := \int_a^x f(t) dt \; \; (x \in [a,b])$$
+
+Diese Funktion hat die folgenden Eigenschaften:
+- $\int_a^b f(t) dt = [F(x)]_a^b$
+- $F$ ist [[*Lipschitz-Stetigkeit][Lipschitz-stetig]]
+- Wenn $f$ stetig ist, ist $F$ eine Stammfunktion von $f$ ($F'(x) = f(x)$)
+*** Funktionenfolgen
+Folgen von Integralen über eine [[*Funktionenfolgen][Funktionenfolge]] konvergieren gegen die Grenzfunktion der Folge, falls die Funktionenfolge gleichmäßig gegen diese [[*Gleichmäßige Konvergenz][konvergiert]].
+
+$$\lim\limits_{n \to \infty} \int_a^b f_n(x) dx = \int_a^b f(x) dx$$
+*** Linearkombinationen
+Gegeben $f, g \in R([a,b]), \alpha, \beta \in \mathbb{R}$
+
+$$\int_a^b \alpha f(x) + \beta g(x) dx = \alpha \int_a^b f(x) dx + \beta \int_a^b g(x) dx$$
+*** Leere Integrale
+$$\int_{\alpha}^{\alpha} f(x) dx = 0$$
+*** Umgekehrte Integrale
+$$\int_{\alpha}^{\beta} f(x) dx = - \int_{\beta}^{\alpha} f(x) dx$$
+*** Partielle Integration
+Partielles Integrieren ist die "umgekehrte Anwendung" der [[*Produktregel][Produktregel]].
+
+Gegeben $f, g \in C^1([a,b])$:
+
+$$\int_a^b f'(x)g(x) dx = [f(x)g(x)]_a^b - \int_a^b f(x)g'(x) dx$$
+
+Anders Formuliert:
+
+$$\int_a^b f(x)g(x)dx = [F(x)g(x)]_a^b - \int_a^b F(x)g'(x) dx$$
+
+Analog geht das auch für [[*Unbestimmte Integrale][unbestimmte Integrale]] ohne die $a, b$ Schranken.
+
+:Anwendung:
+Man kann dies bspw. gut nutzen, wenn ein Integral nach mehrfacher Anwendung dieser Regel in den Ursprungszustand fällt:
+
+\begin{align}
+\int \sin^2 x dx = \int \sin x \sin x dx &= -\cos x \sin x - \int - \cos x \cos x dx\\
+&= - \cos x \sin x + \int \cos x \cos x dx \\
+&= - \cos x \sin x + \int (1 - \sin^2 x) dx \\
+&= - \cos x \sin x + \int 1 dx - \int \sin^2 x dx\\
+&= - \cos x \sin x + x - \int \sin^2 x dx
+\end{align}
+(3) macht sich die Eigenschaft $\sin^2 x + \cos^2 x = 1$ zunutze.
+
+Jetzt kann man mit einer Äquivalenzumformung das Integral auf eine Seite bringen und erhält
+
+$$\int \sin^2 x dx = \frac{1}{2} (x - \cos x \sin x)$$
+:END:
+*** Substitution
+Substitution bei Integralen ist die "umgekehrte Anwendung" der [[*Kettenregel][Kettenregel]].
+
+$$\int_a^b f(g(t))g'(t) dt = \int_{g(a)}^{g(b)} f(x) dx$$
+
+Ist ein Integral von der Form links, kann man es direkt zu dem Integral rechts vereinfachen. Anders herum geht es auch: Man kann $x$ durch eine umkehrbare Funktion $g(t)$ substituieren ($x = g(t)$). Dann kann man das neue Integral bestimmen:
+
+
+$$g'(t) = \frac{dg}{dt} = \frac{dx}{dt} \Leftrightarrow dx = g'(t) dt$$
+
+$$\Rightarrow \int_a^b f(x) dx = \int_{g^{-1}(a)}^{g^{-1}(b)} f(g(t))g'(t) dt$$
+
+Dies ist hilfreich, wenn so weitere Vereinfachungen möglich werden.
+
+:Anwendung:
+Beispiel-Integral: $\int_0^1 \frac{e^{2x} + 1}{e^x} dx$
+
+Substituiere $x = \log t$. $\log' t = \frac{dx}{dt} \Leftrightarrow \log' t \; dt = dx$.
+
+Neue Integralgrenzen:
+a. $x = \log t = 0 \Leftrightarrow t = e^0 = 1$
+b. $x = \log t = 1 \Leftrightarrow t = e^1 = e$
+
+Damit ist das neue Integral:
+
+\begin{align}
+\int_0^1 \frac{e^{2x} + 1}{e^x} dx &= \int_1^e \frac{e^{2 \log t} + 1}{e^{\log t}} \log' t dt \\
+&= \int_1^e \frac{t^2 + 1}{t} \cdot \frac{1}{t} dt \\
+&= \int_1^e (\frac{t^2}{t} + \frac{1}{t}) \frac{1}{t} dt \\
+&= \int_1^e (t + \frac{1}{t}) \frac{1}{t} dt \\
+&= \int_1^e 1 + \frac{1}{t^2} dt \\
+&= \int_1^e 1 + t^{-2} dt \\
+&= [t - t^{-1}]_1^e = (e - \frac{1}{e}) - (1 - 1) = e - \frac{1}{e}
+\end{align}
+:END:
+
+*** Unterschiede in Endlich Vielen Punkten
+Wenn sich zwei integrierbare Funktionen $f, g \in R([a,b])$ in nur endlich vielen Punkten unterscheiden, sind Integralwerte gleich.
+
+$$\int_a^b f(x) dx = \int_a^b g(x) dx$$
+** Uneigentliche Integrale
+Uneigentliche Integrale sind Integrale, deren Grenzen den Definitionsbereich der Funktion verlassen, z.b. $\alpha$ für $f : (\alpha, \beta) \to \mathbb{R}$.
+Diese Grenzen können auch $\pm \infty$ sein.
+
+Den Wert eines uneigentlichen Integrals /nach oben/ (d.h. $f : [\alpha, \beta)$ und Integralgrenzen $\alpha, \beta$) wird über den *linksseitigen Grenzwert* bestimmt.
+
+$$\int_{\alpha}^{\beta} f(x) dx = \lim\limits_{t \to \beta-} \int_{\alpha}^t f(x) dx$$
+
+Analog für uneigentliche Integrale /nach unten/ ($f : (\alpha, \beta]$) mit dem *rechtsseitigen Grenzwert*.
+
+$$\int_{\alpha}^{\beta} f(x) dx = \lim\limits_{t \to \alpha+} \int_t^{\beta} f(x) dx$$
+
+Sofern dieser Grenzwert nicht existiert, heißt das Integral *divergent*.
+
+Und schließlich, falls es uneigentlich /in beide Richtungen/ ist, teilt man es auf mithilfe eines $\gamma \in (\alpha, \beta)$.
+
+$$\int_{\alpha}^{\beta} f(x) dx = \int_{\alpha}^{\gamma} f(x) dx + \int_{\gamma}^{\beta} f(x) dx$$
+
+Z.B. $\int_{-\infty}^{\infty} f(x)dx = \int_{-\infty}^0 f(x)dx + \int_0^{\infty} f(x) dx$
+*** Cauchykriterium
+$$\int_{\alpha}^{\beta} f(x) dx \text{ konvergiert} \Leftrightarrow \forall \epsilon > 0 \; \exists c \in (\alpha, \beta) \; \forall u,v \in (x, \beta) : \mid \int_u^v f(x) dx \mid < \epsilon$$
+*** Majoranten-/Minorantenkriterium
+Ähnlich zu Reihen.
+
+1. Wenn $|f| \leq h$ auf $[\alpha, \beta)$ und $\int_{\alpha}^{\beta} h(x) dx$ konvergent, dann $\int_{\alpha}^{\beta} f(x) dx$ absolut konvergent.
+2. Wenn $|f| \geq h \geq 0$ auf $[\alpha, \beta)$ und $\int_{\alpha}^{\beta} h(x) dx$ divergent, dann $\int_{\alpha}^{\beta} f(x) dx$ divergent.
+
+** Weitere Sätze
+Gegeben $f, g \in R([a,b])$, $g \geq 0$, $m := \inf f([a,b]), \; M := \sup f([a,b])$.
+
+Es gilt dann:
+1. $\exists \mu \in [m,M] : \int_a^b fg dx = \mu \int_a^b gdx$
+2. $\exists \mu \in [m,M] : \int_a^b fdx = \mu (b - a)$
+
+In Worten: Zwischen dem kleinsten und größten Funktionswert einer Funktion auf einem Intervall gibt es einen Faktor $\mu$ der die Funktion beim Integrieren "ersetzen" kann.
+** Höhere Dimensionen
+Auch in höheren Dimensionen kann man Integrale definieren. Dort bestimmen sie dann nicht mehr die Fläche unter dem Funktionsgraphen, sondern im allgemeinen das /Volumen/.
+
+Wieder schaut man sich Intervalle an, dieses mal mehrdimensionale Intervalle $I = [a_1, b_1] \times \dots \times [a_n, b_n]$ und betrachtet /Zerlegungen/ $Z$ dieser Intervalle, mit denen man die Ober- und Untersummen $S_f(Z)$ und $s_f(Z)$ berechnet. Wenn diese sich für beliebig feine Zerlegungen immer weiter annähern ($s_f = S_f$) ist die Funktion integrierbar ($\in R(I)$).
+
+$$\int_I f dx := \int_I f(x) dx = s_f = S_f$$
+
+Es gelten analog zu reellen Integralen die gleichen grundlegenden Sätze:
+- Kombinationen von integrierbaren Funktionen sind wieder integrierbar (bei $\frac{f}{g}$, wenn $|g(x)| \geq \alpha$ für ein $\alpha > 0$)
+- Integration ist monoton (erhält Ungleichungen)
+- $C(I) \subseteq R(I)$
+*** Berechnen
+Wenn Funktion $f$ unter dem Integral stetig:
+
+$$\int_I f(x) dx = \int_I f(x_1, \dots , x_n) d(x_1, \dots , x_n) = \int_{a_1}^{b_1} \left( \dots \int_{a_{n - 1}}^{b_{n - 1}} \left( \int_{a_n}^{b_n} f(x_1, \dots , x_n) dx_n \right) dx_{n - 1} \dots \right) dx_1$$
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
