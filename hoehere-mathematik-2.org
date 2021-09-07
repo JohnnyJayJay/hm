@@ -1311,18 +1311,35 @@ Gegeben: $f : D \to \mathbb{R}^m$ differenzierbar in $x_0 \in D$, $\tilde{D} \su
 $$(g \circ f)'(x_0) = g'(f(x_0)) \cdot f'(x_0) = J_g(f(x_0)) \cdot J_f(x_0)$$
 
 $J_g$ ist eine $p \times m$ Matrix, $J_f$ eine $m \times n$ Matrix, also ist die Ableitung der Verkettung eine $p \times n$ Matrix.
+** Implizit Definierte Funktionen
+Wenn man eine Gleichung der Form $f(x, y) = 0$ gegeben hat, kann man dies auch schreiben als $f(x, g(x)) = 0$. Die Idee: Um die Gleichung zu erfüllen, muss $y$ im Allgemeinen abhängig von $x$ sein. Wenn sich also $x$ ändert, muss $y$ darauf "reagieren", um noch die Gleichung zu erfüllen. Daher kann man $y$ als eine /implizit definierte Funktion/ $g : (- \delta, \delta) \to (1 - \eta, 1 + \eta)$ sehen.
+
+$$f(x, g(x)) = 0$$
+
+Hier kann man nun mit der [[*Mehrdimensional, Vektorwertig][Kettenregel]] differenzieren: Betrachte das "Innere" von $f$ als Funktion $p(x) = (x, g(x))$, d.h. wir betrachten insgesamt $(f \circ p)(x) = 0$.
+
+\begin{align}
+(f \circ p)'(x) &= f'(p(x)) p'(x) \\
+&= (\text{grad } f(p(x))) J_p(x) \\
+&= (f_x(p(x)), f_y(p(x))) \begin{pmatrix} x' \\ g'(x) \end{pmatrix} \\
+&= f_x(p(x)) x' + f_y(p(x)) g'(x) \\
+&= f_x(x, g(x)) + f_y(x, g(x)) g'(x)
+\end{align}
+
+Man erhält also
+
+$$f_x(x, g(x)) + f_y(x, g(x)) g'(x) = 0 \Leftrightarrow g'(x) = - \frac{f_x(x, g(x))}{f_y(x, g(x))}$$
 
 * Integralrechnung
 
-Immer kleinere Zerlegungen eines Intervalls $[a,b]$
-
-Eine Funktion $f$ ist /integrierbar über $[a,b]$/ gdw. $s_f = S_f$, d.h. die
+Man betrachtet ein Intervall $[a,b]$ und dann /Zerlegungen/ $(x_0, x_1, \dots , x_n)$ ($a = x_0 \leq x_1 \leq \dots \leq x_n = b$) dieses Intervalls. Diese Zerlegungen bestehen dann aus $n - 1$ Teilintervallen, für die man sich jeweils den größten und kleinsten Funktionswert ($\sup f(I)$ und $\inf f(I)$) anschauen kann. Dies kann man dann in den Funktionsgraphen einzeichnen:
 
 #+DOWNLOADED: screenshot @ 2021-09-06 12:46:47
 [[file:Integralrechnung/2021-09-06_12-46-47_screenshot.png]]
-/Integrale bestimmen die "Fläche unter einer Funktion"./
 
+Die Summe über die Suprema der Funktionswerte in den Intervallen ist die *Obersumme*, die Summe über die Infima die *Untersumme*.
 
+Eine Funktion $f$ ist nun /integrierbar über $[a,b]$/ gdw. sich diese beiden Summen für immer feinere Zerlegungen immer weiter aneinander annähern.
 
 ** Kriterien
 - Monotone Funktionen $f : [a,b] \to \mathbb{R}$ sind integrierbar $\in R([a, b])$.
@@ -1474,7 +1491,14 @@ In Worten: Zwischen dem kleinsten und größten Funktionswert einer Funktion auf
 ** Höhere Dimensionen
 Auch in höheren Dimensionen kann man Integrale definieren. Dort bestimmen sie dann nicht mehr die Fläche unter dem Funktionsgraphen, sondern im allgemeinen das /Volumen/.
 
-Wieder schaut man sich Intervalle an, dieses mal mehrdimensionale Intervalle $I = [a_1, b_1] \times \dots \times [a_n, b_n]$ und betrachtet /Zerlegungen/ $Z$ dieser Intervalle, mit denen man die Ober- und Untersummen $S_f(Z)$ und $s_f(Z)$ berechnet. Wenn diese sich für beliebig feine Zerlegungen immer weiter annähern ($s_f = S_f$) ist die Funktion integrierbar ($\in R(I)$).
+Wieder schaut man sich Intervalle an, dieses mal mehrdimensionale Intervalle $I = [a_1, b_1] \times \dots \times [a_n, b_n]$ und betrachtet /Zerlegungen/ $Z$ dieser Intervalle, mit denen man die Ober- und Untersummen $S_f(Z)$ und $s_f(Z)$ berechnet.
+
+
+#+DOWNLOADED: screenshot @ 2021-09-07 09:16:27
+[[file:Integralrechnung/2021-09-07_09-16-27_screenshot.png]]
+/Zerlegung des Intervalls $[a_1, b_1] \times [a_2, b_2$/
+
+Wenn die sich für beliebig feine Zerlegungen immer weiter annähern ($s_f = S_f$) ist die Funktion integrierbar ($\in R(I)$).
 
 $$\int_I f dx := \int_I f(x) dx = s_f = S_f$$
 
@@ -1483,10 +1507,71 @@ Es gelten analog zu reellen Integralen die gleichen grundlegenden Sätze:
 - Integration ist monoton (erhält Ungleichungen)
 - $C(I) \subseteq R(I)$
 *** Berechnen
-Wenn Funktion $f$ unter dem Integral stetig:
+Wenn die Funktion $f$ unter dem Integral stetig ist, kann man nacheinander nach den einzelnen Parametern integrieren:
 
 $$\int_I f(x) dx = \int_I f(x_1, \dots , x_n) d(x_1, \dots , x_n) = \int_{a_1}^{b_1} \left( \dots \int_{a_{n - 1}}^{b_{n - 1}} \left( \int_{a_n}^{b_n} f(x_1, \dots , x_n) dx_n \right) dx_{n - 1} \dots \right) dx_1$$
 
+:Anwendung:
+Beispiel: $I := [0, \frac{\pi}{2}] \times [0, \frac{\pi}{2}]$.
+
+\begin{align}
+\int_I \sin(x + y) d(x, y) &= \int_0^{\frac{\pi}{2}} \left( \int_0^{\frac{\pi}{2}} \sin(x + y) dx \right) dy \\
+&= \int_0^{\frac{\pi}{2}} [-\cos(x + y)]_0^{\frac{\pi}{2}} dy \\
+&= \int_0^{\frac{\pi}{2}} \cos(y) - \cos(\frac{\pi}{2} + y) dy \\
+&= \int_0^{\frac{\pi}{2}} \cos(y) + \sin(y) dy \\
+&= [\sin y - \cos y]_0^{\frac{\pi}{2}} \\
+&= (\sin \frac{\pi}{2} - \cos \frac{\pi}{2}) - (\sin 0 - \cos 0) = (1 - 0) - (0 - 1) = 2
+\end{align}
+
+:END:
+
+*** Inhalt von Mengen
+Gegeben eine Menge $B \subseteq \mathbb{R}^n$ definiert man die /charakteristische Funktion/ von $B$:
+
+$$c_B(x) := \begin{cases}
+1,& x \in B\\
+0,& x \not\in B
+\end{cases}$$
+
+Nun wählt man ein [[*Abgeschlossen- und Kompaktheit][kompaktes]] Intervall $I$, in dem $B$ enthalten ist ($B \subseteq I$). Mit /Zerlegungen/ von $I$ kann man nun /äußeren/ und /inneren/ Inhalt von $B$ bestimmen.
+
+#+DOWNLOADED: screenshot @ 2021-09-07 09:41:23
+[[file:Integralrechnung/2021-09-07_09-41-23_screenshot.png]]
+Äußerer Inhalt: Enthält alle Teilintervalle, die die Menge schneiden.
+Innerer Inhalt: Enthält alle Teilintervalle, die vollständig in der Menge liegen.
+
+Dies ist gleich der entsprechenden Ober- und Untersummen der Funktion $c_B$ über die jeweilige Zerlegung.
+
+Die Menge $B$ ist *messbar* gdw. $c_B \in R(I)$. Dann ist der *Inhalt der Menge* definiert als:
+
+$$|B| := \int_I c_B(x) dx$$
+
+**** Eigenschaften
+$A, B \subseteq \mathbb{R}^n$ messbare Mengen:
+
+- $A \cup B$, $A \cap B$, $A \setminus B$ sind messbar
+- $A \subseteq B \Rightarrow |A| \leq |B|$
+- $|A \cup B| = |A| + |B| - |A \cap B|$
+
+**** Über Messbaren Mengen Integrieren
+Man kann Funktionen jetzt auch über anderen Mengen als nur Intervallen integrieren. Gegeben eine messbare Menge $B$ und eine Funktion $f : B \to \mathbb{R}$ definiert man sich hierzu
+
+$$f_B(x) := \begin{cases}
+f(x),& x \in B \\
+0,& x \not\in B
+\end{cases}$$
+
+Und integriert das einfach über einem Intervall mit $B \subseteq I$.
+
+$$\int_B f(x) dx := \int_I f_B(x) dx$$
+
+Wenn $f_B \in R(I)$ ist, dann ist das definiert und man schreibt auch $f \in R(B)$.
+
+Es gelten hier die gleichen Grundregeln wie bei anderen Integralen auch.
+
+Zusätzlich (s. Eigenschaften oben):
+
+$$\int_{A \cup B} fdx = \int_A fdx + \int_B fdx - \int_{A \cap B} fdx$$
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
 
