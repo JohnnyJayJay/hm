@@ -852,6 +852,10 @@ Gegeben eine Funktion $f : D \to \mathbb{R}$ und $a, b \in D$ wie zuvor: Wenn vo
 
 Formal:
 $$f(a)f(b) \leq 0 \Rightarrow \exists x_0 \in [a, b] : f(x_0) = 0$$
+** Satz vom Minimum und Maximum
+Wenn die Definitionsmenge $D$ einer stetigen Funktion $f : D \to \mathbb{R}$ kompakt ist, dann ist auch die Bildmenge $f(D)$ kompakt und die Funktion hat ein globales Minimum und Maximum in Punkten aus $D$.
+
+$$\exists x_1, x_2 \in D : f(x_1) = \min f(D) \text{ und } f(x_2) = \max f(D)$$
 ** Gleichmäßige Stetigkeit
 Gleichmäßige Stetigkeit ist eine stärkere Form der [[*Stetigkeit][Stetigkeit]]. Anders als normale Stetigkeit ist sie nicht für einzelne Punkte definiert, sondern nur für den gesamten Definitionsbereich einer Funktion.
 
@@ -1329,6 +1333,118 @@ Hier kann man nun mit der [[*Mehrdimensional, Vektorwertig][Kettenregel]] differ
 Man erhält also
 
 $$f_x(x, g(x)) + f_y(x, g(x)) g'(x) = 0 \Leftrightarrow g'(x) = - \frac{f_x(x, g(x))}{f_y(x, g(x))}$$
+*** Allgemeiner Satz
+Implizit definierte Funktionen gibt es nicht nur für die Dimensionen oben, sondern allgemein für Funktionen $f = (f_1, \dots , f_p) : D \to \mathbb{R}^p$, wobei $D \subseteq \mathbb{R}^{n + p}$. Den Parametervektor dieser Funktion betrachtet man als zwei separate Vektoren - $f(x, y)$, $x \in \mathbb{R}^n, y \in \mathbb{R}^p$.
+
+Außerdem definiert man diese Matrizen:
+
+$$\frac{\partial f}{\partial x} := \begin{pmatrix}
+\frac{\partial f_1}{\partial x_1} & \dots & \frac{\partial f_1}{\partial x_n} \\
+\vdots & & \vdots \\
+\frac{\partial f_p}{\partial x_1} & \dots & \frac{\partial f_p}{\partial x_n}
+\end{pmatrix}, \; \;
+\frac{\partial f}{\partial y} := \begin{pmatrix}
+\frac{\partial f_1}{\partial y_1} & \dots & \frac{\partial f_1}{\partial y_p} \\
+\vdots & & \vdots \\
+\frac{\partial f_p}{\partial y_1} & \dots & \frac{\partial f_p}{\partial y_p}
+\end{pmatrix}$$
+
+Das ist im Prinzip die [[*Mehrdimensional, Vektorwertig][Jacobi-Matrix]] von $f$, nur halt jeweils für einen Teil der Parameter. Fügt man sie aneinander, erhält man
+
+$$f' = J_f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right)$$
+
+Gegeben:
+- $(x_0, y_0) \in D$ (wobei $x_0 \in \mathbb{R}^n, y_0 \in \mathbb{R}^p$)
+- $f(x_0, y_0) = 0$
+- $\det \frac{\partial f}{\partial y}(x_0, y_0) \neq 0$ (Matrix invertierbar)
+
+Dann existieren $\delta, \eta > 0$ sodass
+a. $U_{\delta}(x_0) \times U_{\eta}(y_0) \subseteq D$
+b. $\forall x \in U_{\delta}(x_0) \; \exists_1 y =: g(x) \in U_{\eta}(y_0) : f(x, y) = 0$
+c. $g \in C^1(U_{\delta}(x_0),\mathbb{R}^p)$
+d. $\forall x \in U_{\delta}(x_0) : \det \frac{\partial f}{\partial y}(x, g(x)) \neq 0$
+e. $\forall x \in U_{\delta}(x_0) : g'(x) = - \left( \frac{\partial f}{\partial y}(x, g(x)) \right)^{-1} \cdot \left( \frac{\partial f}{\partial x}(x, g(x)) \right)$
+f. $g(x_0) = y_0$
+
+(Dieses $(x_0, y_0)$ zu finden ist der 1. Schritt im Lösungsverfahren, dann die Vorbedingungen dieses Satzes prüfen - die hier definierte Funktion $g : U_{\delta}(x_0) \to U_{\eta}(y_0)$ erfüllt dann die Gleichung)
+
+:Beispiel:
+Beispiel: $f(x, y, z) = x^4 + 2x \cos y + \sin z$. Frage: Was erfüllt $f(x, y, z) = 0$?
+
+Die Funktion ist $\mathbb{R}^3 \to \mathbb{R}^1$, d.h. wir wissen $p = 1$ und $3 = n + p \Leftrightarrow 3 - p = 3 - 1 = 2 = n$. D.h., der "x-Teil" sind die ersten beiden Parameter, der "y-Teil" der letzte Parameter.
+
+Nun müssen wir einen Punkt $(x_0, y_0) \in D$ ($x_0 \in \mathbb{R}^2, y_0 \in \mathbb{R}$) finden, sodass $f(x_0, y_0) = 0$ und $\det \frac{\partial f}{\partial y}(x_0, y_0) \neq 0$ sind.
+Zunächst $\frac{\partial f}{\partial y} = f_z$ (es ist hier nur eine $1 \times 1$ "Matrix", da reellwertig) berechnen:
+
+$$f_z(x_0, y_0) = f_z(x, y, z) = \cos z$$
+
+Eine nicht-Nullstelle von $\cos z$ wäre z.B. $z = 0$. Jetzt noch $x$ und $y$ finden, sodass $f$ 0 wird:
+
+$$f(x, y, 0) = x^4 + 2x \cos y + \sin 0 = x^4 + 2x \cos y$$
+
+Man sieht, für $x = 0$ und $z = 0$ wird die Funktion auch 0. Wähle also z.B. auch noch $y = 0$. Dann hat man $x_0 = (0, 0)$ und $y_0 = 0$ gefunden, die die Kriterien erfüllen. Nun gibt es nach dem Satz $\delta, \eta$, sodass eine Funktion $g : U_{\delta}((0, 0)) \to U_{\eta}(0)$ die Gleichung $f(x, y, g(x, y)) = 0$ erfüllt.
+
+Nun $g'(0, 0)$ berechnen - nach dem Satz gilt:
+
+\begin{align}
+g'(x, y) &= - \left( \frac{\partial f}{\partial z}(x, y, g(x, y)) \right)^{-1} \cdot \left( \frac{\partial f}{\partial (x, y)}(x, y, g(x, y)) \right) \\
+&= -(f_z(x, y, g(x, y)))^{-1} \cdot (f_x(x, y, g(x, y)), f_y(x, y, g(x, y))) \\
+&= -(\cos g(x, y))^{-1} \cdot (4x^3 + 2 \cos y, - 2x \sin y) \\
+&= \left( -\frac{4x^3 + 2 \cos y}{\cos g(x, y)}, -\frac{- 2x \sin y}{\cos g(x, y)} \right)
+\end{align}
+
+$(0, 0)$ einsetzen:
+
+$$g'(0, 0) = \left(-\frac{4 \cdot 0^3 + 2 \cos 0}{\cos g(0, 0)}, -\frac{- 2 \cdot 0 \cdot \sin 0}{\cos g(0, 0)}\right) = \left( -\frac{2}{\cos 0}, -\frac{0}{\cos 0}\right) = (-2, 0)$$
+:END:
+*** Umkehrsatz
+Stetig partiell differenzierbare Funktionen mit gleichen Dimensionen im Defininitions- und Zielbereich sind unter gewissen Bedingungen um einen Punkt $x_0$ injektiv und umkehrbar.
+
+Gegeben: Funktion $f \in C^1(D, \mathbb{R}^n)$ wobei $D \subseteq \mathbb{R}^n$ und offen und ein Punkt $x_0 \in D$.
+
+Wenn nun $\det f'(x_0) = \det J_f(x_0) \neq 0$, dann gibt es einen Radius $\delta > 0$ mit
+
+a. $U_{\delta}(x_0) \subseteq D$ (Bereich um $x_0$ ist im Definitionsbereich)
+b. $f(U_{\delta}(x_0))$ (Bildmenge) ist offen
+c. $f$ ist auf $U_{\delta}(x_0)$ injektiv
+d. Die Umkehrabbildung $f^{-1} : f(U_{\delta}(x_0)) \to U_{\delta}(x_0)$ existiert und ist stetig partiell differenzierbar
+e. $\det f'(x) \neq 0$ auf ganz $U_{\delta}(x_0)$
+f. $(f^{-1})'(y) = (f'(f^{-1}(y)))^{-1}$
+
+:Beispiel:
+Beispiel: $f(x, y) = (e^x \cos y, e^x \sin y)$
+
+$$f'(x, y) = J_f(x, y) = \begin{pmatrix}
+\frac{\partial f_1}{\partial x}(x, y) & \frac{\partial f_1}{\partial y}(x, y) \\
+\frac{\partial f_2}{\partial x}(x, y) & \frac{\partial f_2}{\partial y}(x, y)
+\end{pmatrix} = \begin{pmatrix}
+e^x \cos y & - e^x \sin y \\
+e^x \sin y & e^x \cos y
+\end{pmatrix}$$
+
+Bestimme die Determinante in Abhängigkeit von $(x, y)$:
+
+$$\det f'(x, y) = (e^x \cos y)^2 - (- (e^x \sin y)^2) = e^{2x} \cos^2 y + e^{2x} \sin^2 x = e^{2x} (\cos^2 y + \sin^2 y) = e^{2x} \neq 0$$
+
+Wie man sieht, ist die Determinante für beliebige $(x, y) \in D$ nicht 0 und somit gilt der Umkehrsatz für alle $x_0 \in D$.
+
+Z.B. $(x, y) = \left(0, \frac{\pi}{2}\right)$:
+
+$$f(x, y) = f\left(0, \frac{\pi}{2}\right) = \left(e^0 \cos \frac{\pi}{2}, e^0 \sin \frac{\pi}{2}\right) = (0, 1)$$
+
+Also ist $\left(0, \frac{\pi}{2}\right) = f^{-1}(0, 1)$. Frage: Was ist $(f^{-1})'(0, 1)$? Unter Verwendung von *f.* aus dem Umkehrsatz:
+
+$$(f^{-1})'(0, 1) = (f'(f^{-1}(0, 1)))^{-1} = \left(f'\left(0, \frac{\pi}{2}\right)\right)^{-1} = \begin{pmatrix}
+e^0 \cos \frac{\pi}{2} & -e^0 \sin \frac{\pi}{2} \\
+e^0 \sin \frac{\pi}{2} & e^0 \cos \frac{\pi}{2}
+\end{pmatrix}^{-1} = \begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix}^{-1} = \begin{pmatrix}
+0 & 1 \\
+-1 & 0
+\end{pmatrix}$$
+:END:
 
 * Integralrechnung
 
@@ -1572,6 +1688,129 @@ Es gelten hier die gleichen Grundregeln wie bei anderen Integralen auch.
 Zusätzlich (s. Eigenschaften oben):
 
 $$\int_{A \cup B} fdx = \int_A fdx + \int_B fdx - \int_{A \cap B} fdx$$
+* Differentialgleichungen 1. Ordnung
+Eine Differentialgleichung (/Dgl./) 1. Ordnung ist eine Gleichung von der Form
+
+$$f(x, y(x), y'(x)) = 0$$
+
+$f$ ist also eine Funktion $D \to \mathbb{R}$ mit $D \subseteq \mathbb{R}^3$ und $y$ ist eine Funktion $I \to \mathbb{R}$, wobei $I$ ein Intervall $\subseteq \mathbb{R}$ ist.
+
+$y$ *löst* die Dgl. gdw. $y$ auf $I$ diffbar ist und $f(x, y(x), y'(x)) = 0$ für alle $x \in I$ definiert ($(x, y(x), y'(x)) \in D$) und erfüllt ist.
+
+Aus einer Dgl. kann man ein *Anfangswertproblem* (/AWP/) machen:
+
+$$(A) \begin{cases} f(x, y(x), y'(x)) = 0 \\ y(x_0) = y_0 \end{cases}$$
+
+Also zusätzlich dazu, dass $y$ die Gleichung für alle x auf einem Intervall erfüllt, fordert man auch noch, dass $y$ in einem bestimmten Punkt $x_0 \in \mathbb{R}$ den Wert $y_0$ hat. Wenn ein $y$ beides erfüllt, ist es eine Lösung für das AWP. Also, um ein AWP zu lösen: $y(x_0) = y_0$ überprüfen (ggf. Konstanten so wählen, dass es erfüllt ist).
+** Differentialgleichungen mit getrennten Veränderlichen
+Gegeben zwei stetige Funktionen $f, g$, definiert auf Intervallen $I_1, I_2 \subseteq \mathbb{R}$, ist eine Gleichung der Form
+
+$$y'(x) = f(x)g(y(x))$$
+
+eine *Dgl. mit getrennten Veränderlichen*.
+
+*Lösungen:*
+
+$$\int \frac{dy}{g(y)} = \int f(x)dx$$
+
+nach $y$ auflösen (nur möglich falls $g(y) \neq 0$ auf $I_1$).
+
+Merkregel:
+
+$$y' = f(x)g(y) \Leftrightarrow \frac{dy}{dx} = f(x)g(y) \Leftrightarrow \frac{dy}{g(y)} = f(x)dx$$
+
+:Beispiel:
+Beispiel:
+$$(A) \begin{cases}y'(x) = 1 + y^2(x) \\ y(0) = 1\end{cases}$$
+
+Die Funktionen sind hier $f(x) = 1$ und $g(y) = 1 + y^2$.
+
+Finde Lösungen:
+\begin{align}
+\int \frac{dy}{g(y)} &= \int f(x) dx \\
+\Leftrightarrow \int \frac{1}{1 + y^2} dy &= \int 1 dx \\
+\Rightarrow \arctan y &= x + c \\
+\Leftrightarrow y(x) &= \tan(x + c)
+\end{align}
+
+D.h., die allgemeine Lösung für die Dgl. ist $y(x) = \tan(x + c)$. Nun finde eine Lösung für das AWP:
+
+$$y(0) = \tan(0 + c) = \tan(c) = 1$$
+
+Also müssen wir ein $c$ finden, sodass $\sin c = \cos c$. Wähle z.B. $c = \frac{\pi}{4} \Rightarrow \sin c = \cos c = \frac{1}{2} \Rightarrow \tan c = 1$.
+Also ist $y(x) = \tan(x + \frac{\pi}{4})$ eine Lösung von $(A)$.
+:END:
+
+** Lineare Differentialgleichungen
+Gegeben zwei stetige Funktionen $f, s$, definiert auf einem Intervall $I \subseteq \mathbb{R}$, ist eine Gleichung der Form
+
+$$y'(x) = f(x)y(x) + s(x)$$
+
+eine *lineare Dgl.* mit der *Störfunktion* $s$. Wenn $s = 0$, dann handelt es sich um eine *homogene* lineare Dgl, ansonsten ist es eine *inhomogene* Dgl.
+
+*Lösungen*:
+1. Homogene Dgl. lösen ($s$ weglassen):
+   $y_h = ce^{\int f(x)dx} \; (c \in \mathbb{R})$
+2. Variation der Konstanten (Idee: Spezielle Lösung finden durch $y_p(x) = c(x)e^{\int f(x) dx}$):
+   $c(x) = \int \frac{s(x)}{y_h(x)} dx \Rightarrow y_p(x) = y_h(x) \cdot c(x)$
+3. Zusammenführen:
+   $y(x) = y_p(x) + y_h(x)$ (allgemeine Lösung)
+
+*Anfangswertprobleme haben bei linearen Dgl. genau eine Lösung.*
+:Beispiel:
+Beispiel:
+$$(A) \begin{cases}y'(x) = (\sin x)y(x) + \sin x \\ y(0) = 3 \end{cases}$$
+
+Die Funktionen sind hier $f(x) = s(x) = \sin x$.
+
+1. Homogene Dgl. lösen:
+   $$
+   y_h &= c e^{\int f(x) dx} \\
+   &= c e^{\int \sin x dx} \\
+   &= c e^{- \cos x}
+   $$
+2. Variation der Konstanten:
+   $$
+   c(x) = \int \frac{s(x)}{y_h(x)}dx = \int \frac{\sin x}{c e^{- \cos x}} dx = \frac{1}{c} \int e^{\cos x} \sin x dx = - \frac{1}{c} \int e^t dt = - \frac{e^t}{c} = - \frac{e^{\cos x}}{c}
+   $$
+   Und damit
+   $$y_p(x) = y_h(x) \cdot c(x) = -\frac{ce^{-\cos x}e^{\cos x}}{c} = -e^0 = -1$$
+3. Zusammenführen:
+   $$y(x) = y_p(x) + y_h(x) = ce^{-\cos x} - 1$$
+
+Nun noch das AWP lösen: $y(0) = ce^{- \cos 0} - 1 = ce^{-1} - 1 = 3$.
+Also, nach $c$ auflösen:
+$$\frac{c}{e} - 1 = 3 \Leftrightarrow c = 4e$$
+
+D.h., die Lösung, die das AWP löst ist $y(x) = 4e^{1 - \cos x} - 1$.
+
+:END:
+
+** Bernoulli- und Riccati-Differentialgleichungen
+Gegeben zwei stetige Funktionen $g, h$, definiert auf einem Intervall $I \in \mathbb{R}$ und eine Zahl $\alpha \in \mathbb{R}$, ist eine Gleichung der Form
+
+$$y'(x) + g(x)y(x) + h(x)(y(x))^{\alpha} = 0$$
+
+eine *Bernoullische Dgl.* Bei Fall $\alpha = 0$ oder $\alpha = 1$ ist das auch eine [[*Lineare Differentialgleichungen][lineare Dgl.]]
+
+*Lösungen:*
+1. Finde Lösung $z$ für lineare Dgl.
+   $$z'(x) = -(1 - \alpha) g(x)z(x) - (1 - \alpha)h(x)$$
+2. Lösung für Bernoulli-Dgl.:
+   $$y(x) = z(x)^{\frac{1}{1 - \alpha}}$$
+
+*** Riccati-Differentialgleichungen
+$$y'(x) + g(x)y(x) + h(x)y^2(x) = k(x)$$
+
+Das ist eine *Riccati-Dgl.* ($g,h,k \in C(I)$).
+
+*Lösungen:*
+1. Eine Lösung $y_1$ muss bereits bekannt sein (z.B. durch raten)
+2. Folgende Bernoulli-Dgl. lösen:
+   $$u'(x) = - (g(x) + 2h(x)y_1(x))u(x) - h(x)u^2(x)$$
+3. Weitere Lösungen der Riccati-Dgl. sind nun
+   $$y(x) = y_1(x) + u(x)$$
+
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
 
