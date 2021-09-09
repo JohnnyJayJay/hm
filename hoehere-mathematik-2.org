@@ -1799,6 +1799,35 @@ eine *Bernoullische Dgl.* Bei Fall $\alpha = 0$ oder $\alpha = 1$ ist das auch e
 2. Lösung für Bernoulli-Dgl.:
    $$y(x) = z(x)^{\frac{1}{1 - \alpha}}$$
 
+:Beispiel:
+Beispiel: $y'(x) + \frac{y(x)}{1 + x} + (1 + x)y^4(x) = 0$ auf dem Intervall $(-1, \infty)$.
+
+Komponenten identifizieren: $g(x) = \frac{1}{1 + x}$, $h(x) = (1 + x)$, $\alpha = 4$.
+
+[[*Lineare Differentialgleichungen][Lineare Dgl.]] aufstellen und lösen:
+$$z'(x) = -(1 - \alpha)g(x)z(x) - (1 - \alpha)h(x) = -(1 - 4)\frac{1}{1 + x}z(x) - (1 - 4)h(x) = \frac{3}{1 + x}z(x) + 3(1 + x)$$
+$\int g(x) dx$ berechnen (für homogene Lösung):
+$$\int 3g(x)dx = \int \frac{3}{1 + x} dx = 3 \int \frac{1}{1 + x} dx = 3 \log (1 + x)$$
+Homogene Lösung:
+$$z_h(x) = ce^{\int g(x) dx} = ce^{3\log(1 + x)} = c(1 + x)^3, \; c \in \mathbb{R}$$
+Variation der Konstanten:
+\begin{align}
+c(x) &= \int \frac{3h(x)}{z_h(x)} dx\\
+&= \int \frac{3(1 + x)}{c (1 + x)^3} dx\\
+&= \int \frac{3}{c(1 + x)^2} dx\\
+&= \frac{3}{c} \int \frac{1}{(1 + x)^2} dx\\
+&= \frac{3}{c} \int \frac{1}{t^2}dt \; (t = (1 + x), \frac{dt}{dx} = 1 \Leftrightarrow dx = 1 dt) \\
+&= -\frac{3}{ct} = -\frac{3}{c(x + 1)}
+\end{align}
+Daraus folgt die partikuläre Lösung
+$$z_p(x) = c(x)z_h(x) = - \frac{3}{c(x + 1)} \cdot c(1 + x)^3 = -3 (1 + x)^2$$
+Zusammenführen:
+$$z(x) = z_p(x) + z_h(x) = -3(1 + x)^2 + c(1 + x)^3$$
+
+Lösung für ursprüngliche Bernoulli-Dgl.:
+$$y(x) = z(x)^{\frac{1}{1 - 4}} = ((1 + x)^2 + c(1 + x)^3)^{-\frac{1}{3}}$$
+:END:
+
 *** Riccati-Differentialgleichungen
 $$y'(x) + g(x)y(x) + h(x)y^2(x) = k(x)$$
 
@@ -1811,6 +1840,55 @@ Das ist eine *Riccati-Dgl.* ($g,h,k \in C(I)$).
 3. Weitere Lösungen der Riccati-Dgl. sind nun
    $$y(x) = y_1(x) + u(x)$$
 
+* Lineare Systeme mit Konstanten Koeffizienten
+Ein *lineares Differentialgleichungssystem* sieht wie folgt aus:
+
+\begin{align}
+& y_1'(x) = a_{1,1}y_1(x) + \dots + a_{1,n}y_n(x) + b_1(x) \\
+& \vdots \\
+& y_n'(x) = a_{n,1}y_1(x) + \dots + a_{n,n}y_n(x) + b_n(x)
+\end{align}
+
+Also: $n$ von einander abhängige [[*Lineare Differentialgleichungen][lineare Dgl.]] - dabei $b_j \in C(I, \mathbb{R})$ und $a_{i,j} \in \mathbb{R}$.
+
+Man kann es auch einfacher wie in LA schreiben: Dafür
+
+$$y(x) = \begin{pmatrix}y_1(x) \\ \vdots \\ y_n(x) \end{pmatrix} \in \mathbb{R}^n, A = \begin{pmatrix}
+a_{1,1} & \dots & a_{1,n}\\
+\vdots & & \vdots \\
+a_{n, 1} & \dots & a_{n, n}
+\end{pmatrix} \in \mathbb{R}^{n \times n}, b(x) = \begin{pmatrix}b_1(x) \\ \vdots \\ b_n(x)\end{pmatrix} \in \mathbb{R}^n$$
+
+=>
+
+$$y'(x) = Ay(x) + b(x)$$
+
+Wenn $b = 0$, ist das System /homogen/, ansonsten ist es /inhomogen/.
+
+Ebenfalls wie in LA bildet der Lösungsraum für ein homogenes System einen reellen Vektorraum (mit Dimension $n$), und allgemeine Lösungen für inhomogene Systeme lassen sich schreiben als "Allgemeine Lösung für zugehöriges homogenes System + Spezielle Lösung für inhomogenes System".
+
+*AWPs mit inhomogenen Systemen haben immer genau eine Lösung.*
+
+** Homogenes System Lösen
+
+1. Eigenwerte von $A$ bestimmen
+   1. Charakteristisches Polynom berechnen: $p_A(X) = \det (A - XI_n)$ ($I_n$ ist die $n \times n$ Einheitsmatrix)
+   2. Nullstellen von $p_A(X)$ inkl. algebraische Vielfachheiten bestimmen
+2. Bestimme für alle Eigenwerte (*für komplexe Eigenwerte nur jeweils einen der beiden komplex konjugierten*) $\lambda_j$ eine Basis von $V_j = \ker (A - \lambda_jI_n)^{k_j}$, wobei $k_j$ die algebraische Vielfachheit von $\lambda_j$ ist.
+   Dabei kann man zuerst $\ker (A - \lambda_jI_n)$ berechnen, dann Basis zu $\ker (A - \lambda_jI_n)^2$ ergänzen usw.
+3. Für Eigenwert $\lambda_j$ und Basisvektor $v \in V_j$ ist
+   $$y(x) = e^{\lambda_jx} \left(v + \frac{x}{1!}(A - \lambda_jI_n)v + \dots + \frac{x^{k_j - 1}}{(k_j - 1)!}(A - \lambda_jI_n)^{k_j - 1}v \right) $$
+   eine Lösung für das System (wenn $\lambda_j \in \mathbb{R}$) bzw. zwei Lösungen für das System $Im(y), Re(y)$ wenn $\lambda_j \in \mathbb{C} \setminus \mathbb{R}$.
+4. Alle Lösungen $y^{(i)} : \mathbb{R} \to \mathbb{R}^n$ aus 3. zusammen sind ein *Fundamentalsystem* (Basis des Lösungsraums des Differentialgleichungssystems)
+
+** Inhomogenes System Lösen
+
+1. Löse das zugehörige homogene System $y'(x) = Ay(x)$
+2. Füge die Lösungen aus dem Fundamentalsystem als Spalten zu einer Matrix zusammen
+   $$Y(x) := (y^{(1)}(x), \dots , y^{(n)}(x))$$
+3. Bestimme spezielle Lösung $y_p(x) = Y(x)c(x)$.
+   Dabei ist $c(x) = \int (Y(x))^{-1}b(x) dx$
+4. Füge spezielle und homogene Lösungen zusammen $\{y_p + y_h | y_h \in \{y^{(1)}, \dots, y^{(n)}\}\}$
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
 
