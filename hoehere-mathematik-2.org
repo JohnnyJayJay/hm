@@ -1889,6 +1889,48 @@ Ebenfalls wie in LA bildet der Lösungsraum für ein homogenes System einen reel
 3. Bestimme spezielle Lösung $y_p(x) = Y(x)c(x)$.
    Dabei ist $c(x) = \int (Y(x))^{-1}b(x) dx$
 4. Füge spezielle und homogene Lösungen zusammen $\{y_p + y_h | y_h \in \{y^{(1)}, \dots, y^{(n)}\}\}$
+
+* Lineare Differentialgleichungen n. Ordnung
+Gegeben eine auf $I \subseteq \mathbb{R}$ (Intervall) $n$ mal [[Differentialrechnung][differenzierbare]] Funktion $y : I \to \mathbb{R}$ und Zahlen $a_0, \dots, a_{n-1} \in \mathbb{R}$, sowie $a_n = 1$:
+
+$$Ly := \sum\limits_{k=0}^{n} a_ky^{(k)} = a_0y + a_1y' + \dots + a_{n - 1}y^{(n - 1)} + y^{(n)}$$
+
+$Ly$ ist also eine Funktion $I \to \mathbb{R}$.
+
+$$(Ly)(x) = b(x)$$
+
+ist eine *lineare Dgl. n. Ordnung*. Falls $b = 0$ ist sie *homogen*, ansonsten *inhomogen*.
+
+Lösungen verhalten sich genau wie bei [[*Lineare Systeme mit Konstanten Koeffizienten][linearen Systemen]].
+
+** Homogene Dgl. Lösen
+$$(Ly)(x) = 0$$
+
+1. /Charakteristisches Polynom der Dgl./ aufstellen:
+   $$p(X) = \sum_{k=0}^{n} a_kX^k = a_0 + a_1 X + \dots + a_{n - 1}X^{n - 1} + X^n$$
+2. Nullstellen $\lambda_j$ und algebraische Vielfachheiten $k_j$ berechnen (wie bei [[*Lineare Systeme mit Konstanten Koeffizienten][linearen Systemen]] - d.h. jeweils nur eine der beiden zusammengehörigen komplexen Nullstellen, falls vorhanden)
+3. Für alle Nullstellen $\lambda_j$:
+   - Falls reell: $e^{\lambda_jx}, xe^{\lambda_jx}, \dots, x^{k_j - 1}e^{\lambda_jx}$ sind Lösungen
+   - Falls komplex: $\lambda_j = \alpha + i \beta$
+     $e^{\alpha x} \cos \beta x, \; x e^{\alpha x} \cos \beta x, \dots , \; x^{k_j - 1}e^{\alpha x} \cos \beta x$
+     und
+     $e^{\alpha x} \sin \beta x, \; x e^{\alpha x} \sin \beta x, \dots, \; x^{k_j - 1}e^{\alpha x} \sin \beta x$
+     sind Lösungen
+4. Alle Lösungen aus 3. zusammen bilden eine Basis für den Lösungsraum der Dgl.
+
+** Inhomogene Dgl. Lösen
+$$(Ly)(x) = b(x)$$
+
+1. Voraussetzung: $b(x) = q(x)e^{\gamma x}\cos (\delta x)$ ($q(x)$ Polynom von Grad $m$, $\gamma, \delta \in \mathbb{R}$) - $b$ muss von dieser Form sein
+2. Charakteristisches Polynom $p$ der zugehörigen homogenen Dgl. $(Ly)(x) = 0$ berechnen
+3. Fallunterscheidung:
+   - $p(\gamma + i \delta) \neq 0$ (keine Nullstelle):
+     $$y_p(x) := (\hat{q}(x) \cos(\delta x) + \tilde{q}(x) \sin(\delta x)) e^{\gamma x}$$
+   - $p(\gamma + i \delta) = 0$ (Nullstelle mit Vielfachheit $v$):
+     $$y_p(x) := x^v (\hat{q}(x) \cos (\delta x) + \tilde{q}(x) \sin(\delta x)) e^{\gamma x}$$
+4. $\hat{q}$ und $\tilde{q}$ sind Polynome von Grad $m$ (also gleicher Grad wie $q$ in $b(x)$)
+
+
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
 
