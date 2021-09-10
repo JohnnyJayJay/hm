@@ -653,6 +653,10 @@ Der Grenzwert einer [[*Stetigkeit][stetigen Funktion]] $f$ in $x_0$ muss gleich 
 
 Z.B. $f : (0, \infty) \to \mathbb{R}$ mit $f(x) = e^x + x^4 + 2x + 5$:
 $\lim_{x \to 0} f(x) = f(0) = 1 + 0 + 0 + 5 = 6$
+*** Glattheit
+Wenn $f : \mathbb{R} \to \mathbb{C}$ [[*Stückweise Stetigkeit und Glattheit][stückweise glatt]], $f$ sowie $f'$ [[*Absolute Integrierbarkeit][absolut integrierbar]] und $f$ höchstens endlich viele [[*Stetigkeit][unstetige]] Punkte, dann ist $f$ beschränkt und
+
+$$\lim\limits_{x \to \infty} f(x) = \lim\limits_{x \to -\infty} f(x) = 0$$
 *** Regel von l'Hospital
 Ein Grenzwert eines Quotienten von zwei Funktionen kann unter bestimmten Bedingungen über die Ableitungen der Funktionen berechnet werden.
 
@@ -1288,6 +1292,9 @@ $$\forall x \in D : f(x) \leq f(x_0)$$
 ** Mehrdimensional, Vektorwertig
 Wie auch schon früher betrachtet man vektorwertige Funktionen (also z.B. $f : \mathbb{R}^2 \to \mathbb{R}^3$) im Grunde als ein Tupel von reellwertigen Funktionen ($f = (f_1, f_2, f_3)$).
 
+
+*** Komplexe Funktionen
+Spezialfall: Komplexe Funktionen. Wie zu erwarten ist dort $f'(x) = Re'(f)(x) + i Im'(f)(x)$.
 *** Partielle Differenzierbarkeit
 $f : D \to \mathbb{R}^m$ ($D \in \mathbb{R}^n$) partiell differenzierbar $\Leftrightarrow$ alle $f_i$ partiell differenzierbar. Das Äquivalent zum Gradienten ist hier die /Jacobi-/ oder /Funktionalmatrix/:
 
@@ -1595,6 +1602,12 @@ $$\int_{\alpha}^{\beta} f(x) dx \text{ konvergiert} \Leftrightarrow \forall \eps
 
 1. Wenn $|f| \leq h$ auf $[\alpha, \beta)$ und $\int_{\alpha}^{\beta} h(x) dx$ konvergent, dann $\int_{\alpha}^{\beta} f(x) dx$ absolut konvergent.
 2. Wenn $|f| \geq h \geq 0$ auf $[\alpha, \beta)$ und $\int_{\alpha}^{\beta} h(x) dx$ divergent, dann $\int_{\alpha}^{\beta} f(x) dx$ divergent.
+*** Absolute Integrierbarkeit
+Eine Funktion $f$ ist absolut integrierbar, wenn
+
+$$\int_{-\infty}^{\infty} |f(x)|dx$$
+
+konvergent ist.
 
 ** Weitere Sätze
 Gegeben $f, g \in R([a,b])$, $g \geq 0$, $m := \inf f([a,b]), \; M := \sup f([a,b])$.
@@ -1622,6 +1635,11 @@ Es gelten analog zu reellen Integralen die gleichen grundlegenden Sätze:
 - Kombinationen von integrierbaren Funktionen sind wieder integrierbar (bei $\frac{f}{g}$, wenn $|g(x)| \geq \alpha$ für ein $\alpha > 0$)
 - Integration ist monoton (erhält Ungleichungen)
 - $C(I) \subseteq R(I)$
+
+*** Komplexe Integrale
+Für komplexwertige Funktionen $f$:
+
+$$\int_a^b f(x)dx = \int_a^b Re(f(x)) dx + i \int_a^b Im(f(x)) dx$$
 *** Berechnen
 Wenn die Funktion $f$ unter dem Integral stetig ist, kann man nacheinander nach den einzelnen Parametern integrieren:
 
@@ -1930,6 +1948,63 @@ $$(Ly)(x) = b(x)$$
      $$y_p(x) := x^v (\hat{q}(x) \cos (\delta x) + \tilde{q}(x) \sin(\delta x)) e^{\gamma x}$$
 4. $\hat{q}$ und $\tilde{q}$ sind Polynome von Grad $m$ (also gleicher Grad wie $q$ in $b(x)$)
 
+* Fouriertransformation
+
+** Stückweise Stetigkeit und Glattheit
+Gegeben Funktion $g : [a,b] \to \mathbb{R}$.
+
+*Stückweise stetig:* $[a, b]$ kann in $m$ direkt nebeneinander liegende (z.B. $(1, 2), (2, 4)$) offene Intervalle aufgeteilt werden (1. Intervall fängt bei $a$ an, letztes Intervall hört bei $b$ auf), sodass $g$ auf diesen Intervallen stetig ist.
+
+*Stückweise glatt:* Das gleiche wie stückweise stetig, nur mit Teilintervallen, auf denen $g$ /stetig differenzierbar/ ist.
+
+In diesen Fällen existieren zu jedem Teilintervall die Grenzwerte Richtung Anfang und Ende, also $g(t_j+), g(t_{j + 1}-)$ für alle Teilintervalle $(t_j, t_{j+1})$. Für stückweise glatte Funktionen existieren auch die jeweiligen Grenzwerte der Ableitung.
+
+*Stückweise stetig/glatt auf $\mathbb{R}$ = Auf jedem Intervall $[a, b] \subseteq \mathbb{R}$ stückweise stetig/glatt*
+
+Die Ableitung einer stückweise glatten Funktion kann man für jeden Punkt $x \in (a, b)$ definieren, selbst wenn $g$ dort nicht differenzierbar ist:
+
+$$g'(x) = \frac{1}{2}(g'(x+) + g'(x-))$$
+
+#+DOWNLOADED: screenshot @ 2021-09-10 18:54:05
+[[file:Fouriertransformation/2021-09-10_18-54-05_screenshot.png]]
+
+:Beispiel:
+Beispiel: $g(x) = |x|$
+
+Stückweise glatt auf $\mathbb{R}$, jeweils mit den Intervallen $[a, 0)$ und $(0, b]$. $g'(0-) = -1, g'(0+) = 1 \Rightarrow g'(x) = 0$
+:END:
+
+** Definition
+Gegeben eine [[*Absolute Integrierbarkeit][absolut integrierbare]] und stückweise stetige Funktion $f : \mathbb{R} \to \mathbb{C}$ ist
+
+$$\hat{f}(s) := \frac{1}{2\pi} \int_{-\infty}^{\infty} f(t) e^{-ist} dt$$
+
+die *Fouriertransformierte von $f$*.
+
+Es gilt:
+- $\hat{f}$ ist beschränkt
+- $\lim_{s \to \pm \infty} \hat{f}(s) = 0$
+- $\hat{f}$ ist stetig
+
+** Cauchyscher Hauptwert
+
+Gegeben: Funktion $f : \mathbb{R} \to \mathbb{C}$, integrierbar auf jedem $[a, b] \subseteq \mathbb{R}$. Sofern definiert:
+
+$$CH - \int_{-\infty}^{\infty} f(x)dx := \lim\limits_{\alpha \to \infty} \int_{-\alpha}^{\alpha} f(x)dx$$
+
+Dies ist der *Cauchysche Hauptwert* von $f$.
+
+Wenn $\int_{-\infty}^{\infty} f(x) dx$ [[*Uneigentliche Integrale][konvergiert]], dann ist das gleich dem Cauchyschen Hauptwert.
+
+
+
+Wenn $f$ stückweise glatt und absolut integrierbar:
+
+$$CH- \int_{-\infty}^{\infty} \hat{f}(s) e^{ist}ds = \frac{1}{2} (f(t+) + f(t-))$$
+
+und falls $f$ außerdem stetig
+
+$$CH- \int_{-\infty}^{\infty} \hat{f}(s)e^{ist}ds = f(t)$$
 
 * Footnotes
 [fn:2] Man lässt auch manchmal das $(n \to \infty)$ bei Folgen weg, da oft klar ist was gemeint ist.
