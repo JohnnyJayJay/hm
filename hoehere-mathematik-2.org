@@ -902,6 +902,7 @@ $L$ ist hierbei also eine Konstante, die nicht von dem Punkt oder dem Abstand ab
 
 *Lipschitz-Stetigkeit beweisen*
 - Wenn man $L$ nicht kennt, kann man versuchen, $|f(x) - f(y)|$ nach und nach nach oben abzuschätzen und zu vereinfachen, bis erkennbar wird, welche Konstante benötigt wird.
+- Über den [[*Mittelwertsatz][Mittelwertsatz]]
 - Widerlegen: Gegenbeispiel $(x, y)$ für (jede) Konstante finden.
 
 * Funktionenfolgen
@@ -1687,6 +1688,13 @@ $A, B \subseteq \mathbb{R}^n$ messbare Mengen:
 - $A \subseteq B \Rightarrow |A| \leq |B|$
 - $|A \cup B| = |A| + |B| - |A \cap B|$
 
+$f, g \in R(B)$ und $g \leq f$ auf $B$, dann ist
+
+$$M_{f,g} := \{(x, y) \in B \times \mathbb{R} \; | \; g(x) \leq y \leq f(x)\}$$
+
+messbar mit
+
+$$|M_{f,g}| = \int_B (f - g) dx$$
 **** Über Messbaren Mengen Integrieren
 Man kann Funktionen jetzt auch über anderen Mengen als nur Intervallen integrieren. Gegeben eine messbare Menge $B$ und eine Funktion $f : B \to \mathbb{R}$ definiert man sich hierzu
 
@@ -1894,7 +1902,7 @@ Ebenfalls wie in LA bildet der Lösungsraum für ein homogenes System einen reel
    2. Nullstellen von $p_A(X)$ inkl. algebraische Vielfachheiten bestimmen
 2. Bestimme für alle Eigenwerte (*für komplexe Eigenwerte nur jeweils einen der beiden komplex konjugierten*) $\lambda_j$ eine Basis von $V_j = \ker (A - \lambda_jI_n)^{k_j}$, wobei $k_j$ die algebraische Vielfachheit von $\lambda_j$ ist.
    Dabei kann man zuerst $\ker (A - \lambda_jI_n)$ berechnen, dann Basis zu $\ker (A - \lambda_jI_n)^2$ ergänzen usw.
-3. Für Eigenwert $\lambda_j$ und Basisvektor $v \in V_j$ ist
+3. Für jeden Eigenwert $\lambda_j$ und jeden Basisvektor $v \in V_j$ ist
    $$y(x) = e^{\lambda_jx} \left(v + \frac{x}{1!}(A - \lambda_jI_n)v + \dots + \frac{x^{k_j - 1}}{(k_j - 1)!}(A - \lambda_jI_n)^{k_j - 1}v \right) $$
    eine Lösung für das System (wenn $\lambda_j \in \mathbb{R}$) bzw. zwei Lösungen für das System $Im(y), Re(y)$ wenn $\lambda_j \in \mathbb{C} \setminus \mathbb{R}$.
 4. Alle Lösungen $y^{(i)} : \mathbb{R} \to \mathbb{R}^n$ aus 3. zusammen sind ein *Fundamentalsystem* (Basis des Lösungsraums des Differentialgleichungssystems)
@@ -1939,7 +1947,7 @@ $$(Ly)(x) = 0$$
 ** Inhomogene Dgl. Lösen
 $$(Ly)(x) = b(x)$$
 
-1. Voraussetzung: $b(x) = q(x)e^{\gamma x}\cos (\delta x)$ ($q(x)$ Polynom von Grad $m$, $\gamma, \delta \in \mathbb{R}$) - $b$ muss von dieser Form sein
+1. Voraussetzung: $b(x) = q(x)e^{\gamma x}\cos (\delta x)$ *oder* $b(x) = q(x)e^{\gamma x}\sin(\delta x)$ ($q(x)$ Polynom von Grad $m$, $\gamma, \delta \in \mathbb{R}$) - $b$ muss von dieser Form sein
 2. Charakteristisches Polynom $p$ der zugehörigen homogenen Dgl. $(Ly)(x) = 0$ berechnen
 3. Fallunterscheidung:
    - $p(\gamma + i \delta) \neq 0$ (keine Nullstelle):
@@ -1995,8 +2003,6 @@ $$CH - \int_{-\infty}^{\infty} f(x)dx := \lim\limits_{\alpha \to \infty} \int_{-
 Dies ist der *Cauchysche Hauptwert* von $f$.
 
 Wenn $\int_{-\infty}^{\infty} f(x) dx$ [[*Uneigentliche Integrale][konvergiert]], dann ist das gleich dem Cauchyschen Hauptwert.
-
-
 
 Wenn $f$ stückweise glatt und absolut integrierbar:
 
